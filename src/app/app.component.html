@@ -1,3 +1,22 @@
 <h1>
   {{title}}
 </h1>
+
+<div class="ui left demo vertical inverted sidebar labeled icon menu" id="sidenav">
+  <a class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item">
+    <i class="block layout icon"></i>
+    Topics
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Friends
+  </a>
+</div>
+
+<p-splitButton label="Tester" icon="fa-check" [model]="items"></p-splitButton>
+
+<button (click)="onToggle()">Toggle Me</button>
