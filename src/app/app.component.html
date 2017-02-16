@@ -1,22 +1,39 @@
-<h1>
-  {{title}}
-</h1>
 
-<div class="ui left demo vertical inverted sidebar labeled icon menu" id="sidenav">
+<div class="ui left visible vertical inverted thin sidebar icon labeled menu" id="sidenav">
   <a class="item">
     <i class="home icon"></i>
-    Home
+    Dashboard
   </a>
   <a class="item">
-    <i class="block layout icon"></i>
-    Topics
+    <i class="calendar icon"></i>
+    My Timesheets
   </a>
   <a class="item">
-    <i class="smile icon"></i>
-    Friends
+    <i class="tasks icon"></i>
+    My Projects
   </a>
+  <a class="item">
+    <i class="users icon"></i>
+    My Team
+  </a>
+
+  <a class="item">
+    <i class="sliders icon"></i>
+    Settings
+  </a>
+
 </div>
 
-<p-splitButton label="Tester" icon="fa-check" [model]="items"></p-splitButton>
+<div class="ui container pusher">
 
-<button (click)="onToggle()">Toggle Me</button>
+  <h1>
+    {{title}}
+  </h1>
+
+  <p-splitButton label="Tester" icon="fa-check" [model]="items"></p-splitButton>
+
+  <button (click)="onToggle()">Toggle Me</button>
+
+</div>
+
+
