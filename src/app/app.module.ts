@@ -7,14 +7,17 @@ import {SplitButtonModule} from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: AppComponent},
+  { path: "", redirectTo: "/dashboard", pathMatch: "full" },
+  { path: "dashboard", component: DashboardComponent },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

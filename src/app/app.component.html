@@ -24,15 +24,16 @@
 
 </div>
 
+<!--
+<div class="ui black big launch right attached fixed button">
+  <i class="content icon"></i>
+  <span class="text">Menu</span>
+</div>
+-->
+
 <div class="ui container pusher">
 
-  <h1>
-    {{title}}
-  </h1>
-
-  <p-splitButton label="Tester" icon="fa-check" [model]="items"></p-splitButton>
-
-  <button (click)="onToggle()">Toggle Me</button>
+  <router-outlet></router-outlet>
 
 </div>
 
