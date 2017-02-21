@@ -1,8 +1,13 @@
-<div class="statistic" [style.background-color]="getHtmlColor()">
-  <div class="value">
-    <i class="{{ icon }} icon"></i> {{ value }}
+
+  <div class="ui statistic column panel" [style.background-color]="colour">
+
+    <div class="value">
+      <i class="{{ icon }} icon" *ngIf="icon"></i> {{ value }}
+    </div>
+
+    <div class="label" *ngIf="label">
+      {{ label }}
+    </div>
+
+
   </div>
-  <div class="label">
-    {{ label }}
-  </div>
-</div>

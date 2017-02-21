@@ -17,8 +17,5 @@ export class StatisticComponent implements OnInit {
   ngOnInit() {
   }
 
-  getHtmlColor() {
-    return "#" + this.colour;
-  }
 
 }
