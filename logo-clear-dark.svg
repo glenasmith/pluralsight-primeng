@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="210mm" height="297mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 21000 29700"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:white;stroke-width:176.39}
+    .fil1 {fill:none;fill-rule:nonzero}
+    .fil3 {fill:white}
+    .fil2 {fill:black;fill-rule:nonzero}
+    .fil0 {fill:white;fill-rule:nonzero}
+    .fnt0 {font-style:italic;font-weight:normal;font-size:1593.25px;font-family:'Century Gothic'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0" d="M7609 9029l-1459 750c0,0 -1876,-891 -2746,-2420l639 -325 127 215 -371 215c0,0 904,1365 2339,2147l1471 -582z"/>
+  <path class="fil0" d="M6214 9477l1424 -512 -1367 287c0,0 -1385,-1222 -1897,-2457l1473 -127 226 341 191 -88 -229 -494 -2034 144c0,0 607,1619 2213,2906z"/>
+  <path class="fil1 str0" d="M7455 8030c0,464 -377,840 -841,840 -464,0 -841,-376 -841,-840 0,-465 377,-841 841,-841 464,0 841,376 841,841"/>
+  <polygon class="fil2" points="7040,7600 7482,7232 7676,7466 7234,7833 "/>
+  <path class="fil0" d="M6143 7733l461 507 1118 -977 -1125 763c0,0 -355,-302 -454,-293z"/>
+  <text x="8001" y="8389"  class="fil3 fnt0">Agile Times</text>
+ </g>
+</svg>
