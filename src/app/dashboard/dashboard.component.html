@@ -6,7 +6,7 @@
 
 <button (click)="onToggle()">Toggle Me</button>
 
-<div style="ui four statistics">
+<div class="ui four statistics">
 
   <app-statistic label="Unread Messages" value="253" icon="calendar" colour="#00ACAC"></app-statistic>
 
@@ -15,4 +15,16 @@
   <app-statistic label="Files Synced" value="2,345" icon="cloud" colour="#6C76AF"></app-statistic>
 
   <app-statistic label="Login Attempts" value="4" icon="key" colour="#EFA64C"></app-statistic>
+</div>
+
+<div class="ui two column grid">
+
+  <div class="column">
+    <p-chart type="pie" [data]="hoursByProjectChartData" width="400" [options]="chartOptions" ></p-chart>
+  </div>
+
+  <div class="column">
+    <p-chart type="pie" [data]="hoursByProjectChartData" width="400" [options]="chartOptions" ></p-chart>
+  </div>
+
 </div>

@@ -10,6 +10,31 @@ declare var jQuery: any;
 })
 export class DashboardComponent implements OnInit {
 
+  private hoursByProjectChartData = {
+    labels: ['One','Two','Three'],
+    datasets: [
+      {
+        data: [300, 50, 100],
+        backgroundColor: [
+          "red",
+          "blue",
+          "yellow"
+        ],
+
+      }],
+  };
+
+  private chartOptions = {
+    title: {
+      display: true,
+      text: 'Custom Chart Title'
+    },
+    legend: {
+      position: 'left'
+    },
+      responsive: true
+  }
+
   constructor() { }
 
   ngOnInit() {

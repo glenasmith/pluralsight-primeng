@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatisticComponent } from './statistic/statistic.component';
+import {ChartModule} from "primeng/components/chart/chart";
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    SplitButtonModule
+    SplitButtonModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
