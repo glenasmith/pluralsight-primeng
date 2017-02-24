@@ -4,8 +4,6 @@
 
 <p-splitButton label="Tester" icon="fa-check" [model]="items"></p-splitButton>
 
-<button (click)="onToggle()">Toggle Me</button>
-
 <div class="ui four statistics">
 
   <app-statistic label="Unread Messages" value="253" icon="calendar" colour="#00ACAC"></app-statistic>
@@ -24,7 +22,7 @@
   </div>
 
   <div class="ui-lg-6 ui-md-6 ui-sm-12">
-    <p-chart type="pie" [data]="hoursByProjectChartData" width="400" [options]="chartOptions" ></p-chart>
+    <p-chart type="doughnut" [data]="hoursByProjectChartData" width="400" [options]="chartOptions" ></p-chart>
   </div>
 
 </div>

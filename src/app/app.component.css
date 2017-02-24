@@ -3,6 +3,21 @@
 }
 
 
+#header {
+  background-color: #F0F3F5 !important;
+  height: 60px;
+  width: 100%;
+
+}
+
+#top-logo {
+  height: 60px;
+}
+
+#sidenav {
+  margin-top: 60px;
+}
+
 @media only screen and (max-width: 500px) {
 
   #sidenav {
