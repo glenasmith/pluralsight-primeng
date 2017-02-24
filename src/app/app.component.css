@@ -1,0 +1,15 @@
+.content-body {
+  margin-left: 135px;
+}
+
+
+@media only screen and (max-width: 500px) {
+
+  #sidenav {
+    display: none
+  }
+
+  .content-body {
+    margin-left: 5px;
+  }
+}
