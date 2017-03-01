@@ -3,13 +3,19 @@
     "id": 101,
     "name": "Glen Smith",
     "avatar": "/profiles/glen.jpg",
-    "role": "Developer"
+    "role": "Developer",
+    "times": [
+
+    ]
   },
   {
     "id": 102,
     "name": "Mary Cool",
     "avatar": "/profiles/mary.jpg",
-    "role": "Developer"
+    "role": "Developer",
+    "times": [
+
+    ]
   }
 ]
 

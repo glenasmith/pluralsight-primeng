@@ -18,11 +18,20 @@
 <div class="ui-g">
 
   <div class="ui-lg-6 ui-md-6 ui-sm-12">
-    <p-chart type="pie" [data]="hoursByProjectChartData" width="400" [options]="chartOptions" ></p-chart>
+    <p-chart type="bar" [data]="hoursByTeamChartMixedData" height="200"></p-chart>
   </div>
 
   <div class="ui-lg-6 ui-md-6 ui-sm-12">
-    <p-chart type="doughnut" [data]="hoursByProjectChartData" width="400" [options]="chartOptions" ></p-chart>
+    <p-chart type="bar" [data]="hoursByTeamChartData" ></p-chart>
+  </div>
+
+  <div class="ui-lg-6 ui-md-6 ui-sm-12">
+    <p-chart type="doughnut" [data]="hoursByProjectChartData" [options]="chartOptions"
+      (onDataSelect)="onDataSelect($event)"></p-chart>
+  </div>
+
+  <div class="ui-lg-6 ui-md-6 ui-sm-12">
+    <p-chart type="polarArea" [data]="hoursByProjectChartData" [options]="chartOptions" ></p-chart>
   </div>
 
 </div>
