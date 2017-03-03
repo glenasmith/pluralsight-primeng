@@ -20,7 +20,7 @@
   float: right;
 }
 
-#sidenav {
+#sidenav, #sidenav-mini {
   height: 100%;
   position: fixed;
   top: 60px;
@@ -33,18 +33,34 @@
   padding-top: 50px;
 }
 
+#minigutter {
+  display:none;
+}
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 800px) {
 
-  #sidenav {
-    display: none
+  #sidegutter {
+    display: none;
+  }
+
+  #minigutter {
+    display: block;
   }
 
   #content-body {
-    left: 5px;
-    top: 60px;
-    position: fixed;
     border: 3px solid purple;
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+
+  #sidegutter {
+    display: none;
+  }
+
+  #minigutter {
+    display: none;
   }
 }

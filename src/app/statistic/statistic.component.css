@@ -1,13 +1,13 @@
 .statistic {
-  margin: 1em !important;
-  width: 250px;
-  color: white !important;
+  margin: 1em;
+  width: 200px;
+  color: white;
   text-align: center;
   font-family: "Roboto";
 }
 
 .icon {
-  font-size: 80px;
+  font-size: 70px;
   margin: 0px;
   padding: 5px;
   background:rgba(0,0,0,.1);
@@ -19,7 +19,7 @@
 }
 
 .value {
-font-size: 50px;
+font-size: 40px;
 }
 
 .label {

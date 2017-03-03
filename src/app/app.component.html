@@ -11,11 +11,21 @@
 
 <div class="ui-g ui-g-nopad">
 
-  <div class="ui-g-2">
+  <div class="ui-g-2 ui-g-nopad" id="sidegutter">
 
     <div id="sidenav">
 
       <p-menu [model]="menuItems"></p-menu>
+
+    </div>
+
+  </div>
+
+  <div class="ui-g-2 ui-g-nopad" id="minigutter">
+
+    <div id="sidenav-mini">
+
+      <p-menu [model]="miniMenuItems"></p-menu>
 
     </div>
 
@@ -29,7 +39,7 @@
   -->
 
 
-  <div id="content-body" class="ui-g-10">
+  <div id="content-body" class="ui-g-10 ui-g-nopad">
 
     <router-outlet></router-outlet>
 

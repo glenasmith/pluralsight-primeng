@@ -9,6 +9,7 @@ import {MenuItem} from "primeng/primeng";
 export class AppComponent implements OnInit {
 
   private menuItems: MenuItem[];
+  private miniMenuItems: MenuItem[];
 
   constructor() {
 
@@ -23,6 +24,12 @@ export class AppComponent implements OnInit {
       {label: 'My Team', icon: 'fa-users', routerLink: ['/']},
       {label: 'Settings', icon: 'fa-sliders', routerLink: ['/']},
     ]
+
+    this.miniMenuItems = [];
+    this.menuItems.forEach( (item : MenuItem) => {
+      let miniItem = { icon: item.icon, routerLink: item.routerLink }
+      this.miniMenuItems.push(miniItem);
+    })
 
   }
 
