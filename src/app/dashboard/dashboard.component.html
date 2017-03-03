@@ -1,24 +1,19 @@
-<h1>
-  {{title}}
-</h1>
+<div class="ui-g">
 
-<p-splitButton label="Tester" icon="fa-check" [model]="items"></p-splitButton>
+  <app-statistic label="Unread" value="253" icon="fa-calendar" colour="#00ACAC" class="ui-lg-3 ui-md-6 ui-sm-12"></app-statistic>
 
-<div class="ui four statistics">
+  <app-statistic label="Check-ins" value="3216" icon="fa-map-marker" colour="#2F8EE5" class="ui-lg-3 ui-md-6 ui-sm-12"></app-statistic>
 
-  <app-statistic label="Unread Messages" value="253" icon="calendar" colour="#00ACAC"></app-statistic>
+  <app-statistic label="Synced" value="2,345" icon="fa-cloud" colour="#6C76AF" class="ui-lg-3 ui-md-6 ui-sm-12"></app-statistic>
 
-  <app-statistic label="Check-ins" value="3216" icon="map marker" colour="#2F8EE5"></app-statistic>
+  <app-statistic label="Logins" value="4" icon="fa-key" colour="#EFA64C" class="ui-lg-3 ui-md-6 ui-sm-12"></app-statistic>
 
-  <app-statistic label="Files Synced" value="2,345" icon="cloud" colour="#6C76AF"></app-statistic>
-
-  <app-statistic label="Login Attempts" value="4" icon="key" colour="#EFA64C"></app-statistic>
 </div>
 
 <div class="ui-g">
 
   <div class="ui-lg-6 ui-md-6 ui-sm-12">
-    <p-chart type="bar" [data]="hoursByTeamChartMixedData" height="200"></p-chart>
+    <p-chart type="bar" [data]="hoursByTeamChartMixedData"></p-chart>
   </div>
 
   <div class="ui-lg-6 ui-md-6 ui-sm-12">
@@ -31,7 +26,7 @@
   </div>
 
   <div class="ui-lg-6 ui-md-6 ui-sm-12">
-    <p-chart type="polarArea" [data]="hoursByProjectChartData" [options]="chartOptions" ></p-chart>
+    <p-chart type="pie" [data]="hoursByProjectChartData" ></p-chart>
   </div>
 
 </div>

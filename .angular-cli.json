@@ -22,13 +22,9 @@
         "styles.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/primeng/resources/primeng.css",
-        "../node_modules/primeng/resources/themes/bootstrap/theme.css",
-        "../node_modules/semantic-ui-css/semantic.css"
-
+        "../node_modules/primeng/resources/themes/bootstrap/theme.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/semantic-ui-css/semantic.js",
         "../node_modules/chart.js/dist/Chart.js"
       ],
       "environmentSource": "environments/environment.ts",

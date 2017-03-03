@@ -1,6 +1,29 @@
-.panel {
+.statistic {
   margin: 1em !important;
-  padding: 1em;
   width: 250px;
   color: white !important;
+  text-align: center;
+  font-family: "Roboto";
 }
+
+.icon {
+  font-size: 80px;
+  margin: 0px;
+  padding: 5px;
+  background:rgba(0,0,0,.1);
+}
+
+.data {
+  padding: 1em;
+  vertical-align: middle;
+}
+
+.value {
+font-size: 50px;
+}
+
+.label {
+  text-transform: uppercase;
+}
+
+

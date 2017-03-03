@@ -1,13 +1,20 @@
+<div class="statistic ui-g" [style.background-color]="colour">
 
-  <div class="ui statistic column panel" [style.background-color]="colour">
+  <div class="icon ui-g-5">
+    <i class="fa {{ icon }}" *ngIf="icon"></i>
+  </div>
+
+  <div class="data ui-g-7">
 
     <div class="value">
-      <i class="{{ icon }} icon" *ngIf="icon"></i> {{ value }}
+      {{ value }}
     </div>
 
     <div class="label" *ngIf="label">
       {{ label }}
     </div>
 
-
   </div>
+
+
+</div>

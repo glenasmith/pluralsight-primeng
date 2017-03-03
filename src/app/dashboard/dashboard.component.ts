@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 declare var jQuery: any;
 
@@ -11,15 +11,15 @@ declare var jQuery: any;
 export class DashboardComponent implements OnInit {
 
   // https://github.com/chartjs/Chart.js/issues/815
-  private DEFAULT_COLORS = ['#3366CC','#DC3912','#FF9900','#109618','#990099',
-                            '#3B3EAC','#0099C6','#DD4477','#66AA00','#B82E2E',
-                            '#316395','#994499','#22AA99','#AAAA11','#6633CC',
-                            '#E67300','#8B0707','#329262','#5574A6','#3B3EAC']
+  private DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
+    '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E',
+    '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC',
+    '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
 
-  private configureDefaultColours(data : number[]) : string[] {
+  private configureDefaultColours(data: number[]): string[] {
     let customColours = []
     if (data.length) {
-      data.forEach( (element, idx) => {
+      data.forEach((element, idx) => {
         customColours.push(this.DEFAULT_COLORS[idx % this.DEFAULT_COLORS.length])
       })
     }
@@ -28,13 +28,13 @@ export class DashboardComponent implements OnInit {
   }
 
   private chartData = [300, 50, 100, 70, 500,
-                       300, 50, 100, 70, 500,
-                       300, 50, 100, 70, 500,
-                       300, 50, 100, 70, 500,
-                       300, 50, 100, 70, 500
-      ];
+    300, 50, 100, 70, 500,
+    300, 50, 100, 70, 500,
+    300, 50, 100, 70, 500,
+    300, 50, 100, 70, 500
+  ];
 
-  private chartData2 = this.chartData.map( (data) => data * Math.random());
+  private chartData2 = this.chartData.map((data) => data * Math.random());
 
   private hoursByTeamChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -75,24 +75,18 @@ export class DashboardComponent implements OnInit {
   }
 
   private hoursByProjectChartData = {
-    labels: ['One','Two','Three'],
+    labels: ['Payroll', 'Timesheets', 'Point of Sale'],
     datasets: [
       {
-        data: this.chartData,
-         backgroundColor: this.configureDefaultColours(this.chartData)
-           //[
-        //   "red",
-        //   "blue",
-        //   "yellow"
-        // ],
+        data: [8, 12, 16 ],
+        backgroundColor: [
+          "red",
+          "blue",
+          "yellow"
+        ],
 
-      },
-      {
-        data: this.chartData2,
-        backgroundColor: this.configureDefaultColours(this.chartData2)
       }
-
-      ]
+    ]
   };
 
   private chartOptions = {
@@ -103,10 +97,11 @@ export class DashboardComponent implements OnInit {
     legend: {
       position: 'left'
     },
-      responsive: true
+    responsive: true
   }
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
@@ -123,12 +118,16 @@ export class DashboardComponent implements OnInit {
   title = 'jQuery works!';
 
   items = [
-    {label: 'Toggle', icon: 'fa-refresh', command: () => {
+    {
+      label: 'Toggle', icon: 'fa-refresh', command: () => {
       this.onToggle();
-    }},
-    {label: 'Toggle Again', icon: 'fa-close', command: () => {
+    }
+    },
+    {
+      label: 'Toggle Again', icon: 'fa-close', command: () => {
       this.onToggle();
-    }},
+    }
+    },
     {label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
     /*
      {label: 'Theming', icon: 'fa-paint-brush', routerLink: ['/theming']}

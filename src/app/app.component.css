@@ -2,21 +2,38 @@
   margin-left: 135px;
 }
 
-
 #header {
-  background-color: #F0F3F5 !important;
+  background-color: #F0F3F5;
   height: 60px;
+  position: fixed;
+  top: 0px;
+  z-index: 99;
   width: 100%;
-
 }
 
 #top-logo {
   height: 60px;
 }
 
-#sidenav {
-  margin-top: 60px;
+#notifications {
+  color: blue;
+  float: right;
 }
+
+#sidenav {
+  height: 100%;
+  position: fixed;
+  top: 60px;
+  padding-left: 0px;
+  padding-top: 1em;
+  background-color: #2D353C !important;
+}
+
+#content-body {
+  padding-top: 50px;
+}
+
+
 
 @media only screen and (max-width: 500px) {
 
@@ -24,7 +41,10 @@
     display: none
   }
 
-  .content-body {
-    margin-left: 5px;
+  #content-body {
+    left: 5px;
+    top: 60px;
+    position: fixed;
+    border: 3px solid purple;
   }
 }
