@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   background-color: #D9E0E7 !important;
-  border: 4px solid green;
   margin: 0px;
   font-size: 1em !important;
 }
@@ -31,4 +30,24 @@ body {
 .menu-selected {
   background-color: #0275d8;
 }
+
+/* Debugging Layouts
+@media screen and (min-width: 64.063em) {
+  .ui-lg-3 {
+    background-color: green;
+  }
+}
+
+@media screen and (min-width: 40.063em) {
+  .ui-md-6 {
+    background-color: yellow;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .ui-sm-12 {
+    background-color: palevioletred;
+  }
+}
+*/
 

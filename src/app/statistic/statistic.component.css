@@ -1,6 +1,6 @@
 .statistic {
   margin: 1em;
-  width: 200px;
+  min-width: 200px;
   color: white;
   text-align: center;
   font-family: "Roboto";

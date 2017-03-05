@@ -37,8 +37,12 @@
   display:none;
 }
 
+/*
 
-@media only screen and (max-width: 800px) {
+@media screen and (min-width: 40.063em) {
+*/
+
+@media only screen and (max-width: 1000px) {
 
   #sidegutter {
     display: none;
@@ -48,13 +52,13 @@
     display: block;
   }
 
-  #content-body {
-    border: 3px solid purple;
-  }
 }
 
-
+/*
+@media only screen and (max-width: 40em) {
+*/
 @media only screen and (max-width: 400px) {
+
 
   #sidegutter {
     display: none;
