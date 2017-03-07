@@ -1,5 +1,19 @@
 <div class="ui-g">
 
+  <p-panel header="Hours By Project" class="ui-g-6">
+
+    <p-dataTable [value]="hoursByProject">
+      <p-column field="name" header="Project"></p-column>
+      <p-column field="hoursSpent" header="Hours Spent This Week"></p-column>
+    </p-dataTable>
+
+  </p-panel>
+
+</div>
+
+
+<div class="ui-g">
+
 
   <app-statistic label="My Hours" value="132" icon="fa-clock-o" colour="#00ACAC"
                  class="ui-g-12 ui-md-6 ui-lg-3"></app-statistic>

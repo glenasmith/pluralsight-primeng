@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Project} from "../project";
 
 declare var jQuery: any;
 
@@ -11,17 +12,26 @@ declare var jQuery: any;
 export class DashboardComponent implements OnInit {
 
   // https://github.com/chartjs/Chart.js/issues/815
+  /*
   private DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
     '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E',
     '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC',
     '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
+    */
+
+  private DEFAULT_COLORS = [
+    'red', 'blue', 'yellow',
+    '#00ACAC', '#2F8EE5', '#6C76AF', '#EFA64C',
+    '#F15B2A', '#A62E5C', '#2A9FBC', '#9BC850', '#404040', '#675BA7'
+    ]
 
   private configureDefaultColours(data: number[]): string[] {
     let customColours = []
     if (data.length) {
-      data.forEach((element, idx) => {
-        customColours.push(this.DEFAULT_COLORS[idx % this.DEFAULT_COLORS.length])
-      })
+
+      customColours = data.map((element, idx) => {
+         return this.DEFAULT_COLORS[idx % this.DEFAULT_COLORS.length];
+      });
     }
 
     return customColours;
@@ -60,30 +70,41 @@ export class DashboardComponent implements OnInit {
       {
         type: 'bar',
         label: 'My Bar dataset',
-        backgroundColor: this.DEFAULT_COLORS[3],
-        borderColor: this.DEFAULT_COLORS[3],
+        backgroundColor: this.DEFAULT_COLORS[2],
+        borderColor: this.DEFAULT_COLORS[2],
         data: [65, 59, 80, 81, 56, 55, 40]
       },
       {
         type: 'line',
         label: 'My Line dataset',
-        backgroundColor: this.DEFAULT_COLORS[4],
-        borderColor: this.DEFAULT_COLORS[4],
+        backgroundColor: this.DEFAULT_COLORS[3],
+        borderColor: this.DEFAULT_COLORS[3],
         data: [28, 48, 40, 19, 86, 27, 90]
       }
     ]
   }
 
+  private hoursByProject = [
+        {id: 1,  name: 'Payroll App', hoursSpent: 8},
+        {id: 2,  name: 'Agile Times App', hoursSpent: 16},
+        {id: 3,  name: 'Point of Sale App', hoursSpent: 24},
+  ]
+
+  private pieData = this.hoursByProject.map((proj) => proj.hoursSpent);
+  private pieLabels = this.hoursByProject.map((proj) => proj.name);
+  private pieColors = this.configureDefaultColours(this.pieData);
+
   private hoursByProjectChartData = {
-    labels: ['Payroll', 'Timesheets', 'Point of Sale'],
+    labels: this.pieLabels,
     datasets: [
       {
-        data: [8, 12, 16 ],
-        backgroundColor: [
-          "red",
-          "blue",
-          "yellow"
-        ],
+        data: this.pieData,
+        backgroundColor: this.pieColors
+        //   [
+        //   "red",
+        //   "blue",
+        //   "yellow"
+        // ],
 
       }
     ]
@@ -115,27 +136,6 @@ export class DashboardComponent implements OnInit {
     //event.element_index = Which element within that array was clicked (0 indexed)
   }
 
-  title = 'jQuery works!';
 
-  items = [
-    {
-      label: 'Toggle', icon: 'fa-refresh', command: () => {
-      this.onToggle();
-    }
-    },
-    {
-      label: 'Toggle Again', icon: 'fa-close', command: () => {
-      this.onToggle();
-    }
-    },
-    {label: 'Angular.io', icon: 'fa-link', url: 'http://angular.io'},
-    /*
-     {label: 'Theming', icon: 'fa-paint-brush', routerLink: ['/theming']}
-     */
-  ]
-
-  onToggle() {
-    jQuery('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('toggle');
-  }
 
 }

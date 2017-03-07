@@ -28,7 +28,8 @@ body {
 }
 
 .menu-selected {
-  background-color: #0275d8;
+  background-color: #F15B2A;
+  color: #ffffff;
 }
 
 /* Debugging Layouts
