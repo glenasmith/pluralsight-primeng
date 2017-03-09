@@ -20,6 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
+        "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/primeng/resources/primeng.css",
         "../node_modules/primeng/resources/themes/bootstrap/theme.css"
