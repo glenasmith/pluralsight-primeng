@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {MenuItem} from "primeng/primeng";
+import {Menu} from "primeng/components/menu/menu";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,11 @@ export class AppComponent implements OnInit {
   private menuItems: MenuItem[];
   private miniMenuItems: MenuItem[];
 
-  constructor() {
+  @ViewChild('bigMenu') bigMenu : Menu;
+  @ViewChild('smallMenu') smallMenu : Menu;
+
+  constructor(private router : Router) {
+
   }
 
   ngOnInit() {
@@ -44,6 +50,20 @@ export class AppComponent implements OnInit {
     })
 
   }
+
+  selectInitialMenuItemBasedOnUrl() {
+    let path = document.location.pathname;
+    let menuItem = this.menuItems.find( (item) => { return item.routerLink[0] == path });
+    if (menuItem) {
+      let selectedIcon = this.bigMenu.container.querySelector(`.${menuItem.icon}`);
+      selectedIcon.closest('li').classList.add('menu-selected');
+    }
+  }
+
+  ngAfterViewInit() {
+    this.selectInitialMenuItemBasedOnUrl();
+  }
+
 
 
 }
