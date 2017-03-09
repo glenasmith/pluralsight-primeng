@@ -1,6 +1,6 @@
 <div class="ui-g">
 
-  <p-panel header="Hours By Project" class="ui-g-6">
+  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
 
     <p-dataTable [value]="hoursByProject">
       <p-column field="name" header="Project"></p-column>
@@ -8,6 +8,12 @@
     </p-dataTable>
 
   </p-panel>
+
+  <!--
+  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
+    <p-chart type="doughnut" [data]="hoursByProjectChartData"></p-chart>
+  </p-panel>
+  -->
 
 </div>
 
