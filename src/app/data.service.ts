@@ -13,6 +13,25 @@ export class DataService {
 
   constructor(private http: Http) { }
 
+
+  getHoursByTeam() : Observable<any[]> { 
+
+    return Observable.interval(3000).timeInterval().switchMap(() => {
+      return this.http.get(this.urlBase + "data/hoursByTeam.json").map( (resp : Response) => {
+          var hoursByTeam = resp.json();
+          var randomised = hoursByTeam.map( (team) => {
+            var monthNames = Object.keys(team.monthlyHours);
+            monthNames.forEach( (monthName) => {
+              team.monthlyHours[monthName] =  team.monthlyHours[monthName] * Math.random(); 
+            });
+          });
+
+          return hoursByTeam;
+    })
+    
+    })
+  }
+
   getPeople() : Observable<Person[]> {
 
     return this.http.get(this.urlBase + "data/people.json").map( (resp : Response) => {

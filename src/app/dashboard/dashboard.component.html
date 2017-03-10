@@ -1,22 +1,3 @@
-<div class="ui-g">
-
-  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
-
-    <p-dataTable [value]="hoursByProject">
-      <p-column field="name" header="Project"></p-column>
-      <p-column field="hoursSpent" header="Hours Spent This Week"></p-column>
-    </p-dataTable>
-
-  </p-panel>
-
-  <!--
-  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
-    <p-chart type="doughnut" [data]="hoursByProjectChartData"></p-chart>
-  </p-panel>
-  -->
-
-</div>
-
 
 <div class="ui-g">
 
@@ -41,12 +22,34 @@
 
 <div class="ui-g">
 
-  <p-panel header="Hours By Team" class="ui-g-12 ui-lg-6">
-    <p-chart type="bar" [data]="hoursByTeamChartMixedData"></p-chart>
+  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
+
+    <p-dataTable [value]="hoursByProject">
+      <p-column field="name" header="Project"></p-column>
+      <p-column field="hoursSpent" header="Hours Spent This Week"></p-column>
+    </p-dataTable>
+
+  </p-panel>
+  
+  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
+    <p-chart type="pie" [data]="hoursByProjectChartData"></p-chart>
   </p-panel>
 
-  <p-panel header="Hours By Team" class="ui-g-12 ui-lg-6">
-    <p-chart type="bar" [data]="hoursByTeamChartData"></p-chart>
+</div>
+
+
+
+
+<div class="ui-g">
+
+  <p-panel header="Hours By Team (Mixed)" class="ui-g-12 ui-lg-6">
+    <p-chart type="bar" [data]="hoursByTeamChartMixedData" #mixedChart
+    (onDataSelect)="onMixedClick($event)" [options]="chartOptions"
+    ></p-chart>
+  </p-panel>
+
+  <p-panel header="Hours By Team (Bar)" class="ui-g-12 ui-lg-6">
+    <p-chart type="line" [data]="hoursByTeamChartData"></p-chart>
   </p-panel>
 
   <p-panel header="Hours By Project" class="ui-g-12 ui-lg-6">
