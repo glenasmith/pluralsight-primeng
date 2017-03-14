@@ -12,7 +12,7 @@ import { StatisticComponent } from './statistic/statistic.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { DataService } from './data.service';
 import { ProjectsComponent } from './projects/projects.component';
-import {InputMaskModule, ButtonModule, EditorModule, SharedModule} from "primeng/primeng";
+import {InputMaskModule, ButtonModule, EditorModule, CalendarModule} from "primeng/primeng";
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 
 
@@ -45,6 +45,7 @@ const appRoutes: Routes = [
     MenuModule,
     PanelModule,
     ChartModule,
+    CalendarModule,
     DataTableModule
   ],
   providers: [ DataService ],

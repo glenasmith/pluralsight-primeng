@@ -146,12 +146,25 @@ Update your CLI with the scripts & styles you need:
             "../node_modules/quill/dist/quill.js"
           ],
 
+Added the editor module to your module loader:
 
+    EditorModule
+    
 Then you're good to go:
 
     <p-editor id="description" formControlName="description"  class="ui-g-12" [style]="{'height':'200px'}"></p-editor>
     
 Don't forget to style the size.
 
-## Embracing the Wizard
+## Adding a Calendar
+
+First, add the module:
+
+    CalendarModule
+
+Then add the backing property:
+
+    startDate: ['', Validators.required]
+
+Then the markup:
 

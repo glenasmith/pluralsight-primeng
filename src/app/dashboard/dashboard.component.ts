@@ -10,7 +10,7 @@ const DEFAULT_COLORS = [
 ]
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'at-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
    '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC',
    '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
    */
-  
+
 
   private configureDefaultColours(data: number[]): string[] {
     let customColours = []
@@ -102,15 +102,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //     }
   //   ]
   // }
-  
+
   private onMixedClick(event) {
-    
+
 
     let labelClicked = this.hoursByTeamChartMixedData.datasets[event.element._datasetIndex].label;
     let valueClicked = this.hoursByTeamChartMixedData.datasets[event.element._datasetIndex].data[event.element._index];
 
     alert(`Looks like ${labelClicked} worked ${valueClicked} hours`);
-    
+
     //event.dataset = Selected dataset
     //event.element = Selected element
     //event.element._datasetIndex = Which dataset series was clicked on - ie. which array was clicked (0 indexed)
@@ -134,7 +134,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       datasets: dataSets
     }
 
-    
+
   }
 
   private hoursByTeamChartData = this.tranformHoursByTeamDataIntoChartData(this.hoursByTeam);
@@ -190,8 +190,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       position: 'left'
     },
     responsive: true,
-    
-    
+
+
   }
 
   constructor() {
@@ -205,7 +205,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
     this.hoursByTeamChartMixedData = mixedData;
     console.log(mixedData);
-    
+
 
   }
 
@@ -214,17 +214,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
       Observable.interval(3000).timeInterval().subscribe(() => {
-      
+
           var hoursByTeam = this.hoursByTeamChartMixedData.datasets;
           var randomised = hoursByTeam.map( (dataset) => {
-            
-            dataset.data = dataset.data.map( (hours) => hours * (Math.random() * 2) ); 
-           
+
+            dataset.data = dataset.data.map( (hours) => hours * (Math.random() * 2) );
+
           });
           this.mixedChart.refresh();
       });
-    
-    
+
+
   }
 
   onDataSelect(event) {

@@ -17,7 +17,7 @@
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
-      "prefix": "app",
+      "prefix": "at",
       "styles": [
         "styles.css",
         "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css",

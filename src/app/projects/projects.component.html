@@ -18,6 +18,14 @@
         <at-fielderrors [form]="projectForm" field="description" nicename="Description"> </at-fielderrors>
       </div>
 
+      <label for="startDate" class="ui-g-12 ui-md-2">Start Date</label>
+      <p-calendar [showIcon]="true" id="startDate" formControlName="startDate" class="ui-g-12 ui-md-5"></p-calendar>
+      <div class="ui-g-12 ui-md-5">
+
+        <at-fielderrors [form]="projectForm" field="startDate" nicename="Start Date"> </at-fielderrors>
+
+      </div>
+
     </div>
 
     <button [disabled]="hasFormErrors()" pButton icon="fa-floppy-o" label="Save"></button>

@@ -2,7 +2,7 @@ import {Component, OnInit, ElementRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-projects',
+  selector: 'at-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
@@ -15,7 +15,8 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     this.projectForm = this.fb.group({
       projectId: ['', [Validators.required, Validators.minLength(5)]],
-      description: ['', [Validators.required, Validators.maxLength(100)]]
+      description: ['', [Validators.required, Validators.maxLength(100)]],
+      startDate: ['', Validators.required]
     })
   }
 
