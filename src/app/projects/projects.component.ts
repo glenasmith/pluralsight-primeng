@@ -10,6 +10,17 @@ export class ProjectsComponent implements OnInit {
 
   private projectForm : FormGroup;
 
+  private allDevs =[
+
+    { label: 'Jill', value: 'Jill Cool'},
+    { label: 'Joe', value: 'Joe Cool'},
+    { label: 'Mary', value: 'Mary Cool'},
+
+  ]
+
+
+
+
   constructor(private fb : FormBuilder) { }
 
   ngOnInit() {
@@ -17,7 +28,8 @@ export class ProjectsComponent implements OnInit {
       projectId: ['', [Validators.required, Validators.minLength(5)]],
       description: ['', [Validators.required, Validators.maxLength(100)]],
       startDate: ['', Validators.required],
-      rating: ''
+      rating: [''],
+      selectedDevs: [[]]
     })
   }
 

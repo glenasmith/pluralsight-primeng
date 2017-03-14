@@ -196,4 +196,32 @@ Or remove the cancel...
 
     [cancel]=false
     
+## Multiselect module
+
+
+First, add the module:
+
+    MultiSelectModule
+    
+Then we need our backing data object:
+
+    private allDevs =[
+    
+        { label: 'Jill', value: 'Jill Cool'},
+        { label: 'Joe', value: 'Joe Cool'},
+        { label: 'Mary', value: 'Mary Cool'},
+    
+    ]
+
+And our form control object property:
+
+      selectedDevs: [[]]
+
+Finally, we need our markup:
+
+    <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
+    <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs"></p-multiSelect>
+
+
+
 

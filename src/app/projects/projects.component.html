@@ -29,6 +29,12 @@
       <label for="rating" class="ui-g-12 ui-md-2">Project Coolness</label>
       <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10" [cancel]="false"></p-rating>
 
+      <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
+      <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs"></p-multiSelect>
+
+      <label for="chips" class="ui-g-12 ui-md-2">Assigned Devs</label>
+      <p-chips id="chips" formControlName="selectedDevs"></p-chips>
+
     </div>
 
     <button [disabled]="hasFormErrors()" pButton icon="fa-floppy-o" label="Save"></button>
