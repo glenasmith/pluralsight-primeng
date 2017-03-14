@@ -1,0 +1,28 @@
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="ui-g">
+
+  <p-panel header="New Project" class="ui-g-12">
+
+    <div class="ui-g">
+
+      <label for="projectId" class="ui-g-12 ui-md-2">Project Id</label>
+      <p-inputMask mask="aaa-999" id="projectId" formControlName="projectId" placeholder="ABC-123" class="ui-g-12 ui-md-5"></p-inputMask>
+      <div class="ui-g-12 ui-md-5">
+
+        <at-fielderrors [form]="projectForm" field="projectId" nicename="Project ID"> </at-fielderrors>
+
+      </div>
+
+      <label for="description" class="ui-g-12">Description</label>
+      <p-editor id="description" formControlName="description"  class="ui-g-12" [style]="{'height':'200px'}"></p-editor>
+      <div class="ui-g-12">
+        <at-fielderrors [form]="projectForm" field="description" nicename="Description"> </at-fielderrors>
+      </div>
+
+    </div>
+
+    <button [disabled]="hasFormErrors()" pButton icon="fa-floppy-o" label="Save"></button>
+
+  </p-panel>
+
+
+</form>

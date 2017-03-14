@@ -31,8 +31,10 @@
 
   </p-panel>
   
-  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
-    <p-chart type="pie" [data]="hoursByProjectChartData"></p-chart>
+  <p-panel header="Hours By Team (Mixed)" class="ui-g-12 ui-lg-6">
+    <p-chart type="bar" [data]="hoursByTeamChartMixedData" #mixedChart
+    (onDataSelect)="onMixedClick($event)" [options]="chartOptions"
+    ></p-chart>
   </p-panel>
 
 </div>

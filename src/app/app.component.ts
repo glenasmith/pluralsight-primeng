@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     this.menuItems = [
       {label: 'Dashboard', icon: 'fa-home', routerLink: ['/dashboard'], command: (event) => handleSelected(event)},
       {label: 'My Timesheets', icon: 'fa-calendar', routerLink: ['/timesheets'], command: (event) => handleSelected(event)},
-      {label: 'My Projects', icon: 'fa-tasks', routerLink: ['/dashboard']},
+      {label: 'My Projects', icon: 'fa-tasks', routerLink: ['/projects'], command: (event) => handleSelected(event)},
       {label: 'My Team', icon: 'fa-users', routerLink: ['/dashboard']},
       {label: 'Settings', icon: 'fa-sliders', routerLink: ['/dashboard']},
     ]
