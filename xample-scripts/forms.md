@@ -168,3 +168,12 @@ Then add the backing property:
 
 Then the markup:
 
+
+    <label for="startDate" class="ui-g-12 ui-md-2">Start Date</label>
+    <p-calendar [showIcon]="true" id="startDate" formControlName="startDate" class="ui-g-12 ui-md-5"></p-calendar>
+    <div class="ui-g-12 ui-md-5">
+    
+            <at-fielderrors [form]="projectForm" field="startDate" nicename="Start Date"> </at-fielderrors>
+    
+    </div>
+    
