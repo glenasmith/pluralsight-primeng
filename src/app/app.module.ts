@@ -17,6 +17,7 @@ import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import {RatingModule} from "primeng/components/rating/rating";
 import {MultiSelectModule} from "primeng/components/multiselect/multiselect";
 import {ChipsModule} from "primeng/components/chips/chips";
+import {TabViewModule} from "primeng/components/tabview/tabview";
 
 
 const appRoutes: Routes = [
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     RatingModule,
     MultiSelectModule,
     ChipsModule,
-    DataTableModule
+    DataTableModule,
+    TabViewModule
   ],
   providers: [ DataService ],
   bootstrap: [AppComponent]

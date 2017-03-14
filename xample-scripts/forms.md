@@ -164,13 +164,12 @@ First, add the module:
 
 Then add the backing property:
 
-    startDate: ['', Validators.required]
+    startDate: [new Date(), Validators.required],
 
-Then the markup:
-
+Then the markup: Date format is US by default so set you prefs with the dateFormat attribute
 
     <label for="startDate" class="ui-g-12 ui-md-2">Start Date</label>
-    <p-calendar [showIcon]="true" id="startDate" formControlName="startDate" class="ui-g-12 ui-md-5"></p-calendar>
+    <p-calendar [showIcon]="true" id="startDate" formControlName="startDate" dateFormat="dd/mm/yy" class="ui-g-12 ui-md-5"></p-calendar>
     <div class="ui-g-12 ui-md-5">
     
             <at-fielderrors [form]="projectForm" field="startDate" nicename="Start Date"> </at-fielderrors>
