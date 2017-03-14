@@ -14,6 +14,7 @@ import { DataService } from './data.service';
 import { ProjectsComponent } from './projects/projects.component';
 import {InputMaskModule, ButtonModule, EditorModule, CalendarModule} from "primeng/primeng";
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
+import {RatingModule} from "primeng/components/rating/rating";
 
 
 const appRoutes: Routes = [
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
     PanelModule,
     ChartModule,
     CalendarModule,
+    RatingModule,
     DataTableModule
   ],
   providers: [ DataService ],

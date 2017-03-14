@@ -177,3 +177,23 @@ Then the markup:
     
     </div>
     
+## Let's rate this project
+
+First, add the module:
+
+    RatingModule
+    
+Then add to the backing property:
+
+    rating: ''
+   
+Then implement the markup:
+
+      <label for="rating" class="ui-g-12 ui-md-2">Project Coolness</label>
+      <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10"></p-rating>
+      
+Or remove the cancel...
+
+    [cancel]=false
+    
+

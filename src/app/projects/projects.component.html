@@ -26,6 +26,9 @@
 
       </div>
 
+      <label for="rating" class="ui-g-12 ui-md-2">Project Coolness</label>
+      <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10" [cancel]="false"></p-rating>
+
     </div>
 
     <button [disabled]="hasFormErrors()" pButton icon="fa-floppy-o" label="Save"></button>
