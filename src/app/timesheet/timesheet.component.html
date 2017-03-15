@@ -1,26 +1,19 @@
-
 <div class="timesheet u-g">
 
-<h2 class="u-g-12">
-  Today's date here
-</h2>
+  <div class="header u-g-12">
+    <h2>
+      {{ day }}
+    </h2>
+    <h3>
+      {{ dateAndMonth}}
+    </h3>
+  </div>
 
-<p-tabView class="u-g-12 tabs">
-  <p-tabPanel header="Monday">
-    Content M
-  </p-tabPanel>
-  <p-tabPanel header="Tuesday">
-    Content T
-  </p-tabPanel>
-  <p-tabPanel header="Wednesday">
-    Content W
-  </p-tabPanel>
-  <p-tabPanel header="Thursday">
-    Content T
-  </p-tabPanel>
-  <p-tabPanel header="Friday">
-    Content F
-  </p-tabPanel>
-</p-tabView>
+  <p-tabView class="u-g-12 tabs" (onChange)="changeTabs($event)">
+    <p-tabPanel *ngFor="let tab of daysForTabs" header="{{tab}}" [selected]="isSelected(tab)" >
+      Content {{ tab }}
+    </p-tabPanel>
+
+  </p-tabView>
 
 </div>

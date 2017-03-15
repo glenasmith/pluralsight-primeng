@@ -4,10 +4,20 @@ import { DataService } from "../data.service";
 import {Observable} from "rxjs";
 import { UIChart } from 'primeng/primeng';
 
-const DEFAULT_COLORS = [
-    '#6C76AF', '#EFA64C', '#00ACAC', '#2F8EE5',
-    '#F15B2A', '#A62E5C', '#2A9FBC', '#9BC850', '#404040', '#675BA7'
-]
+// const DEFAULT_COLORS = [
+//     '#6C76AF', '#EFA64C', '#00ACAC', '#2F8EE5',
+//     '#F15B2A', '#A62E5C', '#2A9FBC', '#9BC850', '#404040', '#675BA7'
+// ]
+
+// https://github.com/chartjs/Chart.js/issues/815
+
+ const DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
+ '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E',
+ '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC',
+ '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
+
+
+
 
 @Component({
   selector: 'at-dashboard',
@@ -17,15 +27,6 @@ const DEFAULT_COLORS = [
 export class DashboardComponent implements OnInit, AfterViewInit {
 
   @ViewChild("mixedChart") mixedChart : UIChart;
-
-  // https://github.com/chartjs/Chart.js/issues/815
-  /*
-   private DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
-   '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E',
-   '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC',
-   '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
-   */
-
 
   private configureDefaultColours(data: number[]): string[] {
     let customColours = []

@@ -1,7 +1,24 @@
 .timesheet {
   background-color: white;
+  font-family: "Roboto";
 }
 
-.tabs div ul li {
-  width: 20%;
+.header {
+  margin: 1em;
+}
+
+h2 {
+  font-weight: bolder;
+  font-size: xx-large;
+  display: inline;
+}
+
+h3 {
+  font-weight: lighter;
+  font-size: xx-large;
+  display: inline;
+}
+
+.tabs /deep/ li {
+  width: 19%;
 }
