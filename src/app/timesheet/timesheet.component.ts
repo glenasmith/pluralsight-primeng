@@ -24,6 +24,11 @@ export class TimesheetComponent implements OnInit {
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
   ]
 
+  private projectNames = [
+    "Agile Times", "Payroll App", "Point of Sale App", "Mobile App"
+  ]
+
+
   private userTimeData = [
 
     { day: "Monday", startTime: '9:00', endTime: '17:00', project: 'Monday Times' },
