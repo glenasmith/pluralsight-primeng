@@ -1,17 +1,20 @@
 <div class="timesheet u-g">
 
   <div class="header u-g-12">
+
     <h2>
       {{ day }}
     </h2>
     <h3>
       {{ dateAndMonth}}
     </h3>
+
   </div>
+
 
   <p-tabView class="u-g-12 tabs" (onChange)="changeTabs($event)">
     <p-tabPanel *ngFor="let tab of daysForTabs; let i = index;" header="{{tab}}" [selected]="isSelected(tab)" >
-       <p-dataTable [value]="getTimesForDay(i)">
+       <p-dataTable [value]="getTimesForDay(i)" class="timesheet-grid">
          <p-column field="startTime" header="Start Time"></p-column>
          <p-column field="endTime" header="End Time"></p-column>
          <p-column field="project" header="Project"></p-column>

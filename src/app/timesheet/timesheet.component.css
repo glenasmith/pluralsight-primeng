@@ -3,8 +3,15 @@
   font-family: "Roboto";
 }
 
-.header {
+.timesheet-grid /deep/ .ui-datatable {
   margin: 1em;
+}
+
+.header {
+  padding: 1em;
+  color: white;
+  background-color: #0275D8;
+  margin-bottom: 1em;
 }
 
 h2 {
