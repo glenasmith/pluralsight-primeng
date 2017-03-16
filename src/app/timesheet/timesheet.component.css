@@ -29,3 +29,7 @@ h3 {
 .tabs /deep/ li {
   width: 19%;
 }
+
+.goToToday {
+  margin: 1em;
+}

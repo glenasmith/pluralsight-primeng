@@ -12,17 +12,18 @@
   </div>
 
 
-  <p-tabView class="u-g-12 tabs" (onChange)="changeTabs($event)">
+  <p-tabView class="u-g-12 tabs" (onChange)="changeTabs($event)" #tabView>
     <p-tabPanel *ngFor="let tab of daysForTabs; let i = index;" header="{{tab}}" [selected]="isSelected(tab)" >
        <p-dataTable [value]="getTimesForDay(i)" class="timesheet-grid">
+         <p-column field="project" header="Project"></p-column>
+         <p-column field="category" header="Category"></p-column>
          <p-column field="startTime" header="Start Time"></p-column>
          <p-column field="endTime" header="End Time"></p-column>
-         <p-column field="project" header="Project"></p-column>
-
        </p-dataTable>
     </p-tabPanel>
 
   </p-tabView>
-  <!--<button pButton label="Push" (click)="onPush()"></button>-->
+
+  <button pButton label="Go To Today" (click)="goToToday()" class="goToToday"></button>
 
 </div>

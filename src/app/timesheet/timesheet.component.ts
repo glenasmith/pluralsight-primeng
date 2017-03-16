@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {TabView} from "primeng/primeng";
 
 declare var moment: any;
 
@@ -13,8 +14,9 @@ export class TimesheetComponent implements OnInit {
 
   private day = this.now.format("dddd");
 
-  private dateAndMonth = this.now.format("MMMM Do, YYYY")
+  private dateAndMonth = this.now.format("MMMM Do, YYYY");
 
+  @ViewChild('tabView') tabView : TabView;
 
   private daysForTabs = [
 
@@ -28,14 +30,18 @@ export class TimesheetComponent implements OnInit {
     "Agile Times", "Payroll App", "Point of Sale App", "Mobile App"
   ]
 
+  private taskCategory = [
+    "Frontend", "Backend", "Operations", "Planning", "Requirements"
+  ]
+
 
   private userTimeData = [
 
-    { day: "Monday", startTime: '9:00', endTime: '17:00', project: 'Monday Times' },
-    { day: "Tuesday", startTime: '9:00', endTime: '17:00', project: 'TuesDay Times' },
-    { day: "Wednesday", startTime: '9:00', endTime: '17:00', project: 'Wed Times' },
-    { day: "Thursday", startTime: '9:00', endTime: '17:00', project: 'Thurs Times' },
-    { day: "Friday", startTime: '9:00', endTime: '17:00', project: 'Fri Times' },
+    { day: "Monday", startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: "Frontend" },
+    { day: "Tuesday", startTime: '9:00', endTime: '17:00', project: 'Payroll App', category: "Backend" },
+    { day: "Wednesday", startTime: '9:00', endTime: '17:00', project: 'Point of Sale App', category: "Operations" },
+    { day: "Thursday", startTime: '9:00', endTime: '17:00', project: 'Mobile App', category: "Planning" },
+    { day: "Friday", startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: "Requirements" },
 
   ]
 
@@ -52,7 +58,7 @@ export class TimesheetComponent implements OnInit {
     let now = moment();
     this.daysOfWeek.forEach( day => {
         this.daysForTabs.push(now.day(day).format("ddd Do"));
-    })
+    });
   }
 
   isSelected(tab) {
@@ -68,11 +74,10 @@ export class TimesheetComponent implements OnInit {
     this.dateAndMonth = selectedDay.format("MMMM Do, YYYY");
   }
 
-  // onPush() {
-  //   console.log("push");
-  //   this.daysForTabs.push(moment().format("hh:mm:ss"));
-  //   console.log(this.daysForTabs);
-  // }
+  goToToday() {
+    // in the newer versions of PrimeNG there is an activeIndex property. I might be able to bind to it from markup?
+    //this.tabView.activeIndex = moment().day();
+  }
 
   ngOnInit() {
   }
