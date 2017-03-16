@@ -9,9 +9,11 @@ declare var moment: any;
 })
 export class TimesheetComponent implements OnInit {
 
-  private day = moment().format("dddd");
+  private now = moment();
 
-  private dateAndMonth = moment().format("MMMM Do, YYYY")
+  private day = this.now.format("dddd");
+
+  private dateAndMonth = this.now.format("MMMM Do, YYYY")
 
 
   private daysForTabs = [
@@ -21,6 +23,24 @@ export class TimesheetComponent implements OnInit {
   private daysOfWeek = [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
   ]
+
+  private userTimeData = [
+
+    { day: "Monday", startTime: '9:00', endTime: '17:00', project: 'Monday Times' },
+    { day: "Tuesday", startTime: '9:00', endTime: '17:00', project: 'TuesDay Times' },
+    { day: "Wednesday", startTime: '9:00', endTime: '17:00', project: 'Wed Times' },
+    { day: "Thursday", startTime: '9:00', endTime: '17:00', project: 'Thurs Times' },
+    { day: "Friday", startTime: '9:00', endTime: '17:00', project: 'Fri Times' },
+
+  ]
+
+  getTimesForDay(dayIndex) {
+    console.log(`Filtering for ${dayIndex}`);
+    return this.userTimeData.filter( entry => {
+      console.log(`Comparing ${entry.day} with ${this.daysOfWeek[dayIndex]}`);
+       return entry.day == this.daysOfWeek[dayIndex];
+    })
+  }
 
 
   constructor() {
@@ -37,8 +57,17 @@ export class TimesheetComponent implements OnInit {
   changeTabs(event) {
     console.log(event);
     let index = event.index;
-    console.log(index);
+    let dayOfWeek = this.daysOfWeek[index];
+    let selectedDay = moment().day(dayOfWeek);
+    this.day = selectedDay.format("dddd");
+    this.dateAndMonth = selectedDay.format("MMMM Do, YYYY");
   }
+
+  // onPush() {
+  //   console.log("push");
+  //   this.daysForTabs.push(moment().format("hh:mm:ss"));
+  //   console.log(this.daysForTabs);
+  // }
 
   ngOnInit() {
   }
