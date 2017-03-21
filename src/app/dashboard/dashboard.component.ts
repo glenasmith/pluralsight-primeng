@@ -184,15 +184,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   private chartOptions = {
     title: {
-      display: false,
-      text: 'Hours By Team'
+      display: true,
+      text: 'Hours By Project'
     },
     legend: {
-      position: 'left'
+      position: 'bottom'
     },
     responsive: true,
-
-
   }
 
   constructor() {
@@ -229,8 +227,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   onDataSelect(event) {
-    console.log(event);
-    console.log(`Looks like you clicked ${event.element._index} of series ${event.element._datasetIndex}`)
+    alert(`Looks like you clicked ${event.element._index} of series ${event.element._datasetIndex}`)
     //event.dataset = Selected dataset
     //event.element = Selected element
     //event.element._datasetIndex = Which dataset series was clicked on - ie. which array was clicked (0 indexed)

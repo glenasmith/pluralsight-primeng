@@ -31,7 +31,7 @@
 
   </p-panel>
 
-  <p-panel header="Hours By Team (Mixed)" class="ui-g-12 ui-md-6">
+  <p-panel header="Hours By Team (Realtime)" class="ui-g-12 ui-md-6">
     <p-chart type="bar" [data]="hoursByTeamChartMixedData" #mixedChart
     (onDataSelect)="onMixedClick($event)" [options]="chartOptions"
     ></p-chart>
@@ -51,7 +51,7 @@
   </p-panel>
 
   <p-panel header="Hours By Team (Bar)" class="ui-g-12 ui-lg-6">
-    <p-chart type="line" [data]="hoursByTeamChartData"></p-chart>
+    <p-chart type="bar" [data]="hoursByTeamChartData"></p-chart>
   </p-panel>
 
   <p-panel header="Hours By Project" class="ui-g-12 ui-lg-6">
@@ -60,7 +60,7 @@
   </p-panel>
 
   <p-panel header="Hours By Project" class="ui-g-12 ui-lg-6">
-    <p-chart type="pie" [data]="hoursByProjectChartData"></p-chart>
+    <p-chart type="polarArea" [data]="hoursByProjectChartData"></p-chart>
   </p-panel>
 
 </div>
