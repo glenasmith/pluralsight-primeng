@@ -1,3 +1,25 @@
 .ui-multiselect-label-container {
   background-color: red !important;
 }
+
+
+p-radioButton {
+  display:block;
+  margin: .7em;
+}
+
+p-listbox /deep/ .ui-listbox {
+  width: 100%;
+}
+
+.avatar {
+  float: left;
+  margin: 5px;
+}
+
+.devName {
+  font-size: xx-large;
+  display:inline-block;
+  margin:15px 10px 0 10px;
+  min-height: 100px;
+}

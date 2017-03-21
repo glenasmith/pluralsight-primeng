@@ -10,6 +10,8 @@ export class ProjectsComponent implements OnInit {
 
   private projectForm : FormGroup;
 
+  private minProjectDate = new Date();
+
   private allDevs =[
 
     { label: 'Jill', value: 'Jill Cool'},
@@ -28,8 +30,9 @@ export class ProjectsComponent implements OnInit {
       projectId: ['', [Validators.required, Validators.minLength(5)]],
       description: ['', [Validators.required, Validators.maxLength(100)]],
       startDate: [new Date(), Validators.required],
-      rating: [''],
-      selectedDevs: [[]]
+      projectType: ['B'],
+      rating: [3],
+      selectedDevs: [['Joe Cool', 'Jill Cool']]
     })
   }
 

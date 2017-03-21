@@ -13,6 +13,8 @@ Import the ReactiveFormsModule before you start!
 
 ## Create a basic reactive form
 
+Note to get theme and validation styling, we need to add a `pInputText` directive.
+
        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="ui-g">
        
          <p-panel header="New Project" class="ui-g-12">
@@ -20,7 +22,7 @@ Import the ReactiveFormsModule before you start!
            <div class="ui-g">
        
              <label for="projectId" class="ui-g-12 ui-md-2">Project Id</label>
-             <input id="projectId" formControlName="projectId" placeholder="Enter Your Project Id" class="ui-g-12 ui-md-5"/>
+             <input pInputText id="projectId" formControlName="projectId" placeholder="Enter Your Project Id" class="ui-g-12 ui-md-5"/>
              <div class="ui-g-12 ui-md-5">
        
                <!-- for our error messages -->
@@ -176,6 +178,152 @@ Then the markup: Date format is US by default so set you prefs with the dateForm
     
     </div>
     
+Reader Exercise: Set a [minDate] property to make sure it's greater than this current year.
+
+    [minDate]="minProjectDate"
+    
+    private minProjectDate = new Date();
+
+    
+## Calendar Options to Explore
+
+Staggering array of customisation is supported - min and max dates, steps between days, multimonth display, time selection, formatting, the list goes on. See docs.
+
+Basic Support for i18n through supplying locale arrays for your own day, month names,etc. 
+    
+Reader Exercise: Hook into the Calendar select by implementing an `(onSelect)` and display an alert of the date.
+      
+      
+## Implementing Radios
+
+First, add the module:
+      
+    RadioButtonModule
+    
+Then code up some buttons
+
+        <p-radioButton name="projGroup" label="Front End" value="F" formControlName="projectType"></p-radioButton>
+        <p-radioButton name="projGroup" label="Backend End" value="B" formControlName="projectType"></p-radioButton>
+        <p-radioButton name="projGroup" label="Operations" value="O" formControlName="projectType"></p-radioButton>
+
+And bind to a backing property with a default value:
+
+  projectType: ['B'],
+
+Exercise: Refactor with an *ngFor to use a backing property.
+
+## Wrap it in a fieldset
+
+First, add the module:
+
+    FieldsetModule
+  
+Then add the markup around the radios:
+    
+    <p-fieldset legend="Project Type" class="ui-g-12">
+            <p-radioButton name="projGroup" label="Front End" value="F" formControlName="projectType"></p-radioButton>
+            <p-radioButton name="projGroup" label="Backend End" value="B" formControlName="projectType"></p-radioButton>
+            <p-radioButton name="projGroup" label="Operations" value="O" formControlName="projectType"></p-radioButton>
+          </p-fieldset>
+
+The labels are clickable as well.
+
+They can be toggled, and collapsible to:
+      
+      
+      [toggleable]="true" [collapsed]="false"
+      
+Trap: collapsed="false" (without the square brackets) won't work since you're binding the string "false" which is a true non-zero string in JavaScript. Be warned - if false isn't working, that's why!
+      
+You can style them if you need to:
+      
+      p-radioButton {
+        display:block;
+        margin: .7em;
+      }
+
+
+      
+ 
+## Getting Staff - Multiselect module
+
+First, add the module:
+
+    MultiSelectModule
+
+Then we need our backing data object:
+  
+      private allDevs =[
+      
+          { label: 'Jill', value: 'Jill Cool'},
+          { label: 'Joe', value: 'Joe Cool'},
+          { label: 'Mary', value: 'Mary Cool'},
+      
+      ]
+
+    
+
+And our form control object property (note the array for multiselect):
+
+      selectedDevs: [[]]
+
+Finally, we need our markup:
+
+    <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
+    <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs"></p-multiSelect>
+
+
+## Getting Staff - A Listbox approach
+
+First, add the module:
+
+    ListboxModule
+
+Then restyle:
+ 
+    <p-listbox id="devs" [options]="allDevs" [multiple]="true"
+          formControlName="selectedDevs"></p-listbox>
+ 
+ 
+Working with Custom Templates:
+
+("item" tells Prime to use custom templates. Let is used for the assignment to that in *ngFor style)
+
+
+      <p-listbox id="devs" [options]="allDevs"  [multiple]="true" formControlName="selectedDevs" class="ui-g-12 ui-md-10">
+        <template let-dev pTemplate="item">
+
+            <img src="http://i.pravatar.cc/100?u={{dev.label}}" class="avatar" />
+            <span class="devName">{{dev.value}}</span>
+
+
+        </template>
+      </p-listbox>
+
+And add some styling:
+ 
+     p-listbox /deep/ .ui-listbox {
+       width: 100%;
+     }
+     
+     .avatar {
+       float: left;
+       margin: 5px;
+     }
+     
+     .devName {
+       font-size: xx-large;
+       display:inline-block;
+       margin:15px 10px 0 10px;
+       min-height: 100px;
+     }
+ 
+ Add filtering if you like:
+ 
+    [filter]="true"
+ 
+ Reader Exercise: bind to the filter value using the filterValue attribute.
+ 
 ## Let's rate this project
 
 First, add the module:
@@ -184,7 +332,7 @@ First, add the module:
     
 Then add to the backing property:
 
-    rating: ''
+    rating: [3]
    
 Then implement the markup:
 
@@ -195,32 +343,15 @@ Or remove the cancel...
 
     [cancel]=false
     
-## Multiselect module
+## Or sliders if you like:
 
+Import the module:
 
-First, add the module:
+    SliderModule
 
-    MultiSelectModule
-    
-Then we need our backing data object:
+Bind to the same property, setting max and min as appropriate:
 
-    private allDevs =[
-    
-        { label: 'Jill', value: 'Jill Cool'},
-        { label: 'Joe', value: 'Joe Cool'},
-        { label: 'Mary', value: 'Mary Cool'},
-    
-    ]
-
-And our form control object property:
-
-      selectedDevs: [[]]
-
-Finally, we need our markup:
-
-    <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
-    <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs"></p-multiSelect>
-
-
-
+    <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
+          <p-slider id="slider" formControlName="rating" class="ui-g-12" [min]="0" [max]="5"></p-slider>
+          
 
