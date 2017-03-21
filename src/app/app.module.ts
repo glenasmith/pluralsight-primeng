@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import {
   ChartModule, SplitButtonModule, MenuModule, PanelModule, DataTableModule,
-  RadioButtonModule, FieldsetModule, SliderModule, ListboxModule
+  RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -61,7 +61,8 @@ const appRoutes: Routes = [
     RadioButtonModule,
     FieldsetModule,
     SliderModule,
-    ListboxModule
+    ListboxModule,
+    SpinnerModule
   ],
   providers: [ DataService ],
   bootstrap: [AppComponent]

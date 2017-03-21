@@ -60,7 +60,9 @@
       <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10" [cancel]="false"></p-rating>
 
       <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
-      <p-slider id="slider" formControlName="rating" class="ui-g-12" [min]="0" [max]="5"></p-slider>
+      <p-slider id="slider" formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-slider>
+
+      <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-spinner>
 
 
     </div>

@@ -355,3 +355,14 @@ Bind to the same property, setting max and min as appropriate:
           <p-slider id="slider" formControlName="rating" class="ui-g-12" [min]="0" [max]="5"></p-slider>
           
 
+## Or spinners if you like:
+
+Import the module:
+
+    SpinnerModule
+    
+Then introduce the markup:
+
+    <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-spinner>
+    
+Demonstrate min and max working by typing in bigger numbers then rounding down.
