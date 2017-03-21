@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { ChartModule, SplitButtonModule, MenuModule, PanelModule, DataTableModule} from 'primeng/primeng';
+import {
+  ChartModule, SplitButtonModule, MenuModule, PanelModule, DataTableModule,
+  RadioButtonModule, FieldsetModule, SliderModule, ListboxModule
+} from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
@@ -54,7 +57,11 @@ const appRoutes: Routes = [
     MultiSelectModule,
     ChipsModule,
     DataTableModule,
-    TabViewModule
+    TabViewModule,
+    RadioButtonModule,
+    FieldsetModule,
+    SliderModule,
+    ListboxModule
   ],
   providers: [ DataService ],
   bootstrap: [AppComponent]
