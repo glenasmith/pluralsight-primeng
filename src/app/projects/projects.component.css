@@ -2,7 +2,6 @@
   background-color: red !important;
 }
 
-
 p-radioButton {
   display:block;
   margin: .7em;
@@ -10,6 +9,7 @@ p-radioButton {
 
 p-listbox /deep/ .ui-listbox {
   width: 100%;
+  height: 300px;
 }
 
 .avatar {

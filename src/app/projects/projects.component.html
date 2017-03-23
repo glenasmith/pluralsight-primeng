@@ -31,6 +31,7 @@
       </div>
 
       <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
+
       <p-listbox id="devs" [options]="allDevs" formControlName="selectedDevs"
                  [multiple]="true" [filter]="true"
                  class="ui-g-12 ui-md-10">
@@ -42,8 +43,13 @@
 
         </template>
       </p-listbox>
+
       <!--
-      <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs"></p-multiSelect>
+      <p-dropdown id="devs" [options]="allDevs" formControlName="selectedDevs" [filter]="true" class="ui-g-12 ui-md-10"></p-dropdown>
+      -->
+      <!--
+
+      <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs" defaultLabel="Select a Dev or Two" class="ui-g-12 ui-md-10"></p-multiSelect>
       -->
       <!--
       <p-chips id="chips" class="ui-g-12" formControlName="selectedDevs" [disabled]="true"></p-chips>
@@ -59,11 +65,11 @@
       <label for="rating" class="ui-g-12 ui-md-2">Project Coolness</label>
       <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10" [cancel]="false"></p-rating>
 
-      <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
       <p-slider id="slider" formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-slider>
 
       <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-spinner>
 
+      <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
 
     </div>
 

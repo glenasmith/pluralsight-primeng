@@ -17,6 +17,12 @@ export class ProjectsComponent implements OnInit {
     { label: 'Jill', value: 'Jill Cool'},
     { label: 'Joe', value: 'Joe Cool'},
     { label: 'Mary', value: 'Mary Cool'},
+    { label: 'Susan', value: 'Susan Jones'},
+    { label: 'Phil', value: 'Phil Stephens'},
+    { label: 'Karen', value: 'Karen Phillips'},
+    { label: 'Chris', value: 'Chris Hampton'},
+    { label: 'Si', value: 'Si Chew'},
+    { label: 'Terri', value: 'Terri Brown'}
 
   ]
 
@@ -43,6 +49,10 @@ export class ProjectsComponent implements OnInit {
   fieldErrors(field : string) {
     let controlState = this.projectForm.controls[field];
     return  (controlState.errors && controlState.dirty) ? controlState.errors : null;
+  }
+
+  onSubmit() {
+    console.log(this.projectForm.value);
   }
 
 }

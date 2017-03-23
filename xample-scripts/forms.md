@@ -209,6 +209,13 @@ Then code up some buttons
 And bind to a backing property with a default value:
 
   projectType: ['B'],
+  
+And some styling please:
+
+  p-radioButton {
+    display:block;
+    margin: .7em;
+  }
 
 Exercise: Refactor with an *ngFor to use a backing property.
 
@@ -235,23 +242,14 @@ They can be toggled, and collapsible to:
       
 Trap: collapsed="false" (without the square brackets) won't work since you're binding the string "false" which is a true non-zero string in JavaScript. Be warned - if false isn't working, that's why!
       
-You can style them if you need to:
-      
-      p-radioButton {
-        display:block;
-        margin: .7em;
-      }
+## Dropdowns with a single developer
 
+If you only need to select a single value, drop downs are the win:
 
-      
- 
-## Getting Staff - Multiselect module
-
-First, add the module:
-
-    MultiSelectModule
-
-Then we need our backing data object:
+    DropdownModule
+    
+    
+Then we need our backing data object to actually pick from:
   
       private allDevs =[
       
@@ -261,7 +259,21 @@ Then we need our backing data object:
       
       ]
 
+And our form control object property):
     
+          selectedDevs: ['']
+
+
+Then the markup
+      
+      <p-dropdown id="devs" [options]="allDevs" formControlName="selectedDevs" [filter]="true" class="ui-g-12 ui-md-10"></p-dropdown>
+ 
+## Getting Staff - Multiselect module
+
+First, add the module:
+
+    MultiSelectModule
+
 
 And our form control object property (note the array for multiselect):
 
@@ -270,7 +282,9 @@ And our form control object property (note the array for multiselect):
 Finally, we need our markup:
 
     <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
-    <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs"></p-multiSelect>
+    <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs" defaultLabel="Select a Dev or Two" class="ui-g-12 ui-md-10"></p-multiSelect>
+    
+ Notice the default label.
 
 
 ## Getting Staff - A Listbox approach
@@ -286,6 +300,8 @@ Then restyle:
  
  
 Working with Custom Templates:
+
+Note: This applies to drop downs, multiselects, and many of the components we've already covered.
 
 ("item" tells Prime to use custom templates. Let is used for the assignment to that in *ngFor style)
 
@@ -304,6 +320,7 @@ And add some styling:
  
      p-listbox /deep/ .ui-listbox {
        width: 100%;
+         height: 300px;
      }
      
      .avatar {
@@ -324,15 +341,41 @@ And add some styling:
  
  Reader Exercise: bind to the filter value using the filterValue attribute.
  
-## Let's rate this project
+ 
+## Let's rate our module with spinners
+
+Import the module:
+
+    SpinnerModule
+    
+Then add to the backing property:
+    
+        rating: [3]
+    
+Then introduce the markup:
+
+    <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12 ui-md-10"></p-spinner>
+    
+Demonstrate min and max working by typing in bigger numbers then rounding down.
+
+## Or sliders if you like:
+
+Import the module:
+
+    SliderModule
+
+Bind to the same property, setting max and min as appropriate:
+
+    <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
+          <p-slider id="slider" formControlName="rating" class="ui-g-12 ui-md-10" [min]="0" [max]="5"></p-slider>
+
+ 
+## Or  a propery star rating components
 
 First, add the module:
 
     RatingModule
     
-Then add to the backing property:
-
-    rating: [3]
    
 Then implement the markup:
 
@@ -343,26 +386,3 @@ Or remove the cancel...
 
     [cancel]=false
     
-## Or sliders if you like:
-
-Import the module:
-
-    SliderModule
-
-Bind to the same property, setting max and min as appropriate:
-
-    <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
-          <p-slider id="slider" formControlName="rating" class="ui-g-12" [min]="0" [max]="5"></p-slider>
-          
-
-## Or spinners if you like:
-
-Import the module:
-
-    SpinnerModule
-    
-Then introduce the markup:
-
-    <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-spinner>
-    
-Demonstrate min and max working by typing in bigger numbers then rounding down.

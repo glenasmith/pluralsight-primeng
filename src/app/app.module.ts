@@ -5,7 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import {
   ChartModule, SplitButtonModule, MenuModule, PanelModule, DataTableModule,
-  RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule
+  RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule, InputTextModule,
+  InputMaskModule, ButtonModule, EditorModule, CalendarModule, RatingModule, MultiSelectModule,
+  ChipsModule, TabViewModule, DropdownModule
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -15,12 +17,8 @@ import { StatisticComponent } from './statistic/statistic.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { DataService } from './data.service';
 import { ProjectsComponent } from './projects/projects.component';
-import {InputMaskModule, ButtonModule, EditorModule, CalendarModule} from "primeng/primeng";
+
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
-import {RatingModule} from "primeng/components/rating/rating";
-import {MultiSelectModule} from "primeng/components/multiselect/multiselect";
-import {ChipsModule} from "primeng/components/chips/chips";
-import {TabViewModule} from "primeng/components/tabview/tabview";
 
 
 const appRoutes: Routes = [
@@ -46,6 +44,7 @@ const appRoutes: Routes = [
     ButtonModule,
     EditorModule,
     InputMaskModule,
+    InputTextModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     SplitButtonModule,
@@ -62,7 +61,8 @@ const appRoutes: Routes = [
     FieldsetModule,
     SliderModule,
     ListboxModule,
-    SpinnerModule
+    SpinnerModule,
+    DropdownModule
   ],
   providers: [ DataService ],
   bootstrap: [AppComponent]
