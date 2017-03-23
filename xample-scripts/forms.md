@@ -323,17 +323,18 @@ And add some styling:
          height: 300px;
      }
      
-     .avatar {
-       float: left;
-       margin: 5px;
-     }
-     
-     .devName {
-       font-size: xx-large;
-       display:inline-block;
-       margin:15px 10px 0 10px;
-       min-height: 100px;
-     }
+    .avatar {
+      float: left;
+      margin: 5px;
+      height: 50px;
+    }
+    
+    .devName {
+      font-size: large;
+      display:inline-block;
+      margin:15px 10px 0 10px;
+      min-height: 50px;
+    }
  
  Add filtering if you like:
  

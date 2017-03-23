@@ -63,13 +63,18 @@
       </p-fieldset>
 
       <label for="rating" class="ui-g-12 ui-md-2">Project Coolness</label>
+      <!--
+
+      <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12 ui-md-10"></p-spinner>
+
+      <p-slider id="slider" formControlName="rating" [min]="0" [max]="5" class="ui-g-12 ui-md-10"></p-slider>
+      -->
+
       <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10" [cancel]="false"></p-rating>
 
-      <p-slider id="slider" formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-slider>
-
-      <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12"></p-spinner>
-
+      <!--
       <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
+      -->
 
     </div>
 
