@@ -24,3 +24,7 @@ p-listbox /deep/ .ui-listbox {
   margin:15px 10px 0 10px;
   min-height: 50px;
 }
+
+button {
+  margin-top: 1em;
+}
