@@ -5,11 +5,14 @@
     <div class="ui-g">
 
       <label for="projectId" class="ui-g-12 ui-md-2">Project Id</label>
+
       <p-inputMask mask="aaa-999" id="projectId" formControlName="projectId" placeholder="ABC-123" class="ui-g-12 ui-md-5"></p-inputMask>
+
 
       <!--
       <input pInputText id="projectId" formControlName="projectId" placeholder="Enter Your Project Id" class="ui-g-12 ui-md-5"/>
       -->
+
       <div class="ui-g-12 ui-md-5">
 
         <at-fielderrors [form]="projectForm" field="projectId" nicename="Project ID"> </at-fielderrors>
@@ -18,6 +21,11 @@
 
       <label for="description" class="ui-g-12">Description</label>
       <p-editor id="description" formControlName="description"  class="ui-g-12" [style]="{'height':'200px'}"></p-editor>
+
+      <!--
+      <textarea id="description" rows="10" pInputTextarea formControlName="description"  class="ui-g-12"></textarea>
+      -->
+
       <div class="ui-g-12">
         <at-fielderrors [form]="projectForm" field="description" nicename="Description"> </at-fielderrors>
       </div>
@@ -30,11 +38,15 @@
 
       </div>
 
+
+
       <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
+
 
       <p-listbox id="devs" [options]="allDevs" formControlName="selectedDevs"
                  [multiple]="true" [filter]="true"
                  class="ui-g-12 ui-md-10">
+
         <template let-dev pTemplate="item">
 
             <img src="http://i.pravatar.cc/100?u={{dev.label}}" class="avatar" />
@@ -42,18 +54,27 @@
 
 
         </template>
+
       </p-listbox>
 
-      <!--
-      <p-dropdown id="devs" [options]="allDevs" formControlName="selectedDevs" [filter]="true" class="ui-g-12 ui-md-10"></p-dropdown>
-      -->
-      <!--
 
+    <!--
+      <p-dropdown id="devs" [options]="allDevs" formControlName="selectedDevs"
+                  placeholder="Select..."
+                  [filter]="true" class="ui-g-12 ui-md-10"></p-dropdown>
+                  -->
+
+
+
+      <!--
       <p-multiSelect id="devs" [options]="allDevs" formControlName="selectedDevs" defaultLabel="Select a Dev or Two" class="ui-g-12 ui-md-10"></p-multiSelect>
       -->
+
       <!--
       <p-chips id="chips" class="ui-g-12" formControlName="selectedDevs" [disabled]="true"></p-chips>
       -->
+
+      <div style="height:400px;"></div>
 
 
       <p-fieldset legend="Project Type" [toggleable]="true" [collapsed]="false" class="ui-g-12">
@@ -62,15 +83,21 @@
         <p-radioButton name="projGroup" label="Operations" value="O" formControlName="projectType"></p-radioButton>
       </p-fieldset>
 
+
       <label for="rating" class="ui-g-12 ui-md-2">Project Coolness</label>
+      <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10" [cancel]="false"></p-rating>
+
+
+
+<!--
+      <p-spinner id="rating" formControlName="rating" [min]="0" [max]="5" class="ui-g-12 ui-md-10"></p-spinner>
+-->
+
+
       <!--
 
-      <p-spinner formControlName="rating" [min]="0" [max]="5" class="ui-g-12 ui-md-10"></p-spinner>
-
-      <p-slider id="slider" formControlName="rating" [min]="0" [max]="5" class="ui-g-12 ui-md-10"></p-slider>
+      <p-slider id="rating" formControlName="rating" [min]="0" [max]="5" class="ui-g-12 ui-md-10"></p-slider>
       -->
-
-      <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-10" [cancel]="false"></p-rating>
 
       <!--
       <pre class="ui-g-12 ui-md-2">{{ projectForm.getRawValue() | json }}</pre>
