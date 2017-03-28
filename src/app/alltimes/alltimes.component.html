@@ -13,11 +13,13 @@
   </div>
 
 
+  <p-contextMenu #tableContextMenu [model]="contextMenu"></p-contextMenu>
 
   <p-dataTable [value]="allTimesheetData" class="ui-g-12" sortField="startTime" [sortOrder]="1" #dt
                emptyMessage="No results right now" [reorderableColumns]="true" [resizableColumns]="true" columnResizeMode="fit"
                [globalFilter]="tableSearch" exportFilename="users" [editable]="true" (onEditComplete)="onEditComplete($event)"
-                selectionMode="multiple" [(selection)]="selectedTimes" (onRowSelect)="onRowSelect($event)">
+                selectionMode="multiple" [(selection)]="selectedTimes" (onRowSelect)="onRowSelect($event)"
+               [contextMenu]="tableContextMenu">
 
     <p-column styleClass="selectBoxColumn" selectionMode="multiple"></p-column>
     <p-column field="user" header="User" [editable]="true"></p-column>

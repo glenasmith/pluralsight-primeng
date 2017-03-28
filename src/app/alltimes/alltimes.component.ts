@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuItem} from "primeng/primeng";
 
 declare var moment: any;
 
@@ -25,10 +26,28 @@ export class AlltimesComponent implements OnInit {
 
   private selectedTimes : Array<any>;
 
+
+  private contextMenu: MenuItem[];
+
+
   constructor() {
   }
 
   ngOnInit() {
+    this.contextMenu = [
+      {label: 'Debug', icon: 'fa-bug', command: (event) => this.onDebug(this.selectedTimes)},
+      {label: 'Delete', icon: 'fa-close', command: (event) => this.onDelete(this.selectedTimes)}
+    ];
+  }
+
+  onDebug(selectedTimes : any) {
+    console.log(JSON.stringify(selectedTimes));
+  }
+
+  onDelete(selectedTimes : any) {
+    this.allTimesheetData = this.allTimesheetData.filter( (row) => {
+      return !selectedTimes.includes(row);
+    })
   }
 
   onEditComplete(editInfo) {

@@ -278,6 +278,44 @@ Then you get all select for free.
 
 ### Context Menu
 
+First, you'll need to drag in the module:
+
+    ContextMenuModule
+    
+Define a backing ContextMenu:
+
+    private contextMenu: MenuItem[];
+    
+We'll use ngOnInit to setup the items we need, and a callback for when they are invoked:
+
+      ngOnInit() {
+          this.contextMenu = [
+            {label: 'Debug', icon: 'fa-bug', command: (event) => this.onDebug(this.selectedTimes)},
+            {label: 'Delete', icon: 'fa-close', command: (event) => this.onDelete(this.selectedTimes)}
+          ];
+        }
+
+We'll want to implement those callbacks: (**Note:** The selectedTimes will **always** be an array of selected items, not the onRowSelect)      
+      
+        onDebug(selectedTimes : any) {
+          console.log(JSON.stringify(selectedTimes));
+        }
+      
+        onDelete(selectedTimes : any) {
+          this.allTimesheetData = this.allTimesheetData.filter( (row) => {
+            return !selectedTimes.includes(row);
+          })
+        }
+
+Then create the context menu, and a matching local Variable to bind to:
+
+    <p-contextMenu #tableContextMenu [model]="contextMenu"></p-contextMenu>
+    
+And finally, link the context menu to the actual data table:
+    
+    [contextMenu]="tableContextMenu">
+
+
 ### Crud Operations
 
 

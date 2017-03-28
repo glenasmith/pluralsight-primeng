@@ -7,7 +7,7 @@ import {
   ChartModule, SplitButtonModule, MenuModule, PanelModule, DataTableModule,
   RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule, InputTextModule,
   InputMaskModule, ButtonModule, EditorModule, CalendarModule, RatingModule, MultiSelectModule,
-  ChipsModule, TabViewModule, DropdownModule
+  ChipsModule, TabViewModule, DropdownModule, ContextMenuModule
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -65,7 +65,8 @@ const appRoutes: Routes = [
     SliderModule,
     ListboxModule,
     SpinnerModule,
-    DropdownModule
+    DropdownModule,
+    ContextMenuModule
   ],
   providers: [ DataService ],
   bootstrap: [AppComponent]
