@@ -19,12 +19,14 @@ import { DataService } from './data.service';
 import { ProjectsComponent } from './projects/projects.component';
 
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
+import { AlltimesComponent } from './alltimes/alltimes.component';
 
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent },
-  { path: "timesheets", component: TimesheetComponent},
+  { path: "alltimes", component: AlltimesComponent },
+  { path: "mytimes", component: TimesheetComponent},
   { path: "projects", component: ProjectsComponent},
 ];
 
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     StatisticComponent,
     TimesheetComponent,
     ProjectsComponent,
-    FielderrorsComponent
+    FielderrorsComponent,
+    AlltimesComponent
   ],
   imports: [
     BrowserModule,
