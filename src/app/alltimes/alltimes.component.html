@@ -1,17 +1,27 @@
-<div class="alltimesheets u-g">
+<div class="alltimesheets ui-g">
 
 
-  <div class="header u-g-12">
+  <div class="header ui-g-12">
 
     <h2>
       All Timesheets
     </h2>
     <h3>
-      Date here?
+      Click to Edit
     </h3>
 
   </div>
 
+
+
+  <p-dataTable [value]="allTimesheetData" class="ui-g-12" sortField="startTime" [sortOrder]="1"
+               emptyMessage="No results right now" [reorderableColumns]="true" [resizableColumns]="true" columnResizeMode="fit">
+    <p-column field="user" header="User"></p-column>
+    <p-column field="project" header="Project" filter="true" filterPlaceholder="Type a Project" filterMatchMode="contains"></p-column>
+    <p-column field="category" header="Category" [sortable]="true"></p-column>
+    <p-column field="startTime" header="Start Time" [sortable]="true" ></p-column>
+    <p-column field="endTime" header="End Time"></p-column>
+  </p-dataTable>
 
 
 
