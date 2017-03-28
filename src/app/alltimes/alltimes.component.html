@@ -16,8 +16,10 @@
 
   <p-dataTable [value]="allTimesheetData" class="ui-g-12" sortField="startTime" [sortOrder]="1" #dt
                emptyMessage="No results right now" [reorderableColumns]="true" [resizableColumns]="true" columnResizeMode="fit"
-               [globalFilter]="tableSearch" exportFilename="users" [editable]="true" (onEditComplete)="onEditComplete($event)">
+               [globalFilter]="tableSearch" exportFilename="users" [editable]="true" (onEditComplete)="onEditComplete($event)"
+                selectionMode="multiple" [(selection)]="selectedTimes" (onRowSelect)="onRowSelect($event)">
 
+    <p-column styleClass="selectBoxColumn" selectionMode="multiple"></p-column>
     <p-column field="user" header="User" [editable]="true"></p-column>
     <p-column field="project" header="Project" filter="true" filterMatchMode="equals"  [style]="{'overflow':'visible'}" [editable]="true">
       <template pTemplate="filter" let-col>

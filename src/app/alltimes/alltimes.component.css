@@ -35,3 +35,7 @@ p-dataTable /deep/ .ui-datatable-footer input {
   font-size: larger;
   padding: 3px;
 }
+
+p-dataTable /deep/ .selectBoxColumn {
+  width: 43px;
+}

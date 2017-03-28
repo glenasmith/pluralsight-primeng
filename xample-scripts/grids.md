@@ -219,7 +219,62 @@ Let's take advantage of that info to render an alert with what's actually change
      }
 
 
-### Row Selection
+### Row Selection (single)
+
+You can have the datatable track row selection in either singles or multiples. Let's start with singles:
+
+    selectionMode="single" [(selection)]="selectedTime"
+     
+     
+And put in a backing property to catch the object that backs the row:
+
+    private selectedTime : any;
+   
+
+If you need to event handle, that's on the cards too:
+
+      (onRowSelect)="onRowSelect($event)"
+
+You can use the data field to access the entire row that was clicked on, or just use the databound property `selectedTime`:
+
+      onRowSelect(rowInfo) {
+        console.log(JSON.stringify(rowInfo.data));
+        console.log(JSON.stringify(this.selectedTime));
+      }
+      
+### Row Selection (multiple)
+      
+Going multiple just means changing the markup:
+
+
+    selectionMode="multiple" [(selection)]="selectedTimes" (onRowSelect)="onRowSelect($event)">
+
+
+And the backing property:
+
+    private selectedTimes : Array<any>;
+
+And then using the Control key to multi-select.
+
+In this case your rowInfo.data in the callback will be the latest row clicked on, and your bound `selectedTimes` property will have the full array.
+
+Although it's cooler to go Checkbox:
+
+    <p-column selectionMode="multiple"></p-column>
+    
+Kinda nice, but the massive column is a pain, let's give it some style
+
+### Styleclass
+
+Giving it some style, let's us share a trick for prime components:
+
+      <p-column styleClass="selectBoxColumn" selectionMode="multiple"></p-column>
+
+Then you get all select for free.
+
+    p-dataTable /deep/ .selectBoxColumn {
+      width: 43px;
+    }
 
 ### Context Menu
 

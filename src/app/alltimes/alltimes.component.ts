@@ -21,6 +21,10 @@ export class AlltimesComponent implements OnInit {
   //private allProjects = this.allTimesheetData.map( (ts) => { return { label: ts.project, value: ts.project }});
   private allProjects = ['', 'Payroll App', 'Mobile App', 'Agile Times'].map ( (proj) => { return { label: proj, value: proj }});
 
+  // private selectedTime : any;
+
+  private selectedTimes : Array<any>;
+
   constructor() {
   }
 
@@ -29,6 +33,11 @@ export class AlltimesComponent implements OnInit {
 
   onEditComplete(editInfo) {
     alert(`You edited the ${editInfo.column.field} field. The new value is ${editInfo.data[editInfo.column.field]}`);
+  }
+
+  onRowSelect(rowInfo) {
+    console.log(JSON.stringify(rowInfo.data));
+    console.log(JSON.stringify(this.selectedTimes));
   }
 
 }
