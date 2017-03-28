@@ -100,6 +100,28 @@ Let's implement the "contains" filter:
       <p-column field="project" header="Project" filter="true" filterPlaceholder="Type a Project" filterMatchMode="contains"></p-column>
 
 Notice that if I sort on start time DESC, then filter on project, the filtering is maintained. With nothing for you to do!
+
+### All-in custom filtering
+
+Mark the datatable with a local variable:
+
+  #dt
+  
+Implement the custom filter:
+
+<template pTemplate="filter" let-col>
+        <p-dropdown [options]="allProjects" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
+      </template>
+      
+Construct the backing object:
+      
+      private allProjects = ['', 'Payroll App', 'Mobile App', 'Agile Times'];
+      
+Alas. Actually, a dropdown needs a ` { lable: "my label", value: 'myvalue' }` 
+      
+      private allProjects = ['', 'Payroll App', 'Mobile App', 'Agile Times'].map ( (proj) => { return { label: proj, value: proj }});
+      
+      
  
 
 ### Reorder & Resize
@@ -117,18 +139,43 @@ If they need to resize them:
 
 Challenge: how would you preserve width/ordering?
 
-
-### Facets: Custom Headers and Footers & ColGroups?
+### Facets: Custom Headers and Footers & Global Filtering
 
 Totals for our times? ColGroups
 
+How about some global filtering?
+
+
+    <p-dataTable [value]="cars" [rows]="10" [globalFilter]="tableSearch">
+
+    <p-footer>
+          <label for="tableSearch">Search: </label>
+          <input id="tableSearch" #tableSearch type="text" placeholder="Search All The Things">
+        </p-footer>
+  
+    
+    
+
 ### Exporting
 
-### Column Templating
+Add some markup to the footer of the table:
+
+    <button type="button" pButton icon="fa-table" label="Export" (click)="dt.exportCSV()" style="float:right;"></button>
+
+You can customise the filename by a setting on the datatable:
+  
+    exportFilename="users"
+    
+And a little styling:
+    
+    p-dataTable /deep/ .ui-datatable-footer {
+      min-height: 60px;
+    }
+
 
 ## Table Editing
 
-### Inplace Editing
+### Inplace Editing (and Column Templating using the body template)
 
 ### Row Selection
 

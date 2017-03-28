@@ -25,3 +25,7 @@ h3 {
 p-dataTable {
   margin: 5px;
 }
+
+p-dataTable /deep/ .ui-datatable-footer {
+  min-height: 60px;
+}

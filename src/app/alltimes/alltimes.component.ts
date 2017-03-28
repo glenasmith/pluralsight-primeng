@@ -18,6 +18,9 @@ export class AlltimesComponent implements OnInit {
 
   ];
 
+  //private allProjects = this.allTimesheetData.map( (ts) => { return { label: ts.project, value: ts.project }});
+  private allProjects = ['', 'Payroll App', 'Mobile App', 'Agile Times'].map ( (proj) => { return { label: proj, value: proj }});
+
   constructor() {
   }
 
