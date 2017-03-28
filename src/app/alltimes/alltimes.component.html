@@ -16,12 +16,15 @@
 
   <p-dataTable [value]="allTimesheetData" class="ui-g-12" sortField="startTime" [sortOrder]="1" #dt
                emptyMessage="No results right now" [reorderableColumns]="true" [resizableColumns]="true" columnResizeMode="fit"
-               [globalFilter]="tableSearch" exportFilename="users">
+               [globalFilter]="tableSearch" exportFilename="users" [editable]="true" (onEditComplete)="onEditComplete($event)">
 
-    <p-column field="user" header="User"></p-column>
-    <p-column field="project" header="Project" filter="true" filterMatchMode="equals"  [style]="{'overflow':'visible'}" >
+    <p-column field="user" header="User" [editable]="true"></p-column>
+    <p-column field="project" header="Project" filter="true" filterMatchMode="equals"  [style]="{'overflow':'visible'}" [editable]="true">
       <template pTemplate="filter" let-col>
         <p-dropdown [options]="allProjects" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
+      </template>
+      <template let-col let-project="rowData" pTemplate="editor">
+        <p-dropdown [(ngModel)]="project[col.field]" [options]="allProjects" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
       </template>
 
     </p-column>

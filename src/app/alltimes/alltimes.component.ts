@@ -27,6 +27,8 @@ export class AlltimesComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  onEditComplete(editInfo) {
+    alert(`You edited the ${editInfo.column.field} field. The new value is ${editInfo.data[editInfo.column.field]}`);
+  }
 
 }

@@ -153,7 +153,13 @@ How about some global filtering?
           <input id="tableSearch" #tableSearch type="text" placeholder="Search All The Things">
         </p-footer>
   
-    
+And maybe some styling:
+ 
+     p-dataTable /deep/ .ui-datatable-footer input {
+       margin-left: 0.5em;
+       font-size: larger;
+       padding: 3px;
+     }
     
 
 ### Exporting
@@ -176,6 +182,42 @@ And a little styling:
 ## Table Editing
 
 ### Inplace Editing (and Column Templating using the body template)
+
+**Note:** You have to mark **both** the datatable, and the individual column as editable.
+
+      <p-dataTable  [editable]="true" ...>
+      
+A common case is the incell editing of text fields.
+
+    <p-column field="user" header="User" [editable]="true"></p-column>
+    
+And suddenly you're editing!
+
+What if you want to use custom controls (date picker or drop down for example)? Again, well supported.
+      
+Then take advantage of the "editor" template, just as we previously took advantage of the filter template.
+
+      <template let-col let-project="rowData" pTemplate="editor">
+        <p-dropdown [(ngModel)]="project[col.field]" [options]="allProjects" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
+      </template>
+
+You can now edit the project! If you don't want to use two way binding, you are welcome to use a callback `onEditComplete` or `onEditCancel`.
+
+**Note:** that you need to add the event handler to the dataTable, not the column.
+
+    (onEditComplete)="onEditComplete($event)
+    
+In the payload, you get some interesting values:
+
+    column.field = The field name that was edited on your domain object
+    column.data = the entire object used to render the row (with the updated value)
+    
+Let's take advantage of that info to render an alert with what's actually changed (you could use this hook to update a backend database or whatever you like).
+
+    onEditComplete(editInfo) {
+        alert(`You edited the ${editInfo.column.field} field. The new value is ${editInfo.data[editInfo.column.field]}`);
+     }
+
 
 ### Row Selection
 
