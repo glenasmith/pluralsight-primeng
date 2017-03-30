@@ -317,7 +317,14 @@ And finally, link the context menu to the actual data table:
     
     [contextMenu]="tableContextMenu">
 
+I've added some styling, since there's too much blue going on..
 
+      p-contextMenu /deep/ .ui-menuitem-active a {
+        background-color: #F15B2A !important;
+      }
+      
+This is going to be handy for CRUD dialog operations (when we cover it next module)
+      
 ### Crud Operations
 
 This needs to be done once we have introduced Dialogs in the next chapter. Keep a placeholder here to remind yourself.

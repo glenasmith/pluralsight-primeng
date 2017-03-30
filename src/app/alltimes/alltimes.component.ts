@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LazyLoadEvent, MenuItem} from "primeng/primeng";
 import Dexie from 'dexie';
-import {Observable, Observer} from "rxjs";
-
-declare var moment: any;
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'at-alltimes',
@@ -148,15 +146,12 @@ export class AlltimesComponent implements OnInit {
 
     console.log(JSON.stringify(event));
 
-    // let that = this;
-    // if (!event.rows) { event.rows = 5 };
-    // if (!event.first) { event.first = 0 };
-
     let table = this.db.table("timesheet");
 
     var query : any;
 
     // Dexie doesn't support ordering AND filtering, so we branch here
+    // Alternative strategies here: https://github.com/dfahlander/Dexie.js/issues/297
     if (event.filters && event.filters["project"]) {
       query = table.where("project").equals(event.filters["project"]["value"]);
     } else {

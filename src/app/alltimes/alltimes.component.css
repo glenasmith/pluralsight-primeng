@@ -39,3 +39,8 @@ p-dataTable /deep/ .ui-datatable-footer input {
 p-dataTable /deep/ .selectBoxColumn {
   width: 43px;
 }
+
+
+p-contextMenu /deep/ .ui-menuitem-active a {
+  background-color: #F15B2A !important;
+}
