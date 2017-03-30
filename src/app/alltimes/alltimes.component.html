@@ -18,7 +18,9 @@
   <p-dataTable [value]="allTimesheetData" class="ui-g-12" sortField="startTime" [sortOrder]="1" #dt
                emptyMessage="No results right now" [reorderableColumns]="true" [resizableColumns]="true" columnResizeMode="fit"
                [globalFilter]="tableSearch" exportFilename="users" [editable]="true" (onEditComplete)="onEditComplete($event)"
-                selectionMode="multiple" [(selection)]="selectedTimes" (onRowSelect)="onRowSelect($event)"
+               [(selection)]="selectedTimes" (onRowSelect)="onRowSelect($event)"
+               [lazy]="true" (onLazyLoad)="loadTimes($event)"
+               [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20,50,1000]" [rows]="5" [totalRecords]="recordCount"
                [contextMenu]="tableContextMenu">
 
     <p-column styleClass="selectBoxColumn" selectionMode="multiple"></p-column>
@@ -41,7 +43,12 @@
       <label for="tableSearch">Search: </label>
       <input id="tableSearch" #tableSearch type="text" placeholder="Search All The Things">
 
+      <div style="float:right">Count: {{ recordCount }}</div>
+
       <button type="button" pButton icon="fa-table" label="Export" (click)="dt.exportCSV()" style="float:right;"></button>
+
+      <button type="button" pButton icon="fa-database" label="Reset DB" (click)="resetDatabase()" style="float: right"></button>
+
 
     </p-footer>
   </p-dataTable>

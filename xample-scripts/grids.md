@@ -262,6 +262,8 @@ Although it's cooler to go Checkbox:
 
     <p-column selectionMode="multiple"></p-column>
     
+**Note:** You should now remove the "selection" property on the p-dataTable element. Otherwise you won't be able to use the edit property later since the row selection will catch the click. 
+    
 Kinda nice, but the massive column is a pain, let's give it some style
 
 ### Styleclass
@@ -318,16 +320,135 @@ And finally, link the context menu to the actual data table:
 
 ### Crud Operations
 
+This needs to be done once we have introduced Dialogs in the next chapter. Keep a placeholder here to remind yourself.
 
 ## Tables at Scale
 
 ### Dynamic Columns
 
+Maybe for the import of a CSV file? 
+
 ### Row Groups
+
+Group by Project
+
+### Normal Scrolling
+
+First, let's beef up our data...
+
+    for(let x=0; x < 5; x++) {
+      this.allTimesheetData = this.allTimesheetData.concat(this.allTimesheetData);
+    }
+
+And that looks pretty shabby. One option is to simply have a fixed height scrollable:
+
+    scrollable="true" scrollHeight="270px"
+    
+Which looks better, and our header and footer are frozen.
+
+But what if our dataset is *much* bigger? Say 100k records?
 
 ### Virtual Scrolling
 
-### Pagination
+Virtual Scrolling takes advantage of a feature called LazyLoading built into the grid.  
 
-### Lazy Loading
+The same mechanism is used for paginating through large datasets with a paginator. So I'm going to show you that instead.
+ 
+Challenge: After doing the module on LazyLoading, come back and implenet that virtual scroller.
+ 
+### Database of users
 
+We'll need a large database to make this matter. Doing things in memory won't demonstrate a typical flow, so I'm going to use IndexedDb built into yoru browser and the Dexie library to access it. Dexie follows a query flow that is familar for more ORM-style systems, so it's a lightweight example without external setup.
+
+We need a few million records to pull this off.
+
+    npm install --save dexie
+    npm install --save-dev @types/dexie
+    
+    
+I've created a button to populate our db:
+
+      <div style="float:right">Count: {{ recordCount }}</div>
+
+      <button type="button" pButton icon="fa-table" label="Export" (click)="dt.exportCSV()" style="float:right;"></button>
+
+    
+And some backend code to do the work:
+  
+    private db: Dexie;
+  
+    constructor() {
+    
+        this.db = new Dexie('AgileTimes');
+    
+        // Define a schema
+        this.db.version(1).stores({
+          timesheet: 'id,user,project,category,startTime,endTime,date'
+        });
+    
+        
+      }
+
+### Pagination and Lazy Loading
+
+      [lazy]="true" (onLazyLoad)="loadTimes($event)"
+      
+      
+Adding pagination involves a few extra steps
+      
+      [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20,50,1000]" [rows]="5" [totalRecords]="recordCount"
+      
+      private recordCount: number = 5;
+      
+      constructor() {
+          ...
+          this.getRecordCount().then( (count) => { this.recordCount = count });
+          
+       }
+
+Implementing Load Times:
+
+
+      event.rows = max number of rows to return to fill the table (might be null initially)
+      event.first = offset into the table
+      event.sortField = field to sort on 
+      event.filters = {
+           "project": { value: "Payroll App", matchMode: "equals" }
+         
+      }
+      event.globalFilter = "my filter term"
+      
+We can use those values to build up a basic query:
+
+
+        loadTimes(event: LazyLoadEvent) {
+        
+            let table = this.db.table("timesheet");
+        
+            var query : any;
+        
+            // Dexie doesn't support ordering AND filtering, so we branch here
+            if (event.filters && event.filters["project"]) {
+              query = table.where("project").equals(event.filters["project"]["value"]);
+            } else {
+              query = table.orderBy(event.sortField);
+            }
+        
+            query = query
+                      .offset(event.first)
+                      .limit(event.rows);
+        
+            if (event.sortOrder == -1) {
+              query = query.reverse();
+            };
+        
+            query.toArray( (nextBlockOfTimes) => {
+              this.allTimesheetData = nextBlockOfTimes;
+            });
+          }
+
+Demonstrate how we can now filter. And sort. But not at the same time!
+
+**Challenge:**: Go back and implement the delete and debug and "click to edit" functions.
+
+**Challenge:** I haven't used the globalFilter here - I would just need to query all the fields I care about searching. It wouldn't be hard to implement by a chain of where clauses with contains clauses. Feel free to have a crack.
