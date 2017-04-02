@@ -209,8 +209,8 @@ You can now edit the project! If you don't want to use two way binding, you are 
     
 In the payload, you get some interesting values:
 
-    column.field = The field name that was edited on your domain object
-    column.data = the entire object used to render the row (with the updated value)
+    event.column.field = The field name that was edited on your domain object
+    event.data = the entire object used to render the row (with the updated value)
     
 Let's take advantage of that info to render an alert with what's actually changed (you could use this hook to update a backend database or whatever you like).
 
