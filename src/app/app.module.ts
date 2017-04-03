@@ -20,6 +20,7 @@ import { ProjectsComponent } from './projects/projects.component';
 
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { AlltimesComponent } from './alltimes/alltimes.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 const appRoutes: Routes = [
@@ -44,12 +45,13 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
     ButtonModule,
     EditorModule,
     InputMaskModule,
     InputTextModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes),
     SplitButtonModule,
     MenuModule,
     PanelModule,
