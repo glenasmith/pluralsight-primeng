@@ -42,3 +42,8 @@ p-footer button {
   float: right;
   margin: 0.5em;
 }
+
+p-gmap /deep/ .gmap {
+  width:100%;
+  height: 320px;
+}

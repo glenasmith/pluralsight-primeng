@@ -156,19 +156,127 @@ Now we'll supply the menu components to show the pages:
 
 And we have our steps! But now let's display some lightweight conditional markup.
 
-TWo approaches. Use the callback from the MenuItem, or just use an ngIf:
+TWo approaches. Use the callback from the MenuItem, or just use an ngIf, with some enums for good measure.
 
-     <div *ngIf="dialogPageIndex == 0">
-        Our Time Entry editor goes here.
-      </div>
-      <div *ngIf="dialogPageIndex == 1">
-        Our project page goes here.
-      </div>
-      <div *ngIf="dialogPageIndex == 2">
-        Our location page goes here.
-      </div>
-      <div *ngIf="dialogPageIndex == 3">
-        Our people page goes here.
-      </div>
+Add a switch to the p-dialog
+
+    [ngSwitch]="dialogPageIndex"
+    
+Then use some markup to switch on an enum
+
+     <div *ngSwitchCase="PageNames.TimePage">
+         Our time page goes here.
+       </div>
+       <div *ngSwitchCase="PageNames.ProjectPage">
+         Our project page goes here.
+       </div>
+       <div *ngSwitchCase="PageNames.PlacePage">
+         Our place page goes here.
+       </div>
+       <div *ngSwitchCase="PageNames.PeoplePage">
+         Our people page goes here.
+       </div>
       
-The magic numbers trouble me, but enums aren't allowed in angular views, so it's prefereale
+We do have to workaround enum scope issues... Put this above the class
+
+    export enum PageNames {
+      TimePage,
+      ProjectPage,
+      PlacePage,
+      PeoplePage
+    }
+
+And this inside it:
+
+    // Need to import the enum to reference in the view
+      private PageNames = PageNames;
+    
+      private dialogPageIndex : PageNames = PageNames.TimePage;
+      
+
+Now we can navigate between divs.
+
+### Dialog Footers (and headers)
+
+Like datatable, we can customise the headers and footers. Note the use of secondary class buttons for cancel. 
+
+    <p-footer>
+        <button pButton label="Cancel" icon="fa-times" (click)="displayEditDialog = false" class="ui-button-secondary"></button>
+        <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()" ></button>
+      </p-footer>
+      
+There is also a matching p-header if you need it.. And style them if needed:
+
+    p-footer button {
+      float: right;
+      margin: 0.5em;
+    }
+
+
+
+### Adding a Map
+
+Add the module:
+
+  import {GMapModule} from 'primeng/primeng';
+  
+Add your [google api key](https://developers.google.com/maps/documentation/javascript/get-api-key), to your index.html loader:
+
+Import the JavaScript for Google Maps API (in the HEAD of your index.html):
+
+    <!-- GMap -->
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDMFQM5PWXsokAe7BfKSNKD_KJz5uWzyEk" ></script>
+
+Add some markup to position the map:
+
+  <div *ngSwitchCase="PageNames.PlacePage">
+    <p-gmap [options]="mapOptions" [overlays]="mapOverlays"  styleClass="gmap"
+            ></p-gmap>
+  </div>
+  
+*Note:* You must style up a height or it won't show up:
+  
+      p-gmap /deep/ .gmap {
+        width:100%;
+        height: 320px;
+      }
+
+Provide the overlays and initial position:
+
+     ngOnInit() {
+    
+        this.mapOptions = {
+    
+          center: {lat: -33.8688, lng: 151.2093},
+          zoom: 5
+        };
+    
+        // http://www.mapcoordinates.net/en
+        this.mapOverlays = [
+          new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
+          new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
+          new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
+          new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
+        ];
+    
+      }
+
+Catch the click on the markers:
+
+    (onOverlayClick)="onMarkerClick($event)"
+    
+Implement the click:
+
+      onMarkerClick(markerEvent) {
+          console.log(markerEvent);
+          console.log(`You clicked on ${markerEvent.overlay.title} at ${markerEvent.overlay.position}`);
+      
+          markerEvent.map.panTo(markerEvent.overlay.position);
+          markerEvent.map.setZoom(12);
+        }
+        
+You are given a handle to:
+        
+        markerEvent.overlay (the one clicked on) which has a title and .position()
+        markerEvent.map (the Google Map object they clicked on)
+        

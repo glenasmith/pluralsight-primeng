@@ -1,7 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MenuItem, Message, TabView} from "primeng/primeng";
 
 declare var moment: any;
+
+declare var google: any;
 
 export enum PageNames {
   TimePage,
@@ -15,7 +17,8 @@ export enum PageNames {
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css']
 })
-export class TimesheetComponent implements OnInit {
+export class TimesheetComponent implements OnInit, AfterViewInit {
+
 
   private now = moment();
 
@@ -68,10 +71,14 @@ export class TimesheetComponent implements OnInit {
     {label: "People"}
   ];
 
+  private mapOptions: any;
+
+  private mapOverlays: any[];
+
   getTimesForDay(dayIndex) {
-    console.log(`Filtering for ${dayIndex}`);
+    //console.log(`Filtering for ${dayIndex}`);
     return this.userTimeData.filter( entry => {
-      console.log(`Comparing ${entry.day} with ${this.daysOfWeek[dayIndex]}`);
+      //console.log(`Comparing ${entry.day} with ${this.daysOfWeek[dayIndex]}`);
        return entry.day == this.daysOfWeek[dayIndex];
     })
   }
@@ -103,6 +110,34 @@ export class TimesheetComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.mapOptions = {
+
+      center: {lat: -33.8688, lng: 151.2093},
+      zoom: 5
+    };
+
+    // http://www.mapcoordinates.net/en
+    this.mapOverlays = [
+      new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
+      new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
+      new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
+      new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
+    ];
+
+  }
+
+  ngAfterViewInit(): void {
+
+  }
+
+
+  onMarkerClick(markerEvent) {
+    console.log(markerEvent);
+    console.log(`You clicked on ${markerEvent.overlay.title} at ${markerEvent.overlay.position}`);
+
+    markerEvent.map.panTo(markerEvent.overlay.position);
+    markerEvent.map.setZoom(12);
   }
 
   addNewEntry() {

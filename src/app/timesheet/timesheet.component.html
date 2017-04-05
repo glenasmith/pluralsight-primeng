@@ -29,25 +29,26 @@
 
 </div>
 
-<p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700">
+<p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700" height="600"
+          [ngSwitch]="dialogPageIndex">
   <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false"></p-steps>
 
-  <div *ngIf="dialogPageIndex == PageNames.TimePage">
+  <div *ngSwitchCase="PageNames.TimePage">
     Our time page goes here.
   </div>
-  <div *ngIf="dialogPageIndex == PageNames.ProjectPage">
+  <div *ngSwitchCase="PageNames.ProjectPage">
     Our project page goes here.
   </div>
-  <div *ngIf="dialogPageIndex == PageNames.PlacePage">
-    Our place page goes here.
+  <div *ngSwitchCase="PageNames.PlacePage">
+    <p-gmap [options]="mapOptions" [overlays]="mapOverlays" (onOverlayClick)="onMarkerClick($event)" styleClass="gmap"></p-gmap>
   </div>
-  <div *ngIf="dialogPageIndex == PageNames.PeoplePage">
+  <div *ngSwitchCase="PageNames.PeoplePage">
     Our people page goes here.
   </div>
 
   <p-footer>
-    <button pButton label="Cancel" icon="fa-times" (click)="cancelEntry()" class="ui-button-secondary"></button>
-    <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()" ></button>
+    <button pButton label="Cancel" icon="fa-times" (click)="displayEditDialog = false" class="ui-button-secondary"></button>
+    <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()"></button>
   </p-footer>
 
 </p-dialog>
