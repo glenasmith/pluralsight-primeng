@@ -280,3 +280,31 @@ You are given a handle to:
         markerEvent.overlay (the one clicked on) which has a title and .position()
         markerEvent.map (the Google Map object they clicked on)
         
+
+### Adding a datagrid
+
+Pull in the module:
+
+    import {DataGridModule} from 'primeng/primeng';
+    
+Generate some [random data](https://www.mockaroo.com/).
+
+    concat("http://i.pravatar.cc/100?u=", firstName)
+
+
+Import that random data:
+
+    
+    private people = PeopleData.people;
+
+Add the markup to paginate it (note that "rows" is individual squares visible)
+    
+    <p-dataGrid [value]="people" [paginator]="true" [rows]="8">
+          <ng-template let-person pTemplate="item">
+            <div class="ui-g-12 ui-md-3">
+              {{person.firstName}} {{person.lastName}}<br/>
+              <img [src]="person.avatar"/>
+            </div>
+          </ng-template>
+        </p-dataGrid>
+        

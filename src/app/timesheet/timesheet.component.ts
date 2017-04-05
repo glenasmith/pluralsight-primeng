@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MenuItem, Message, TabView} from "primeng/primeng";
+import {PeopleData} from "./people";
 
 declare var moment: any;
 
@@ -74,6 +75,8 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
   private mapOptions: any;
 
   private mapOverlays: any[];
+
+  private people = PeopleData.people;
 
   getTimesForDay(dayIndex) {
     //console.log(`Filtering for ${dayIndex}`);

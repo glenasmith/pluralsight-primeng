@@ -43,7 +43,15 @@
     <p-gmap [options]="mapOptions" [overlays]="mapOverlays" (onOverlayClick)="onMarkerClick($event)" styleClass="gmap"></p-gmap>
   </div>
   <div *ngSwitchCase="PageNames.PeoplePage">
-    Our people page goes here.
+    <p-dataGrid [value]="people" [paginator]="true" [rows]="8">
+      <ng-template let-person pTemplate="item">
+        <div class="ui-g-12 ui-md-3">
+          {{person.firstName}} {{person.lastName}}<br/>
+          <img [src]="person.avatar"/>
+        </div>
+      </ng-template>
+    </p-dataGrid>
+
   </div>
 
   <p-footer>
