@@ -1,7 +1,9 @@
 # Navigation
 
 
-## Styling our Timesheet with Tabs
+## Tabs
+
+### Styling our Timesheet with Tabs
 
 First, add the module:
 
@@ -21,7 +23,7 @@ First, add the module:
 
 
 
-## Moving to Weekdays
+### Moving to Weekdays
 
 Imagine We have some timesheeting data for our user:
 
@@ -55,7 +57,7 @@ But in our case, we really want dynamic views!
 This is just as common in a biz app - you want tabs for clients, etc.
 
 
-## Dynamic Views
+### Dynamic Views
 
     <p-tabView class="u-g-12 tabs" (onChange)="changeTabs($event)">
       <p-tabPanel *ngFor="let tab of daysForTabs; let i = index;" header="{{tab}}" [selected]="isSelected(tab)" >
@@ -70,7 +72,7 @@ This is just as common in a biz app - you want tabs for clients, etc.
     </p-tabView>
 
 
-## Handling Change Events
+### Handling Change Events
 
 You can hook into tab changes through the (onChange) handler on the tabView container.
 
@@ -89,3 +91,84 @@ If you're using dynamic tabs, you'll have some math to do. Enjoy!
         this.day = selectedDay.format("dddd");
         this.dateAndMonth = selectedDay.format("MMMM Do, YYYY");
       }
+
+## Diving Into Dialogs (Everyday Stuff)
+
+### Creating Your First Dialog
+
+You probably wouldn't use a dialog for this, too much user friction - just create it in place per our datatables... but it gives us an excuse to go berserk with controls.
+
+First we'll need our magic module:
+
+
+    import {DialogModule} from 'primeng/primeng';
+    
+Then our markup - we're going to create a modal dialog (default is non modal);
+
+    <p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700">
+      Our Time Entry editor goes here.
+    </p-dialog>
+
+    
+
+And the backing code:
+ 
+    private displayEditDialog = false;
+
+Let's create a button to launch it...
+
+    <button pButton label="Add Time Entry" (click)="addNewEntry()" ></button>
+
+And let's actually display this dialog:
+
+    addNewEntry() {
+      this.displayEditDialog = true;
+    }
+
+Looking cool. I want to give it a bit more structure:
+
+### Adding Steps
+
+
+First we'll need our magic module:
+
+
+    import {StepsModule} from 'primeng/primeng';
+
+Let's add some markup:
+
+    <p-steps [model]="dialogPages" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+
+And some styling to fill the dialog. Since I have four steps, fill them 25% of the dialog.
+
+    p-steps /deep/ .ui-steps-item {
+      width: 25%;
+    }
+    
+Now we'll supply the menu components to show the pages:
+
+      private dialogPages: MenuItem[] = [
+        {label: "Time"},
+        {label: "Project"},
+        {label: "Place"},
+        {label: "People"}
+      ];
+
+And we have our steps! But now let's display some lightweight conditional markup.
+
+TWo approaches. Use the callback from the MenuItem, or just use an ngIf:
+
+     <div *ngIf="dialogPageIndex == 0">
+        Our Time Entry editor goes here.
+      </div>
+      <div *ngIf="dialogPageIndex == 1">
+        Our project page goes here.
+      </div>
+      <div *ngIf="dialogPageIndex == 2">
+        Our location page goes here.
+      </div>
+      <div *ngIf="dialogPageIndex == 3">
+        Our people page goes here.
+      </div>
+      
+The magic numbers trouble me, but enums aren't allowed in angular views, so it's prefereale

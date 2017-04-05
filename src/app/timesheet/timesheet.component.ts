@@ -1,7 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {TabView} from "primeng/primeng";
+import {MenuItem, Message, TabView} from "primeng/primeng";
 
 declare var moment: any;
+
+export enum PageNames {
+  TimePage,
+  ProjectPage,
+  PlacePage,
+  PeoplePage
+}
 
 @Component({
   selector: 'at-timesheet',
@@ -45,6 +52,22 @@ export class TimesheetComponent implements OnInit {
 
   ]
 
+  private displayEditDialog = false;
+
+  //private dialogPageIndex = 0;
+
+  // Need to import the enum to reference in the view
+  private PageNames = PageNames;
+
+  private dialogPageIndex : PageNames = PageNames.TimePage;
+
+  private dialogPages: MenuItem[] = [
+    {label: "Time"},
+    {label: "Project"},
+    {label: "Place"},
+    {label: "People"}
+  ];
+
   getTimesForDay(dayIndex) {
     console.log(`Filtering for ${dayIndex}`);
     return this.userTimeData.filter( entry => {
@@ -81,5 +104,11 @@ export class TimesheetComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  addNewEntry() {
+    this.displayEditDialog = true;
+  }
+
+
 
 }

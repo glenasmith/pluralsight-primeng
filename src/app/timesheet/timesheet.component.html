@@ -25,5 +25,29 @@
   </p-tabView>
 
   <button pButton label="Go To Today" (click)="goToToday()" class="goToToday"></button>
+  <button pButton label="Add Time Entry" (click)="addNewEntry()" ></button>
 
 </div>
+
+<p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700">
+  <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false"></p-steps>
+
+  <div *ngIf="dialogPageIndex == PageNames.TimePage">
+    Our time page goes here.
+  </div>
+  <div *ngIf="dialogPageIndex == PageNames.ProjectPage">
+    Our project page goes here.
+  </div>
+  <div *ngIf="dialogPageIndex == PageNames.PlacePage">
+    Our place page goes here.
+  </div>
+  <div *ngIf="dialogPageIndex == PageNames.PeoplePage">
+    Our people page goes here.
+  </div>
+
+  <p-footer>
+    <button pButton label="Cancel" icon="fa-times" (click)="cancelEntry()" class="ui-button-secondary"></button>
+    <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()" ></button>
+  </p-footer>
+
+</p-dialog>

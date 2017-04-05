@@ -33,3 +33,12 @@ h3 {
 .goToToday {
   margin: 1em;
 }
+
+p-steps /deep/ .ui-steps-item {
+  width: 25%;
+}
+
+p-footer button {
+  float: right;
+  margin: 0.5em;
+}
