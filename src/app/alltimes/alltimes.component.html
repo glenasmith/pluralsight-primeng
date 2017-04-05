@@ -26,12 +26,12 @@
     <p-column styleClass="selectBoxColumn" selectionMode="multiple"></p-column>
     <p-column field="user" header="User" [editable]="true"></p-column>
     <p-column field="project" header="Project" filter="true" filterMatchMode="equals"  [style]="{'overflow':'visible'}" [editable]="true">
-      <template pTemplate="filter" let-col>
+      <ng-template pTemplate="filter" let-col>
         <p-dropdown [options]="allProjects" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
-      </template>
-      <template let-col let-project="rowData" pTemplate="editor">
+      </ng-template>
+      <ng-template let-col let-project="rowData" pTemplate="editor">
         <p-dropdown [(ngModel)]="project[col.field]" [options]="allProjects" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
-      </template>
+      </ng-template>
 
     </p-column>
     <p-column field="category" header="Category" [sortable]="true"></p-column>
