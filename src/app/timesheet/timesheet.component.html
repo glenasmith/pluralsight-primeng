@@ -34,7 +34,8 @@
   <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false"></p-steps>
 
   <div *ngSwitchCase="PageNames.TimePage">
-    Our time page goes here.
+    <p-schedule [events]="events" [header]="headerConfig" styleClass="calendar"
+                defaultView="agendaDay" [editable]="true" [nowIndicator]="true" [allDaySlot]="false"></p-schedule>
   </div>
   <div *ngSwitchCase="PageNames.ProjectPage">
     Our project page goes here.

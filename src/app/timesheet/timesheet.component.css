@@ -70,3 +70,7 @@ p-dataGrid /deep/ .ui-panel-content img {
   margin-right: auto;
   width: 150px;
 }
+
+p-schedule /deep/ .calendar {
+  height: 250px;
+}

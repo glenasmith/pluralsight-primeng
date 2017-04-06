@@ -25,6 +25,8 @@
     "core-js": "^2.4.1",
     "dexie": "^1.5.1",
     "font-awesome": "^4.7.0",
+    "fullcalendar": "^3.3.1",
+    "jquery": "^3.2.1",
     "moment": "^2.17.1",
     "primeng": "4.0.0-rc.2",
     "quill": "1.2.3",

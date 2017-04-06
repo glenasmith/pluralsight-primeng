@@ -6,6 +6,8 @@ declare var moment: any;
 
 declare var google: any;
 
+declare var jquery: any;
+
 export enum PageNames {
   TimePage,
   ProjectPage,
@@ -77,6 +79,21 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
   private mapOverlays: any[];
 
   private people = PeopleData.people;
+
+  private events = [
+    {
+      title: 'Recent Work',
+      start: '2017-04-06 07:00:00',
+      end: '2017-04-06 08:00:00'
+    }
+
+  ]
+
+  private headerConfig = {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'month,agendaWeek,agendaDay'
+  }
 
   getTimesForDay(dayIndex) {
     //console.log(`Filtering for ${dayIndex}`);

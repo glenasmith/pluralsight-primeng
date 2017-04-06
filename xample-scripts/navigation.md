@@ -340,8 +340,33 @@ You can use lazy loading as discussed in the grids module to take things further
 
 ### Schedule
 
+Based on [Full Calendar](https://fullcalendar.io/) - a popular open source JS calendar.
+
 First import the module:
 
     import {ScheduleModule} from 'primeng/primeng';
     
     
+Add the fullcalendar dep:
+
+    npm install fullcalendar --save
+    npm install jquery --save
+    npm install moment --save // if you haven't already
+    
+And add it to your scripts loader in .angular-cli.json:    
+
+      "styles": [
+        ...
+        "../node_modules/fullcalendar/dist/fullcalendar.css"
+      ],
+
+
+    "scripts": [
+      ...
+        "../node_modules/moment/min/moment.min.js",
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/fullcalendar/dist/fullcalendar.js"
+      ],
+
+And restart.
+
