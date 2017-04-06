@@ -370,3 +370,67 @@ And add it to your scripts loader in .angular-cli.json:
 
 And restart.
 
+### Trees
+
+Import the module:
+
+    import {TreeModule,TreeNode} from 'primeng/primeng';
+    
+Write some markup:
+
+    <div *ngSwitchCase="PageNames.ProjectPage">
+        <p-tree [value]="projectsTree" layout="horizontal" selectionMode="single" [(selection)]="selectedProject" ></p-tree>
+      </div>
+      
+projectTree is a TreeNode[]. I've got some sample data in a file called `sample.projects.data.ts`:
+      
+      private projectsTree : TreeNode[] = SampleProjectsData.projects;
+      
+      private selectedProject : TreeNode;
+
+No doubt, you're curious on the TreeNode...
+
+      export interface TreeNode {
+          label?: string;
+          data?: any;
+          icon?: any;
+          expandedIcon?: any;
+          collapsedIcon?: any;
+          children?: TreeNode[];
+          leaf?: boolean;
+          expanded?: boolean;
+          type?: string;
+          parent?: TreeNode;
+          partialSelected?: boolean;
+          styleClass?: string;
+          draggable?: boolean;
+          droppable?: boolean;
+          selectable?: boolean;
+      }
+
+They have a `label` and `icon` (which can be expanded or collapsed) - which are both shown on the screen. They have a `data` which you can bundle in your own data if you need it. And `children` is used to hold child nodes (with their own labels and icons)
+ 
+ Here's an extract from our sample data file.
+
+
+    {
+      "label": "Projects",
+      "data": "Documents Folder",
+      "expandedIcon": "fa-folder-open",
+      "collapsedIcon": "fa-folder",
+      "children": [{
+        "label": "Agile Times",
+        "data": "agile",
+        "expandedIcon": "fa-folder-open",
+        "collapsedIcon": "fa-folder",
+        "children": [
+          {"label": "Frontend", "icon": "fa-chrome", "data": "fe"},
+          {"label": "Backend", "icon": "fa-cloud", "data": "be"},
+          {"label": "Operations", "icon": "fa-cogs", "data": "ops"}
+        ]
+      },
+
+And here's the tree in operation.
+
+If you want a more traditional tree, remove the horizontal layout!
+

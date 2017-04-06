@@ -1,4 +1,4 @@
-export class PeopleData {
+export class SamplePeopleData {
 
   public static people =
     [{"id":1,"firstName":"Dennis","lastName":"Vasquez","email":"dvasquez0@mediafire.com","avatar":"http://i.pravatar.cc/100?u=Dennis"},

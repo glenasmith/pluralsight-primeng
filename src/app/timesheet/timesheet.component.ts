@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MenuItem, Message, TabView} from "primeng/primeng";
-import {PeopleData} from "./people";
+import {MenuItem, Message, TabView, TreeNode} from "primeng/primeng";
+import {SamplePeopleData} from "./sample.people.data";
+import {SampleProjectsData} from "./sample.projects.data";
 
 declare var moment: any;
 
@@ -74,11 +75,15 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
     {label: "People"}
   ];
 
+  private projectsTree : TreeNode[] = SampleProjectsData.projects;
+
+  private selectedProject : TreeNode;
+
   private mapOptions: any;
 
   private mapOverlays: any[];
 
-  private people = PeopleData.people;
+  private people = SamplePeopleData.people;
 
   private events = [
     {
@@ -87,13 +92,13 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
       end: '2017-04-06 08:00:00'
     }
 
-  ]
+  ];
 
   private headerConfig = {
     left: 'prev,next today',
     center: 'title',
     right: 'month,agendaWeek,agendaDay'
-  }
+  };
 
   getTimesForDay(dayIndex) {
     //console.log(`Filtering for ${dayIndex}`);
