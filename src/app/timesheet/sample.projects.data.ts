@@ -6,8 +6,10 @@ export class SampleProjectsData {
       "data": "proj",
       "expandedIcon": "fa-folder-open",
       "collapsedIcon": "fa-folder",
+      "selectable": false,
       "children": [{
         "label": "Agile Times",
+        "selectable": false,
         "data": "agile",
         "expandedIcon": "fa-folder-open",
         "collapsedIcon": "fa-folder",
@@ -22,6 +24,7 @@ export class SampleProjectsData {
           "data": "mobile",
           "expandedIcon": "fa-folder-open",
           "collapsedIcon": "fa-folder",
+          "selectable": false,
           "children": [
             {"label": "Frontend", "icon": "fa-chrome", "data": "fe"},
             {"label": "Backend", "icon": "fa-cloud", "data": "be"},

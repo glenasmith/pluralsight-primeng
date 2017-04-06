@@ -432,5 +432,13 @@ They have a `label` and `icon` (which can be expanded or collapsed) - which are 
 
 And here's the tree in operation.
 
+Alas! We can select the root nodes.
+
+Let's make sure only the most leaf nodes are selectable:
+
+      "selectable": false,
+
 If you want a more traditional tree, remove the horizontal layout!
+
+
 
