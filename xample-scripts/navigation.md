@@ -338,6 +338,19 @@ Much better!
 
 You can use lazy loading as discussed in the grids module to take things further!
 
+### Tooltips
+
+First import the module:
+
+    import {TooltipModule} from 'primeng/primeng';
+    
+Then add the markup..
+
+    <img [src]="person.avatar" [pTooltip]="person.email" tooltipPosition="bottom"/>
+    
+Position is options. 
+
+
 ### Schedule
 
 Based on [Full Calendar](https://fullcalendar.io/) - a popular open source JS calendar.

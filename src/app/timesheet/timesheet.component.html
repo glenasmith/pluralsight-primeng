@@ -50,7 +50,7 @@
     <p-dataGrid [value]="people" [paginator]="true" [rows]="4">
       <ng-template let-person pTemplate="item">
         <p-panel header="{{person.firstName}} {{person.lastName}}" class="ui-g-12 ui-md-3">
-          <img [src]="person.avatar"/>
+          <img [src]="person.avatar" [pTooltip]="person.email" tooltipPosition="bottom"/>
         </p-panel>
       </ng-template>
     </p-dataGrid>
