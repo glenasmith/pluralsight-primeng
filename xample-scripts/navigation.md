@@ -105,7 +105,7 @@ First we'll need our magic module:
     
 Then our markup - we're going to create a modal dialog (default is non modal);
 
-    <p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700">
+    <p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700" height="550">
       Our Time Entry editor goes here.
     </p-dialog>
 
@@ -229,10 +229,10 @@ Import the JavaScript for Google Maps API (in the HEAD of your index.html):
 
 Add some markup to position the map:
 
-  <div *ngSwitchCase="PageNames.PlacePage">
-    <p-gmap [options]="mapOptions" [overlays]="mapOverlays"  styleClass="gmap"
-            ></p-gmap>
-  </div>
+    <div *ngSwitchCase="PageNames.PlacePage">
+      <p-gmap [options]="mapOptions" [overlays]="mapOverlays"  styleClass="gmap"
+              ></p-gmap>
+    </div>
   
 *Note:* You must style up a height or it won't show up:
   
@@ -242,6 +242,9 @@ Add some markup to position the map:
       }
 
 Provide the overlays and initial position:
+
+
+    declare var google: any;
 
      ngOnInit() {
     
@@ -299,12 +302,46 @@ Import that random data:
 
 Add the markup to paginate it (note that "rows" is individual squares visible)
     
-    <p-dataGrid [value]="people" [paginator]="true" [rows]="8">
-          <ng-template let-person pTemplate="item">
-            <div class="ui-g-12 ui-md-3">
-              {{person.firstName}} {{person.lastName}}<br/>
-              <img [src]="person.avatar"/>
-            </div>
-          </ng-template>
-        </p-dataGrid>
+       <p-dataGrid [value]="people" [paginator]="true" [rows]="4">
+             <ng-template let-person pTemplate="item">
+               <p-panel header="{{person.firstName}} {{person.lastName}}" class="ui-g-12 ui-md-3">
+                 <img [src]="person.avatar"/>
+               </p-panel>
+             </ng-template>
+           </p-dataGrid>
         
+Kinda fun by the styling needs work:
+
+    p-dataGrid /deep/ .ui-panel {
+      border: 0px;
+    }
+    p-dataGrid /deep/ .ui-panel-titlebar {
+      font-size: smaller;
+      background-color: #F15B2A !important;
+      text-align: center;
+      height: 35px;
+    }
+    
+    
+    p-dataGrid /deep/ .ui-panel-content {
+      padding: 0px;
+    }
+    
+    p-dataGrid /deep/ .ui-panel-content img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 150px;
+    }
+    
+Much better!
+
+You can use lazy loading as discussed in the grids module to take things further!
+
+### Schedule
+
+First import the module:
+
+    import {ScheduleModule} from 'primeng/primeng';
+    
+    

@@ -29,7 +29,7 @@
 
 </div>
 
-<p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700" height="600"
+<p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700" height="550"
           [ngSwitch]="dialogPageIndex">
   <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false"></p-steps>
 
@@ -43,12 +43,11 @@
     <p-gmap [options]="mapOptions" [overlays]="mapOverlays" (onOverlayClick)="onMarkerClick($event)" styleClass="gmap"></p-gmap>
   </div>
   <div *ngSwitchCase="PageNames.PeoplePage">
-    <p-dataGrid [value]="people" [paginator]="true" [rows]="8">
+    <p-dataGrid [value]="people" [paginator]="true" [rows]="4">
       <ng-template let-person pTemplate="item">
-        <div class="ui-g-12 ui-md-3">
-          {{person.firstName}} {{person.lastName}}<br/>
+        <p-panel header="{{person.firstName}} {{person.lastName}}" class="ui-g-12 ui-md-3">
           <img [src]="person.avatar"/>
-        </div>
+        </p-panel>
       </ng-template>
     </p-dataGrid>
 
