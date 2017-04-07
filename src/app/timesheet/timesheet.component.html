@@ -12,6 +12,8 @@
   </div>
 
 
+
+
   <p-tabView class="u-g-12 tabs" (onChange)="changeTabs($event)" #tabView>
     <p-tabPanel *ngFor="let tab of daysForTabs; let i = index;" header="{{tab}}" [selected]="isSelected(tab)" >
        <p-dataTable [value]="getTimesForDay(i)" class="timesheet-grid">
@@ -29,8 +31,12 @@
 
 </div>
 
+
+
 <p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700" height="550"
-          [ngSwitch]="dialogPageIndex">
+          [ngSwitch]="dialogPageIndex" (onHide)="cancelDialog()">
+
+
   <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false"></p-steps>
 
   <div *ngSwitchCase="PageNames.TimePage">
@@ -58,8 +64,18 @@
   </div>
 
   <p-footer>
-    <button pButton label="Cancel" icon="fa-times" (click)="displayEditDialog = false" class="ui-button-secondary"></button>
+    <button pButton label="Cancel" icon="fa-times" (click)="cancelDialog()" class="ui-button-secondary"></button>
     <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()"></button>
   </p-footer>
 
 </p-dialog>
+
+<p-confirmDialog header="Cancel Time Creation" icon="fa fa-question-circle" width="425" [visible]="false" #confirmDialog>
+  <p-footer>
+    <button type="button" pButton icon="fa-close" label="No, go back" (click)="confirmDialog.reject()"></button>
+    <button type="button" pButton icon="fa-check" label="Yes, lose changes" (click)="confirmDialog.accept() && confirmDialog.hide() && confirmDialog.hide()"></button>
+  </p-footer>
+</p-confirmDialog>
+
+
+

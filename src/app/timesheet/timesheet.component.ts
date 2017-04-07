@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MenuItem, Message, TabView, TreeNode} from "primeng/primeng";
+import {ConfirmationService, ConfirmDialog, MenuItem, Message, TabView, TreeNode} from "primeng/primeng";
 import {SamplePeopleData} from "./sample.people.data";
 import {SampleProjectsData} from "./sample.projects.data";
 
@@ -31,6 +31,8 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
   private dateAndMonth = this.now.format("MMMM Do, YYYY");
 
   @ViewChild('tabView') tabView : TabView;
+
+  // @ViewChild('confirmDialog') confirmDialog : ConfirmDialog;
 
   private daysForTabs = [
 
@@ -109,7 +111,7 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor() {
+  constructor(private confirmationService: ConfirmationService) {
     let now = moment();
     this.daysOfWeek.forEach( day => {
         this.daysForTabs.push(now.day(day).format("ddd Do"));
@@ -169,6 +171,20 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
     this.displayEditDialog = true;
   }
 
+
+  cancelDialog() {
+    this.confirmationService.confirm({
+      message: 'Cancel all changes. Are you sure?',
+      accept: () => {
+        this.displayEditDialog = false;
+        // this.confirmDialog.visible = false;
+        // this.confirmDialog.disableModality();
+      },
+      reject: () => {
+        console.log("False cancel. Just keep editing.");
+      }
+    });
+  }
 
 
 }

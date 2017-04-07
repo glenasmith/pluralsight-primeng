@@ -458,3 +458,37 @@ Then add the markup..
 Position is options. 
 
 
+### Confirmation Dialogs & Dialog Events
+
+You sometimes want to catch the cancel (if form is dirty), and confirm that's what they want.
+
+Requires both a service and a module to import:
+
+    import {ConfirmDialogModule,ConfirmationService} from 'primeng/primeng';
+    
+    providers: [ DataService, ConfirmationService ],
+
+Update the dialog to catch the hide: (also an (onShow) which can be helpful for intializing dialog elements)
+
+    <p-dialog header="Create Time"  ...  (onHide)="cancelDialog()">
+  
+And update the button:  
+  
+    <button pButton label="Cancel" icon="fa-times" (click)="cancelDialog()" class="ui-button-secondary"></button>
+  
+Add our confirm dialog:
+  
+    <p-confirmDialog header="Cancel Time Creation" icon="fa fa-question-circle" width="425" [visible]="false" #confirmDialog>
+        <p-footer>
+          <button type="button" pButton icon="fa-close" label="No, go back" (click)="confirmDialog.reject()"></button>
+          <button type="button" pButton icon="fa-check" label="Yes, lose changes" (click)="confirmDialog.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+  
+We'll need to inject the confirmation service in backing code:
+
+    constructor(private confirmationService: ConfirmationService) {
+    
+Then implement our close operation:
+    
+      

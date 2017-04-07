@@ -8,7 +8,7 @@ import {
   RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule, InputTextModule,
   InputMaskModule, ButtonModule, EditorModule, CalendarModule, RatingModule, MultiSelectModule,
   ChipsModule, TabViewModule, DropdownModule, ContextMenuModule, DialogModule, StepsModule, GMapModule, DataGridModule,
-  ScheduleModule, TreeModule, TooltipModule
+  ScheduleModule, TreeModule, TooltipModule, ConfirmDialogModule, ConfirmationService
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -76,9 +76,10 @@ const appRoutes: Routes = [
     DataGridModule,
     ScheduleModule,
     TreeModule,
-    TooltipModule
+    TooltipModule,
+    ConfirmDialogModule
   ],
-  providers: [ DataService ],
+  providers: [ DataService,ConfirmationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
