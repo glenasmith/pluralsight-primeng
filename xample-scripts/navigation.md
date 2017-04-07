@@ -517,4 +517,44 @@ We'll need to inject the confirmation service in backing code:
     
 Then implement our close operation:
     
+
       
+### Growling
+
+First drag in the module:
+
+    import {GrowlModule} from 'primeng/primeng';
+
+Add some markup to our page:
+
+      <p-growl [value]="messages"></p-growl>
+
+ANd let's implemeting the save of new entries:
+
+      saveNewEntry() {
+          this.displayEditDialog = false;
+          this.messages.push({severity:'success', summary:'Entry Created', detail:'Your entry has been created'});
+        }
+        
+Finally, let's revisit our dialog cancel operations to get rid of those console messages, and give some real feedback:
+
+      cancelDialog() {
+        this.confirmationService.confirm({
+          message: 'Cancel all changes. Are you sure?',
+          accept: () => {
+            this.displayEditDialog = false;
+            this.messages.push({severity:'info', summary:'Edits Cancelled', detail:'No changes were saved'});
+          },
+          reject: () => {
+            this.messages.push({severity:'warn', summary:'Cancelled the Cancel', detail:'Please continue your editing'});
+          }
+        });
+      }
+
+Of course, you can customise how long the growls stick around, 
+
+    <p-growl [value]="messages" life="6000"></p-growl>
+    
+or whether you need auto disappear at all:
+    
+    <p-growl [value]="messages" [sticky]="true"></p-growl>

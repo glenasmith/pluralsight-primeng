@@ -8,7 +8,7 @@ import {
   RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule, InputTextModule,
   InputMaskModule, ButtonModule, EditorModule, CalendarModule, RatingModule, MultiSelectModule,
   ChipsModule, TabViewModule, DropdownModule, ContextMenuModule, DialogModule, StepsModule, GMapModule, DataGridModule,
-  ScheduleModule, TreeModule, TooltipModule, ConfirmDialogModule, ConfirmationService
+  ScheduleModule, TreeModule, TooltipModule, ConfirmDialogModule, ConfirmationService, GrowlModule
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -77,7 +77,8 @@ const appRoutes: Routes = [
     ScheduleModule,
     TreeModule,
     TooltipModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    GrowlModule
   ],
   providers: [ DataService,ConfirmationService ],
   bootstrap: [AppComponent]

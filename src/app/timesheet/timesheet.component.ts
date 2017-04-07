@@ -111,6 +111,8 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
     right: 'month,agendaWeek,agendaDay'
   };
 
+  messages: Message[] = [];
+
   getTimesForDay(dayIndex) {
     //console.log(`Filtering for ${dayIndex}`);
     return this.userTimeData.filter( entry => {
@@ -180,16 +182,20 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
     this.displayEditDialog = true;
   }
 
+  saveNewEntry() {
+    this.displayEditDialog = false;
+    this.messages.push({severity:'success', summary:'Entry Created', detail:'Your entry has been created'});
+  }
 
   cancelDialog() {
     this.confirmationService.confirm({
       message: 'Cancel all changes. Are you sure?',
       accept: () => {
         this.displayEditDialog = false;
-        // this.confirmDialog.visible = false;
-        // this.confirmDialog.disableModality();
+        this.messages.push({severity:'info', summary:'Edits Cancelled', detail:'No changes were saved'});
       },
       reject: () => {
+        this.messages.push({severity:'warn', summary:'Cancelled the Cancel', detail:'Please continue your editing'});
         console.log("False cancel. Just keep editing.");
       }
     });
