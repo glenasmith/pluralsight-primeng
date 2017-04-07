@@ -127,6 +127,26 @@ And let's actually display this dialog:
 
 Looking cool. I want to give it a bit more structure:
 
+### Dialog Footers (and headers)
+
+Like datatable, we can customise the headers and footers. Note the use of secondary class buttons for cancel. 
+
+
+    <p-footer>
+        <button pButton label="Cancel" icon="fa-times" (click)="displayEditDialog = false" class="ui-button-secondary"></button>
+        <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()" ></button>
+      </p-footer>
+      
+There is also a matching p-header if you need it.. And style them if needed:
+
+    p-footer button {
+      float: right;
+      margin: 0.5em;
+    }
+
+
+
+
 ### Adding Steps
 
 
@@ -196,23 +216,6 @@ And this inside it:
 
 Now we can navigate between divs.
 
-### Dialog Footers (and headers)
-
-Like datatable, we can customise the headers and footers. Note the use of secondary class buttons for cancel. 
-
-    <p-footer>
-        <button pButton label="Cancel" icon="fa-times" (click)="displayEditDialog = false" class="ui-button-secondary"></button>
-        <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()" ></button>
-      </p-footer>
-      
-There is also a matching p-header if you need it.. And style them if needed:
-
-    p-footer button {
-      float: right;
-      margin: 0.5em;
-    }
-
-
 
 
 
@@ -247,6 +250,28 @@ And add it to your scripts loader in .angular-cli.json:
       ],
 
 And restart.
+
+First the markup:
+
+      <p-schedule [events]="events" [header]="headerConfig" styleClass="calendar"
+           defaultView="agendaDay" [editable]="true" [nowIndicator]="true" [allDaySlot]="false"></p-schedule>
+
+Then the header config:
+
+      private headerConfig = {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        };
+
+Let's get started with a simple event:
+
+    private events = [
+    {
+      title: 'Recent Work',
+      start: '2017-04-06 07:00:00',
+      end: '2017-04-06 08:00:00'
+    }
 
 ### Trees
 
@@ -470,7 +495,8 @@ Requires both a service and a module to import:
 
 Update the dialog to catch the hide: (also an (onShow) which can be helpful for intializing dialog elements)
 
-    <p-dialog header="Create Time"  ...  (onHide)="cancelDialog()">
+    .
+    
   
 And update the button:  
   

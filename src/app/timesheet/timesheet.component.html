@@ -27,14 +27,14 @@
   </p-tabView>
 
   <button pButton label="Go To Today" (click)="goToToday()" class="goToToday"></button>
-  <button pButton label="Add Time Entry" (click)="addNewEntry()" ></button>
+  <button pButton label="Add Time Entry" (click)="displayEditDialog = true" ></button>
 
 </div>
 
 
 
 <p-dialog header="Create Time" [(visible)]="displayEditDialog" [modal]="true" width="700" height="550"
-          [ngSwitch]="dialogPageIndex" (onHide)="cancelDialog()">
+          [ngSwitch]="dialogPageIndex" >
 
 
   <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false"></p-steps>

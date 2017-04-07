@@ -81,9 +81,18 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
 
   private selectedProject : TreeNode;
 
-  private mapOptions: any;
+  private mapOptions = {
 
-  private mapOverlays: any[];
+    center: {lat: -33.8688, lng: 151.2093},
+    zoom: 5
+  };
+
+  private mapOverlays = [
+    new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
+    new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
+    new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
+    new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
+  ];
 
   private people = SamplePeopleData.people;
 
@@ -138,19 +147,19 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.mapOptions = {
-
-      center: {lat: -33.8688, lng: 151.2093},
-      zoom: 5
-    };
+    // this.mapOptions = {
+    //
+    //   center: {lat: -33.8688, lng: 151.2093},
+    //   zoom: 5
+    // };
 
     // http://www.mapcoordinates.net/en
-    this.mapOverlays = [
-      new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
-      new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
-      new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
-      new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
-    ];
+    // this.mapOverlays = [
+    //   new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
+    //   new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
+    //   new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
+    //   new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
+    // ];
 
   }
 
