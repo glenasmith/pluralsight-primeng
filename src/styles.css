@@ -28,7 +28,7 @@ body {
 }
 
 .menu-selected {
-  background-color: #F15B2A;
+  background-color: #F15B2A !important;
   color: #ffffff;
 }
 
