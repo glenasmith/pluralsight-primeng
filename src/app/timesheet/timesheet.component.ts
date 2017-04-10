@@ -111,7 +111,7 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
     right: 'month,agendaWeek,agendaDay'
   };
 
-  messages: Message[] = [];
+  private messages: Message[] = [];
 
   getTimesForDay(dayIndex) {
     //console.log(`Filtering for ${dayIndex}`);
