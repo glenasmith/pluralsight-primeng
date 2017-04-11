@@ -1,0 +1,8 @@
+p-panel /deep/ .ui-panel-content {
+  height: 300px;
+}
+
+.drop-message {
+  font-size: xx-large;
+  color: lightgrey;
+}

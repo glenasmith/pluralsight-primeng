@@ -8,7 +8,8 @@ import {
   RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule, InputTextModule,
   InputMaskModule, ButtonModule, EditorModule, CalendarModule, RatingModule, MultiSelectModule,
   ChipsModule, TabViewModule, DropdownModule, ContextMenuModule, DialogModule, StepsModule, GMapModule, DataGridModule,
-  ScheduleModule, TreeModule, TooltipModule, ConfirmDialogModule, ConfirmationService, GrowlModule
+  ScheduleModule, TreeModule, TooltipModule, ConfirmDialogModule, ConfirmationService, GrowlModule, GalleriaModule,
+  DragDropModule
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { AlltimesComponent } from './alltimes/alltimes.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ProfileComponent } from './profile/profile.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
   { path: "alltimes", component: AlltimesComponent },
   { path: "mytimes", component: TimesheetComponent},
   { path: "projects", component: ProjectsComponent},
+  { path: "profile", component: ProfileComponent},
 ];
 
 @NgModule({
@@ -40,7 +43,8 @@ const appRoutes: Routes = [
     TimesheetComponent,
     ProjectsComponent,
     FielderrorsComponent,
-    AlltimesComponent
+    AlltimesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,9 @@ const appRoutes: Routes = [
     TreeModule,
     TooltipModule,
     ConfirmDialogModule,
-    GrowlModule
+    GrowlModule,
+    GalleriaModule,
+    DragDropModule
   ],
   providers: [ DataService,ConfirmationService ],
   bootstrap: [AppComponent]

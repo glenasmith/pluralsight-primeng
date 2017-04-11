@@ -1,0 +1,24 @@
+<div class="ui-g">
+
+  <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-7" pDroppable="pic" (onDrop)="onPicDrop($event)">
+
+    <img *ngIf="profileImage; else showDropDiv" [src]="profileImage"/>
+
+    <ng-template #showDropDiv>
+      <span class="drop-message">Drop Your Image Here</span>
+    </ng-template>
+
+
+  </p-panel>
+
+  <p-galleria  #galleria [images]="images" panelWidth="300" panelHeight="298" class="ui-g-12 ui-md-5" [showCaption]="true"
+              (onDragStart)="onDragStart(galleria)"
+              pDraggable="pic" dragHandle=".ui-panel-images" (onImageClicked)="onImageSelected($event)"></p-galleria>
+
+
+</div>
+
+
+<h1>
+  Profile: Joe Cool
+</h1>
