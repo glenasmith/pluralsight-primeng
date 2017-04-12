@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     {source: "http://i.pravatar.cc/300?u=Peta", title: "Peta"},
   ]
 
-  private profileImage : string;
+  profileImage : string;
 
   private selectedProfile : any;
 

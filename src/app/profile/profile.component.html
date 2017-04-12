@@ -2,7 +2,7 @@
 
   <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-8" pDroppable="pic" (onDrop)="onPicDrop()">
 
-    <img *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12 ui-md-6"/>
+    <img id="profilePic" *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12 ui-md-6"/>
 
     <ng-template #showDropDiv>
       <span id="drop-message" class="ui-g-12 ui-md-6">Drop Your Image Here</span>
