@@ -125,6 +125,47 @@ First, configure your testbed to include all the modules you reference on your p
 
 Demonstrate what happens if you don't - world of errors.
 
+You don't want to be testing Galleria, but you do want an object that looks like it. Jasmine gives you spys for just such occasions. You can mock out the stopSlideshow method. 
+
+      it('should stop the slideshow on starting drag', () => {
+      
+          let mockGalleria = {
+            activeIndex: 2,
+            stopSlideshow: createSpy('stopSlideshow')
+          }
+      
+          component.onDragStart( mockGalleria );
+          expect(mockGalleria.stopSlideshow).toHaveBeenCalled();
+      
+        });
+        
+
+What if we want to check the drop? We might need to change the scope of profileImage to test it.
+
+If you need to check the actual physical presence of the *ngIf'd IMG, you can search for it, but you have to make 
+ sure that run `fixture.detectChanges()` so the change cycle can actually re-check the ngIf.
+
+
+
+      it('should update the image on drop', () => {
+      
+          let mockGalleria = {
+            activeIndex: 2,
+            stopSlideshow: createSpy('stopSlideshow')
+          }
+      
+          component.onDragStart( mockGalleria );
+          component.onPicDrop();
+      
+          expect(component.profileImage).toEqual("http://i.pravatar.cc/300?u=Mary");
+      
+          fixture.detectChanges(); // You need to fire change detection since we changed the property.
+      
+          let imgElement = fixture.debugElement.query(By.css('#profilePic')).nativeElement;
+          expect(imgElement).toBeTruthy();
+      
+        }); 
+
 
 
 ## Where to from here?
