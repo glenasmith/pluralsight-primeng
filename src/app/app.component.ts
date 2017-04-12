@@ -1,14 +1,16 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import {MenuItem} from "primeng/primeng";
 import {Menu} from "primeng/components/menu/menu";
 import {ActivatedRoute, Router} from "@angular/router";
+
+declare var jQuery :any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   private menuItems: MenuItem[];
   private miniMenuItems: MenuItem[];
@@ -23,15 +25,25 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     let handleSelected = function(event) {
-      let allMenus = event.originalEvent.target.closest('ul');
-      let allLinks = allMenus.getElementsByClassName('menu-selected');
+      let allMenus = jQuery(event.originalEvent.target).closest('ul');
+      let allLinks = allMenus.find('.menu-selected');
 
-      for (var i = 0; i < allLinks.length; i++) {
-        allLinks[i].classList.remove('menu-selected')
-      }
+      console.log(allLinks);
 
-      let selected = event.originalEvent.target.closest('a');
-      selected.classList.add('menu-selected');
+      allLinks.removeClass("menu-selected");
+      // jQuery.each( allLinks, (nextLink) => {
+      //   console.log(nextLink);
+      //   nextLink.removeClass("menu-selected");
+      // })
+
+
+      // for (var i = 0; i < allLinks.length; i++) {
+      //   console.log(allLinks[i]);
+      //   jQuery(allLinks[i]).removeClass('menu-selected')
+      // }
+
+      let selected = jQuery(event.originalEvent.target).closest('a');
+      selected.addClass('menu-selected');
 
     }
 
@@ -57,7 +69,7 @@ export class AppComponent implements OnInit {
     let menuItem = this.menuItems.find( (item) => { return item.routerLink[0] == path });
     if (menuItem) {
       let selectedIcon = this.bigMenu.container.querySelector(`.${menuItem.icon}`);
-      selectedIcon.closest('li').classList.add('menu-selected');
+      jQuery(selectedIcon).closest('li').addClass('menu-selected');
     }
   }
 
