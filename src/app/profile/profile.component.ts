@@ -10,10 +10,10 @@ export class ProfileComponent implements OnInit {
 
   private images = [
     {source: "http://i.pravatar.cc/300?u=Anne", title: "Anne"},
-    {source: "http://i.pravatar.cc/300?u=Kerri", alt: "Profile Pic 2", title: "Kerri"},
-    {source: "http://i.pravatar.cc/300?u=Mary", alt: "Profile Pic 3", title: "Mary"},
-    {source: "http://i.pravatar.cc/300?u=Nancy", alt: "Profile Pic 4", title: "Nancy"},
-    {source: "http://i.pravatar.cc/300?u=Peta", alt: "Profile Pic 5", title: "Peta"},
+    {source: "http://i.pravatar.cc/300?u=Kerri", title: "Kerri"},
+    {source: "http://i.pravatar.cc/300?u=Mary", title: "Mary"},
+    {source: "http://i.pravatar.cc/300?u=Nancy", title: "Nancy"},
+    {source: "http://i.pravatar.cc/300?u=Peta", title: "Peta"},
   ]
 
   private profileImage : string;

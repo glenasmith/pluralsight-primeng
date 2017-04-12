@@ -112,6 +112,18 @@ Now on to Unit Testing!
 
 ## Unit Testing PrimeNG Components
 
+Unit Testing is really beyond the brief of this particular course, but it's worth mentioning what's possible.
+
+First, configure your testbed to include all the modules you reference on your page:
+
+      TestBed.configureTestingModule({
+            declarations: [ ProfileComponent ],
+            imports: [ GrowlModule, GalleriaModule, DragDropModule,
+                        PanelModule, FieldsetModule, NoopAnimationsModule ]
+          })
+          .compileComponents();
+
+Demonstrate what happens if you don't - world of errors.
 
 
 
