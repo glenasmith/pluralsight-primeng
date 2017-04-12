@@ -2,11 +2,19 @@
 
   <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-7" pDroppable="pic" (onDrop)="onPicDrop($event)">
 
-    <img *ngIf="profileImage; else showDropDiv" [src]="profileImage"/>
+    <img *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12 ui-md-6"/>
 
     <ng-template #showDropDiv>
-      <span class="drop-message">Drop Your Image Here</span>
+      <span id="drop-message" class="ui-g-12 ui-md-6">Drop Your Image Here</span>
     </ng-template>
+
+    <p-fieldset legend="Profile Info" class="ui-g-12 ui-md-6">
+      <label for="profileName">Name:</label>
+      <input id="profileName" #InputText placeholder="Your Name Here"/>
+
+      <label for="profileInfo">Details:</label>
+      <textarea id="profileInfo" pInputTextarea>Your Profile Info here</textarea>
+    </p-fieldset>
 
 
   </p-panel>
@@ -19,6 +27,4 @@
 </div>
 
 
-<h1>
-  Profile: Joe Cool
-</h1>
+

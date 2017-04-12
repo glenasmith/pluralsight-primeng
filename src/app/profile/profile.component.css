@@ -2,7 +2,19 @@ p-panel /deep/ .ui-panel-content {
   height: 300px;
 }
 
-.drop-message {
+p-panel img {
+  height: 260px;
+}
+
+#drop-message {
   font-size: xx-large;
-  color: lightgrey;
+  color: darkgrey;
+  background-color: lightgrey;
+  min-height: 260px;
+  border: 3px solid black;
+  text-align: center;
+}
+
+p-fieldset /deep/ label {
+  margin-top: 1em;
 }
