@@ -7,7 +7,7 @@ declare var moment: any;
 
 declare var google: any;
 
-declare var jquery: any;
+declare var jQuery: any;
 
 export enum PageNames {
   TimePage,

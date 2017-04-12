@@ -1,6 +1,6 @@
 <div class="ui-g">
 
-  <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-8" pDroppable="pic" (onDrop)="onPicDrop($event)">
+  <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-8" pDroppable="pic" (onDrop)="onPicDrop()">
 
     <img *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12 ui-md-6"/>
 
@@ -21,7 +21,7 @@
 
   <p-galleria  #galleria [images]="images" panelWidth="300" panelHeight="298" class="ui-g-12 ui-md-4" [showCaption]="true"
               (onDragStart)="onDragStart(galleria)"
-              pDraggable="pic" dragHandle=".ui-panel-images" (onImageClicked)="onImageSelected($event)"></p-galleria>
+              pDraggable="pic" dragHandle=".ui-panel-images" ></p-galleria>
 
 
 </div>
