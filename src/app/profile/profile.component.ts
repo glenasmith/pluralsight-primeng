@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Message} from "primeng/primeng";
 
 @Component({
   selector: 'at-profile',
@@ -18,6 +19,8 @@ export class ProfileComponent implements OnInit {
   private profileImage : string;
   private selectedProfile : any;
 
+  private messages: Message[] = [];
+
   constructor() { }
 
   ngOnInit() {
@@ -26,11 +29,13 @@ export class ProfileComponent implements OnInit {
   onPicDrop(evt) {
     console.log(JSON.stringify(evt));
     this.profileImage = this.selectedProfile.source;
+    this.messages.push({ severity: "info", summary: "New Profile", detail: `Changed pic to ${this.selectedProfile.alt }` });
   }
 
   onDragStart(galleria) {
     console.log(galleria);
     this.selectedProfile = this.images[galleria.activeIndex];
+    galleria.stopSlideshow();
   }
 
 

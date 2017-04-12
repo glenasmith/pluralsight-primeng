@@ -3,18 +3,35 @@ p-panel /deep/ .ui-panel-content {
 }
 
 p-panel img {
-  height: 260px;
+  width: 280px;
 }
 
 #drop-message {
   font-size: xx-large;
   color: darkgrey;
   background-color: lightgrey;
-  min-height: 260px;
+  width: 280px;
+  height: 280px;
   border: 3px solid black;
   text-align: center;
 }
 
+
+
 p-fieldset /deep/ label {
   margin-top: 1em;
 }
+
+p-fieldset /deep/ input {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+p-fieldset /deep/ textarea{
+  margin-bottom: 0.3em;
+  width: 100%;
+  height: 6em;
+  padding: 0.5em;
+}
+
+

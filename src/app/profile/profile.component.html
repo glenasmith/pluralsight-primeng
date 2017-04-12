@@ -1,6 +1,6 @@
 <div class="ui-g">
 
-  <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-7" pDroppable="pic" (onDrop)="onPicDrop($event)">
+  <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-8" pDroppable="pic" (onDrop)="onPicDrop($event)">
 
     <img *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12 ui-md-6"/>
 
@@ -10,21 +10,23 @@
 
     <p-fieldset legend="Profile Info" class="ui-g-12 ui-md-6">
       <label for="profileName">Name:</label>
-      <input id="profileName" #InputText placeholder="Your Name Here"/>
+      <input id="profileName" pInputText placeholder="Your Name Here"/>
 
       <label for="profileInfo">Details:</label>
-      <textarea id="profileInfo" pInputTextarea>Your Profile Info here</textarea>
+      <textarea id="profileInfo" pInputTextarea placeholder="Your Profile Info here"></textarea>
     </p-fieldset>
 
 
   </p-panel>
 
-  <p-galleria  #galleria [images]="images" panelWidth="300" panelHeight="298" class="ui-g-12 ui-md-5" [showCaption]="true"
+  <p-galleria  #galleria [images]="images" panelWidth="300" panelHeight="298" class="ui-g-12 ui-md-4" [showCaption]="true"
               (onDragStart)="onDragStart(galleria)"
               pDraggable="pic" dragHandle=".ui-panel-images" (onImageClicked)="onImageSelected($event)"></p-galleria>
 
 
 </div>
+
+<p-growl [value]="messages" life="3000"></p-growl>
 
 
 
