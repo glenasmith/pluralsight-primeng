@@ -144,7 +144,7 @@ export class AlltimesComponent implements OnInit {
 
   loadTimes(event: LazyLoadEvent) {
 
-    //console.log(JSON.stringify(event));
+    console.log(JSON.stringify(event));
 
     let table = this.db.table("timesheet");
 
@@ -154,6 +154,10 @@ export class AlltimesComponent implements OnInit {
     // Alternative strategies here: https://github.com/dfahlander/Dexie.js/issues/297
     if (event.filters && event.filters["project"]) {
       query = table.where("project").equals(event.filters["project"]["value"]);
+    } else if (event.globalFilter) {
+      query = table.where("project").startsWithIgnoreCase(event.globalFilter)
+                      .or("user").startsWithIgnoreCase(event.globalFilter)
+                      .or("category").startsWithIgnoreCase(event.globalFilter);
     } else {
       query = table.orderBy(event.sortField);
     }
