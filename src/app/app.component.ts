@@ -31,17 +31,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       console.log(allLinks);
 
       allLinks.removeClass("menu-selected");
-      // jQuery.each( allLinks, (nextLink) => {
-      //   console.log(nextLink);
-      //   nextLink.removeClass("menu-selected");
-      // })
-
-
-      // for (var i = 0; i < allLinks.length; i++) {
-      //   console.log(allLinks[i]);
-      //   jQuery(allLinks[i]).removeClass('menu-selected')
-      // }
-
       let selected = jQuery(event.originalEvent.target).closest('a');
       selected.addClass('menu-selected');
 
