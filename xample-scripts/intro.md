@@ -1,19 +1,40 @@
 # Intro Module
 
-
 ## Overview of PrimeNG
+
+See Google Doc
 
 ## What's in the Box
 
+See Google Doc
+
 ## Getting Setup
 
+I'm presuming your using [angular-cli](https://github.com/angular/angular-cli) - and that tool churns hard.
 
+At this moment in time, it works like this:
+
+Setup your project:
+
+    ng new agile-time
+    
+    npm install primeng --save
+    npm install font-awesome --save
+
+Edit your .angular-cli.json in your root dir to drag in the styles:
+    
+      "styles": [
+          "../node_modules/font-awesome/css/font-awesome.css",
+          "../node_modules/primeng/resources/primeng.css"
+          "styles.css",
+      ],    
+      
 
 ## Migrating Between Prime Versions (upgrading to the current version from the course version)
 
 A word on semantic versioning. Run NPM outdated to see what's changed. I'll keep the GitHub repo up to speed.
 
-
+      npm outdated
 
 ## Themes
 
@@ -38,7 +59,7 @@ The three step process of:
 
 1. Find and import the component module (sometimes more than one)
 1. Add markup to your page to invoke the component
-1. (Optionally) wire up to a backend component
+1. (Optionally) wire up to a component backing data properties or methods
 
 
       <p-panel header="Settings" class="ui-g">
@@ -139,6 +160,8 @@ But in this case, the menu is populated by a backing model:
  
     private menuItems: MenuItem[];
     
+Remember, types aren't really a thing in JavaScript, they will be compiled away. But they are awesome for developer happiness.    
+    
     this.menuItems = 
           {label: 'Dashboard', icon: 'fa-home', routerLink: ['/dashboard'] }
           {label: 'All Timesheets', icon: 'fa-calendar', routerLink: ['/alltimes'] },
@@ -148,11 +171,15 @@ But in this case, the menu is populated by a backing model:
           {label: 'Settings', icon: 'fa-sliders', routerLink: ['/settings'] }
     ]
 
-Here's an example of that icon property we mentioned earlier.
+That's an example of that icon property we mentioned earlier!
 
 
 ## Architecture Map of Agile Times - Source Code Layout
 
+Show each menu of the sample app mapping to a component in the matching directory property.
 
+Our components will be pre-created in the sample app, ready for you to add your own goodness.
+
+Be cool to have a plunker to experiment with too. TODO make one!
 
 
