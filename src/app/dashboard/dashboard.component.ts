@@ -1,6 +1,4 @@
 import {Component, OnInit, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
-import {Project} from "../project";
-import { DataService } from "../data.service";
 import {Observable} from "rxjs";
 import { UIChart } from 'primeng/primeng';
 
