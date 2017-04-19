@@ -21,7 +21,7 @@ export enum PageNames {
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css']
 })
-export class TimesheetComponent implements OnInit, AfterViewInit {
+export class TimesheetComponent  {
 
 
   private now = moment();
@@ -31,8 +31,6 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
   private dateAndMonth = this.now.format("MMMM Do, YYYY");
 
   @ViewChild('tabView') tabView : TabView;
-
-  // @ViewChild('confirmDialog') confirmDialog : ConfirmDialog;
 
   private daysForTabs = [
 
@@ -62,8 +60,6 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
   ]
 
   private displayEditDialog = false;
-
-  //private dialogPageIndex = 0;
 
   // Need to import the enum to reference in the view
   private PageNames = PageNames;
@@ -144,31 +140,9 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
 
   goToToday() {
     // in the newer versions of PrimeNG there is an activeIndex property. I might be able to bind to it from markup?
-    //this.tabView.activeIndex = moment().day();
+    this.tabView.activeIndex = moment().day() - 1;
+    this.messages.push({severity:'success', summary:'Switched to Today'});
   }
-
-  ngOnInit() {
-
-    // this.mapOptions = {
-    //
-    //   center: {lat: -33.8688, lng: 151.2093},
-    //   zoom: 5
-    // };
-
-    // http://www.mapcoordinates.net/en
-    // this.mapOverlays = [
-    //   new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
-    //   new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
-    //   new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
-    //   new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
-    // ];
-
-  }
-
-  ngAfterViewInit(): void {
-
-  }
-
 
   onMarkerClick(markerEvent) {
     console.log(markerEvent);

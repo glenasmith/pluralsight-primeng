@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
 
   onPicDrop() {
     this.profileImage = this.selectedProfile.source;
-    this.messages.push({ severity: "info", summary: "New Profile", detail: `Changed pic to ${this.selectedProfile.title }` });
+    this.messages.push({ severity: "info", summary: "New Profile", detail: `Changed picture to ${this.selectedProfile.title }` });
   }
 
   onDragStart(galleria) {
