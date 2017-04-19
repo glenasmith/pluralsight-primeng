@@ -7,16 +7,152 @@
 
 ## Getting Setup
 
+
+
 ## Migrating Between Prime Versions (upgrading to the current version from the course version)
 
-A word on semantic versioning.
-NPM outdated.
+A word on semantic versioning. Run NPM outdated to see what's changed. I'll keep the GitHub repo up to speed.
+
+
+
+## Themes
+
+Themes are build in with [good docs](https://www.primefaces.org/primeng/#/theming) based around [jQueryUI Themeroller](https://jqueryui.com/themeroller/). You can also purchase commercial themes.
+
+In this course we're using the free Bootstrap theme - but it won't look like the cliche Bootstrap site you're thinking of. 
+ 
+Themes are configured just through CSS style application in your angular-cli.json. Here's what you need to know up front (I've added font-awesome to the mix)
+
+      "styles": [
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/primeng/resources/primeng.css",
+        "../node_modules/primeng/resources/themes/bootstrap/theme.css",
+        "styles.css"
+      ],
+
+
 
 ## Your First Component: Panel
 
-## Styling YOur First Component - into the /deep/ of CSS
+The three step process of:
+
+1. Find and import the component module (sometimes more than one)
+1. Add markup to your page to invoke the component
+1. (Optionally) wire up to a backend component
+
+
+      <p-panel header="Settings" class="ui-g">
+      
+        <div class="ui-g">
+          <label for="notify" class="ui-g-12 ui-md-2">Email To Notify:</label>
+          <input id="notify" class="ui-g-12 ui-md-10" placeholder="Enter an Email Address" type="email"/>
+        </div>
+      
+        <div class="ui-g">
+          <label for="backup" class="ui-g-12 ui-md-2">Force Backup:</label>
+          <input id="backup" class="ui-g-12 ui-md-10" type="button" value="Backup System Now"/>
+        </div>
+      
+      </p-panel>
+
+
+
+## Styling Your First Component - into the /deep/ of CSS
+
+You can use /deep/ to style inside a panel (or the >>> selector which has now replaced it)
+
+    p-panel >>> .ui-panel {
+      margin-top: 1em;
+      width: 98%;
+      min-height: 300px;
+    }
+
+## Making use of Grid Systems
+
+Specify the grid using a combination of ui-g- ui-lg- ui-md- ui-sm-
+
+Drag your browser or use F12 tools to change to mobile view.
+
+     <p-panel header="Settings" class="ui-g">
+          
+            <div class="ui-g">
+              <label for="notify" class="ui-g-12 ui-md-2">Email To Notify:</label>
+              <input id="notify" class="ui-g-12 ui-md-10" placeholder="Enter an Email Address" type="email"/>
+            </div>
+          
+            <div class="ui-g">
+              <label for="backup" class="ui-g-12 ui-md-2">Force Backup:</label>
+              <input id="backup" class="ui-g-12 ui-md-10" type="button" value="Backup System Now"/>
+            </div>
+          
+          </p-panel>
+
 
 ## Making use of Font Awesome
 
-## Making use of Grid Systems
+Once you install font-awesome, you have access to a huge collection of CSS fonts. Using they is a matter of styling an element with the appropriate class:
+
+      <i class="fa fa-cloud-download"></i>
+      
+which I could style for size and color with font-size: 50px or color: red or whatever.
+
+Because I'm styling the I element, I need to add both fa and fa-cloud-download, but many Prime components support an icon element which you can specify the name of the icon `fa-cloud-download` directly. We'll see that shortly in the menu.
+
+
+## Building a Stats Component
+
+You can, of course, nest grids within grids:
+
+        <div class="ui-g">
+      
+          <label for="statistic" class="ui-g-12 ui-md-2">Uptime Stats:</label>
+          <div id="statistic" class="ui-g-12 ui-md-10 ui-g-nopad" >
+      
+            <div class="icon ui-g-5">
+              <i class="fa fa-cloud-download"></i>
+            </div>
+      
+            <div class="data ui-g-7">
+              <div class="value">20</div>
+              <div class="label">Days Uptime</div>
+            </div>
+          </div>
+      
+      
+        </div>
+
+Challenge: Make your own statistics component that makes the labels and icons configurable
+
+## Data Backed Components - The Main Menu
+
+Our p-panel isn't Data-backed, but some components are. The menu that you see in the application is a p-menu component:
+
+If you were using this component in your app, you'd first add it to your imports. 
+
+    MenuModule
+    
+Then you'd add the markup:    
+
+      <p-menu [model]="menuItems"></p-menu>
+      
+But in this case, the menu is populated by a backing model:
+ 
+    private menuItems: MenuItem[];
+    
+    this.menuItems = 
+          {label: 'Dashboard', icon: 'fa-home', routerLink: ['/dashboard'] }
+          {label: 'All Timesheets', icon: 'fa-calendar', routerLink: ['/alltimes'] },
+          {label: 'My Timesheet', icon: 'fa-clock-o', routerLink: ['/mytimes'] },
+          {label: 'My Projects', icon: 'fa-tasks', routerLink: ['/projects'] },
+          {label: 'My Profile', icon: 'fa-users', routerLink: ['/profile'] },
+          {label: 'Settings', icon: 'fa-sliders', routerLink: ['/settings'] }
+    ]
+
+Here's an example of that icon property we mentioned earlier.
+
+
+## Architecture Map of Agile Times - Source Code Layout
+
+
+
 
