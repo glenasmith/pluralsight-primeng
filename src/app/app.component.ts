@@ -53,7 +53,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       {label: 'My Timesheet', icon: 'fa-clock-o', routerLink: ['/mytimes'], command: (event) => handleSelected(event)},
       {label: 'My Projects', icon: 'fa-tasks', routerLink: ['/projects'], command: (event) => handleSelected(event)},
       {label: 'My Profile', icon: 'fa-users', routerLink: ['/profile'], command: (event) => handleSelected(event)},
-      {label: 'Settings', icon: 'fa-sliders', routerLink: ['/not-implemented']},
+      {label: 'Settings', icon: 'fa-sliders', routerLink: ['/settings'], command: (event) => handleSelected(event)},
     ]
 
     this.miniMenuItems = [];
