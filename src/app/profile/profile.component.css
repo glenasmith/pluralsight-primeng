@@ -1,4 +1,4 @@
-p-panel /deep/ .ui-panel-content {
+p-panel >>> .ui-panel-content {
   height: 300px;
 }
 
@@ -18,16 +18,16 @@ p-panel img {
 
 
 
-p-fieldset /deep/ label {
+p-fieldset >>> label {
   margin-top: 1em;
 }
 
-p-fieldset /deep/ input {
+p-fieldset >>> input {
   margin-bottom: 1em;
   width: 100%;
 }
 
-p-fieldset /deep/ textarea{
+p-fieldset >>> textarea {
   margin-bottom: 0.3em;
   width: 100%;
   height: 6em;

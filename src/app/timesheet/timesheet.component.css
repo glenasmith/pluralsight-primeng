@@ -3,7 +3,7 @@
   font-family: "Roboto";
 }
 
-.timesheet-grid /deep/ .ui-datatable {
+.timesheet-grid >>> .ui-datatable {
   margin: 1em;
 }
 
@@ -26,7 +26,7 @@ h3 {
   display: inline;
 }
 
-.tabs /deep/ li {
+.tabs >>> li {
   width: 19%;
 }
 
@@ -34,7 +34,7 @@ h3 {
   margin: 1em;
 }
 
-p-steps /deep/ .ui-steps-item {
+p-steps >>> .ui-steps-item {
   width: 25%;
 }
 
@@ -43,16 +43,16 @@ p-footer button {
   margin: 0.5em;
 }
 
-p-gmap /deep/ .gmap {
+p-gmap >>> .gmap {
   width:100%;
   height: 320px;
 }
 
 
-p-dataGrid /deep/ .ui-panel {
+p-dataGrid >>> .ui-panel {
   border: 0px;
 }
-p-dataGrid /deep/ .ui-panel-titlebar {
+p-dataGrid >>> .ui-panel-titlebar {
   font-size: smaller;
   background-color: #F15B2A !important;
   text-align: center;
@@ -60,17 +60,17 @@ p-dataGrid /deep/ .ui-panel-titlebar {
 }
 
 
-p-dataGrid /deep/ .ui-panel-content {
+p-dataGrid >>> .ui-panel-content {
   padding: 0px;
 }
 
-p-dataGrid /deep/ .ui-panel-content img {
+p-dataGrid >>> .ui-panel-content img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 150px;
 }
 
-p-schedule /deep/ .calendar {
+p-schedule >>> .calendar {
   height: 250px;
 }

@@ -26,21 +26,21 @@ p-dataTable {
   margin: 5px;
 }
 
-p-dataTable /deep/ .ui-datatable-footer {
+p-dataTable >>> .ui-datatable-footer {
   min-height: 60px;
 }
 
-p-dataTable /deep/ .ui-datatable-footer input {
+p-dataTable >>> .ui-datatable-footer input {
   margin-left: 0.5em;
   font-size: larger;
   padding: 3px;
 }
 
-p-dataTable /deep/ .selectBoxColumn {
+p-dataTable >>> .selectBoxColumn {
   width: 43px;
 }
 
 
-p-contextMenu /deep/ .ui-menuitem-active a {
+p-contextMenu >>> .ui-menuitem-active a {
   background-color: #F15B2A !important;
 }
