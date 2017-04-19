@@ -17,21 +17,20 @@ import {RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatisticComponent } from './statistic/statistic.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
-import { DataService } from './data.service';
 import { ProjectsComponent } from './projects/projects.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { AlltimesComponent } from './alltimes/alltimes.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { ProfileComponent } from './profile/profile.component';
-import { SettingsComponent } from './settings/settings.component';
 
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent },
   { path: "alltimes", component: AlltimesComponent },
-  { path: "mytimes", component: TimesheetComponent},
+  { path: "timesheet", component: TimesheetComponent},
   { path: "projects", component: ProjectsComponent},
   { path: "profile", component: ProfileComponent},
   { path: "settings", component: SettingsComponent},
@@ -90,7 +89,7 @@ const appRoutes: Routes = [
     DragDropModule,
     InputSwitchModule
   ],
-  providers: [ DataService,ConfirmationService ],
+  providers: [ ConfirmationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
