@@ -81,8 +81,8 @@ export class AlltimesComponent implements OnInit {
   }
 
   onRowSelect(rowInfo) {
-    console.log(JSON.stringify(rowInfo.data));
-    console.log(JSON.stringify(this.selectedTimes));
+    //console.log(JSON.stringify(rowInfo.data));
+    //console.log(JSON.stringify(this.selectedTimes));
   }
 
 
@@ -144,7 +144,7 @@ export class AlltimesComponent implements OnInit {
 
   loadTimes(event: LazyLoadEvent) {
 
-    console.log(JSON.stringify(event));
+    //console.log(JSON.stringify(event));
 
     let table = this.db.table("timesheet");
 
@@ -167,7 +167,7 @@ export class AlltimesComponent implements OnInit {
     };
 
     query.toArray( (nextBlockOfTimes) => {
-      console.log("Loaded times: %s", JSON.stringify(nextBlockOfTimes));
+      // console.log("Loaded times: %s", JSON.stringify(nextBlockOfTimes));
       this.allTimesheetData = nextBlockOfTimes;
     });
   }

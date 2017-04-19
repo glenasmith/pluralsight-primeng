@@ -134,7 +134,7 @@ export class TimesheetComponent implements OnInit, AfterViewInit {
   }
 
   changeTabs(event) {
-    console.log(event);
+    //console.log(event);
     let index = event.index;
     let dayOfWeek = this.daysOfWeek[index];
     let selectedDay = moment().day(dayOfWeek);
