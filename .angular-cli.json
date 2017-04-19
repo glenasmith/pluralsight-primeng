@@ -19,14 +19,14 @@
       "tsconfig": "tsconfig.json",
       "prefix": "at",
       "styles": [
-        "styles.css",
         "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/primeng/resources/primeng.css",
         "../node_modules/primeng/resources/themes/bootstrap/theme.css",
         "../node_modules/quill/dist/quill.core.css",
         "../node_modules/quill/dist/quill.snow.css",
-        "../node_modules/fullcalendar/dist/fullcalendar.css"
+        "../node_modules/fullcalendar/dist/fullcalendar.css",
+        "styles.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.js",
