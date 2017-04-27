@@ -41,13 +41,15 @@
 
   <div *ngSwitchCase="PageNames.TimePage">
     <p-schedule [events]="events" [header]="headerConfig" styleClass="calendar"
-                defaultView="agendaDay" [editable]="true" [nowIndicator]="true" [allDaySlot]="false"></p-schedule>
+                defaultView="agendaWeek" [editable]="true" [nowIndicator]="true" [allDaySlot]="false"></p-schedule>
   </div>
   <div *ngSwitchCase="PageNames.ProjectPage">
     <p-tree [value]="projectsTree" layout="horizontal" selectionMode="single" [(selection)]="selectedProject" ></p-tree>
+    <!--
     <div>
       Selected is {{ selectedProject | json }}
     </div>
+    -->
   </div>
   <div *ngSwitchCase="PageNames.PlacePage">
     <p-gmap [options]="mapOptions" [overlays]="mapOverlays" (onOverlayClick)="onMarkerClick($event)" styleClass="gmap"></p-gmap>

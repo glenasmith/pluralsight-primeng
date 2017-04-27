@@ -95,8 +95,8 @@ export class TimesheetComponent  {
   private events = [
     {
       title: 'Recent Work',
-      start: '2017-04-06 07:00:00',
-      end: '2017-04-06 08:00:00'
+      start: this.now.format(), // eg '2017-04-06 07:00:00',
+      end: this.now.add(2, 'hours').format()  // eg '2017-04-06 09:00:00'
     }
 
   ];
