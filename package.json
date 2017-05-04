@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dist": "ng build --prod --base-href https://glenasmith.github.io/pluralsight-primeng/",
+    "404": "copy dist\\index.html dist\\404.html",
     "deploy": "angular-cli-ghpages --repo=git@github.com:glenasmith/pluralsight-primeng.git"
   },
   "private": true,
