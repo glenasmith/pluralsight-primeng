@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 })
 export class AlltimesComponent implements OnInit {
 
-  private allTimesheetData = [
+  allTimesheetData = [
 
     // {user: 'Glen', project: 'Payroll App', category: 'Backend', startTime: 1000, endTime: 1700, date: 1434243},
     // {user: 'Karen', project: 'Agile Times', category: 'Frontend', startTime: 1100, endTime: 1700, date: 1434243},
@@ -19,21 +19,21 @@ export class AlltimesComponent implements OnInit {
 
   ];
 
-  //private allProjects = this.allTimesheetData.map( (ts) => { return { label: ts.project, value: ts.project }});
-  private allProjectNames = ['', 'Payroll App', 'Mobile App', 'Agile Times'];
-  private allProjects = this.allProjectNames.map((proj) => {
+  //allProjects = this.allTimesheetData.map( (ts) => { return { label: ts.project, value: ts.project }});
+  allProjectNames = ['', 'Payroll App', 'Mobile App', 'Agile Times'];
+  allProjects = this.allProjectNames.map((proj) => {
     return {label: proj, value: proj}
   });
 
-  // private selectedTime : any;
+  // selectedTime : any;
 
-  private selectedTimes: Array<any>;
+  selectedTimes: Array<any>;
 
-  private contextMenu: MenuItem[];
+  contextMenu: MenuItem[];
 
-  private db: Dexie;
+  db: Dexie;
 
-  private recordCount: number = 5;
+  recordCount: number = 5;
 
 
   constructor() {

@@ -24,32 +24,32 @@ export enum PageNames {
 export class TimesheetComponent  {
 
 
-  private now = moment();
+  now = moment();
 
-  private day = this.now.format("dddd");
+  day = this.now.format("dddd");
 
-  private dateAndMonth = this.now.format("MMMM Do, YYYY");
+  dateAndMonth = this.now.format("MMMM Do, YYYY");
 
   @ViewChild('tabView') tabView : TabView;
 
-  private daysForTabs = [
+  daysForTabs = [
 
   ]
 
-  private daysOfWeek = [
+  daysOfWeek = [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
   ]
 
-  private projectNames = [
+  projectNames = [
     "Agile Times", "Payroll App", "Point of Sale App", "Mobile App"
   ]
 
-  private taskCategory = [
+  taskCategory = [
     "Frontend", "Backend", "Operations", "Planning", "Requirements"
   ]
 
 
-  private userTimeData = [
+  userTimeData = [
 
     { day: "Monday", startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: "Frontend" },
     { day: "Tuesday", startTime: '9:00', endTime: '17:00', project: 'Payroll App', category: "Backend" },
@@ -59,40 +59,40 @@ export class TimesheetComponent  {
 
   ]
 
-  private displayEditDialog = false;
+  displayEditDialog = false;
 
   // Need to import the enum to reference in the view
-  private PageNames = PageNames;
+  PageNames = PageNames;
 
-  private dialogPageIndex : PageNames = PageNames.TimePage;
+  dialogPageIndex : PageNames = PageNames.TimePage;
 
-  private dialogPages: MenuItem[] = [
+  dialogPages: MenuItem[] = [
     {label: "Time"},
     {label: "Project"},
     {label: "Place"},
     {label: "People"}
   ];
 
-  private projectsTree : TreeNode[] = SampleProjectsData.projects;
+  projectsTree : TreeNode[] = SampleProjectsData.projects;
 
-  private selectedProject : TreeNode;
+  selectedProject : TreeNode;
 
-  private mapOptions = {
+  mapOptions = {
 
     center: {lat: -33.8688, lng: 151.2093},
     zoom: 5
   };
 
-  private mapOverlays = [
+  mapOverlays = [
     new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
     new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
     new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
     new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
   ];
 
-  private people = SamplePeopleData.people;
+  people = SamplePeopleData.people;
 
-  private events = [
+  events = [
     {
       title: 'Recent Work',
       start: this.now.format(), // eg '2017-04-06 07:00:00',
@@ -101,13 +101,13 @@ export class TimesheetComponent  {
 
   ];
 
-  private headerConfig = {
+  headerConfig = {
     left: 'prev,next today',
     center: 'title',
     right: 'month,agendaWeek,agendaDay'
   };
 
-  private messages: Message[] = [];
+  messages: Message[] = [];
 
   getTimesForDay(dayIndex) {
     //console.log(`Filtering for ${dayIndex}`);

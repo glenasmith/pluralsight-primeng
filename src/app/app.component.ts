@@ -12,8 +12,8 @@ declare var jQuery :any;
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  private menuItems: MenuItem[];
-  private miniMenuItems: MenuItem[];
+  menuItems: MenuItem[];
+  miniMenuItems: MenuItem[];
 
   @ViewChild('bigMenu') bigMenu : Menu;
   @ViewChild('smallMenu') smallMenu : Menu;

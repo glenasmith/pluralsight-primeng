@@ -8,11 +8,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class ProjectsComponent implements OnInit {
 
-  private projectForm : FormGroup;
+  projectForm : FormGroup;
 
-  private minProjectDate = new Date();
+  minProjectDate = new Date();
 
-  private allDevs =[
+  allDevs =[
 
     { label: 'Jill', value: 'Jill Cool'},
     { label: 'Joe', value: 'Joe Cool'},

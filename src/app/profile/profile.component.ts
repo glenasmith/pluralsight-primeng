@@ -8,7 +8,7 @@ import {Message} from "primeng/primeng";
 })
 export class ProfileComponent implements OnInit {
 
-  private images = [
+  images = [
     {source: "http://i.pravatar.cc/300?u=Anne", title: "Anne"},
     {source: "http://i.pravatar.cc/300?u=Kerri", title: "Kerri"},
     {source: "http://i.pravatar.cc/300?u=Mary", title: "Mary"},
@@ -18,9 +18,9 @@ export class ProfileComponent implements OnInit {
 
   profileImage : string;
 
-  private selectedProfile : any;
+  selectedProfile : any;
 
-  private messages: Message[] = [];
+  messages: Message[] = [];
 
   constructor() { }
 

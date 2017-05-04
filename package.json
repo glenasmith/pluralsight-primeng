@@ -8,7 +8,9 @@
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dist": "ng build --prod --base-href https://glenasmith.github.io/pluralsight-primeng/",
+    "deploy": "angular-cli-ghpages --repo=git@github.com:glenasmith/pluralsight-primeng.git"
   },
   "private": true,
   "dependencies": {

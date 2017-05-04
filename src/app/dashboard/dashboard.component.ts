@@ -38,16 +38,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     return customColours;
   }
 
-  private chartData = [300, 50, 100, 70, 500,
+  chartData = [300, 50, 100, 70, 500,
     300, 50, 100, 70, 500,
     300, 50, 100, 70, 500,
     300, 50, 100, 70, 500,
     300, 50, 100, 70, 500
   ];
 
-  private chartData2 = this.chartData.map((data) => data * Math.random());
+  chartData2 = this.chartData.map((data) => data * Math.random());
 
-  private hoursByTeam = [
+  hoursByTeam = [
 
     {
       name: 'Dev Team',
@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ]
 
 
-  // private hoursByTeamChartData = {
+  // hoursByTeamChartData = {
   //   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
   //   datasets: [
   //     {
@@ -102,7 +102,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //   ]
   // }
 
-  private onMixedClick(event) {
+  onMixedClick(event) {
 
 
     let labelClicked = this.hoursByTeamChartMixedData.datasets[event.element._datasetIndex].label;
@@ -136,9 +136,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   }
 
-  private hoursByTeamChartData = this.tranformHoursByTeamDataIntoChartData(this.hoursByTeam);
+  hoursByTeamChartData = this.tranformHoursByTeamDataIntoChartData(this.hoursByTeam);
 
-  private hoursByTeamChartMixedData : any;
+  hoursByTeamChartMixedData : any;
   // {
   //
   //   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -160,17 +160,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   //   ]
   // }
 
-  private hoursByProject = [
+  hoursByProject = [
     {id: 1, name: 'Payroll App', hoursSpent: 8},
     {id: 2, name: 'Agile Times App', hoursSpent: 16},
     {id: 3, name: 'Point of Sale App', hoursSpent: 24},
   ]
 
-  private pieData = this.hoursByProject.map((proj) => proj.hoursSpent);
-  private pieLabels = this.hoursByProject.map((proj) => proj.name);
-  private pieColors = this.configureDefaultColours(this.pieData);
+  pieData = this.hoursByProject.map((proj) => proj.hoursSpent);
+  pieLabels = this.hoursByProject.map((proj) => proj.name);
+  pieColors = this.configureDefaultColours(this.pieData);
 
-  private hoursByProjectChartData = {
+  hoursByProjectChartData = {
     labels: this.pieLabels,
     datasets: [
       {
@@ -180,7 +180,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     ]
   };
 
-  private chartOptions = {
+  chartOptions = {
     title: {
       display: true,
       text: 'Hours By Project'
