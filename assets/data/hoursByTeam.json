@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Dev Team",
+        "monthlyHours": {
+            "Jan": 65,
+            "Feb": 59,
+            "Mar": 80,
+            "Apr": 55,
+            "May": 67,
+            "Jun": 73
+        }
+    },
+    {
+        "name": "Ops Team",
+        "monthlyHours": {
+            "Jan": 44,
+            "Feb": 63,
+            "Mar": 57,
+            "Apr": 90,
+            "May": 77,
+            "Jun": 70
+        }
+    },
+    {
+        "name": "Management Team",
+        "monthlyHours": {
+            "Jan": 8,
+            "Feb": 12,
+            "Mar": 31,
+            "Apr": 20,
+            "May": 16,
+            "Jun": 11
+        }
+    }
+]

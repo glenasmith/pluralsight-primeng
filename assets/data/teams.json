@@ -1,0 +1,22 @@
+[
+  {
+    "id": 301,
+    "name": "Front End Developers",
+    "budgetHours" : 4000,
+    "hoursSpent": 2600,
+    "people": [
+
+    ]
+  },
+  {
+    "id": 302,
+    "name": "Back End Developers",
+    "budgetHours" : 6000,
+    "hoursSpent": 3700,
+    "people": [
+
+    ]
+  }
+]
+
+
