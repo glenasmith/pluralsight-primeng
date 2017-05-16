@@ -65,6 +65,6 @@
   }
 
   #minigutter {
-    display: none;
+    display: block;
   }
 }
