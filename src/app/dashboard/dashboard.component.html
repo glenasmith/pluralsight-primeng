@@ -1,41 +1,17 @@
-
 <div class="ui-g">
 
 
-  <at-statistic label="My Hours" value="132" icon="fa-clock-o" colour="#00ACAC"
-                class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
+  <at-statistic label="My Hours" value="132" icon="fa-clock-o" colour="#00ACAC" class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
 
 
-  <at-statistic label="Stories" value="35" icon="fa-users" colour="#2F8EE5"
-                class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
+  <at-statistic label="Stories" value="35" icon="fa-users" colour="#2F8EE5" class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
 
 
-  <at-statistic label="Remaining" value="23" icon="fa-hourglass-half" colour="#6C76AF"
-                class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
+  <at-statistic label="Remaining" value="23" icon="fa-hourglass-half" colour="#6C76AF" class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
 
 
-  <at-statistic label="Sprints" value="4" icon="fa-area-chart" colour="#EFA64C"
-                class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
+  <at-statistic label="Sprints" value="4" icon="fa-area-chart" colour="#EFA64C" class="ui-g-12 ui-md-6 ui-lg-3"></at-statistic>
 
-
-</div>
-
-<div class="ui-g">
-
-  <p-panel header="Personal Hours By Project" class="ui-g-12 ui-md-6">
-
-    <p-dataTable [value]="hoursByProject">
-      <p-column field="name" header="Project"></p-column>
-      <p-column field="hoursSpent" header="Hours Spent This Week"></p-column>
-    </p-dataTable>
-
-  </p-panel>
-
-  <p-panel header="Hours By Team (Realtime)" class="ui-g-12 ui-md-6">
-    <p-chart type="bar" [data]="hoursByTeamChartMixedData" #mixedChart
-    (onDataSelect)="onMixedClick($event)" [options]="chartOptions"
-    ></p-chart>
-  </p-panel>
 
 </div>
 
@@ -44,23 +20,39 @@
 
 <div class="ui-g">
 
-  <p-panel header="Hours By Team (Mixed)" class="ui-g-12 ui-lg-6">
-    <p-chart type="bar" [data]="hoursByTeamChartMixedData" #mixedChart
-    (onDataSelect)="onMixedClick($event)" [options]="chartOptions"
-    ></p-chart>
+  <p-panel header="Hours By Project (pie)" class="ui-g-12 ui-md-6">
+    <p-chart type="pie" [data]="hoursByProjectChartData"
+    [options]="chartOptions"></p-chart>
   </p-panel>
 
-  <p-panel header="Hours By Team (Bar)" class="ui-g-12 ui-lg-6">
+  <p-panel header="Hours By Project (doughnut)" class="ui-g-12 ui-md-6">
+    <p-chart type="doughnut" [data]="hoursByProjectChartData"></p-chart>
+  </p-panel>
+
+</div>
+
+<div class="ui-g">
+
+  <p-panel header="Hours By Team (bar)" class="ui-g-12 ui-md-6">
     <p-chart type="bar" [data]="hoursByTeamChartData"></p-chart>
   </p-panel>
 
-  <p-panel header="Hours By Project" class="ui-g-12 ui-lg-6">
-    <p-chart type="doughnut" [data]="hoursByProjectChartData" [options]="chartOptions"
-             (onDataSelect)="onDataSelect($event)"></p-chart>
+  <p-panel header="Hours By Team (line)" class="ui-g-12 ui-md-6">
+    <p-chart type="line" [data]="hoursByTeamChartData"></p-chart>
   </p-panel>
 
-  <p-panel header="Hours By Project" class="ui-g-12 ui-lg-6">
-    <p-chart type="polarArea" [data]="hoursByProjectChartData"></p-chart>
+</div>
+
+<div class="ui-g">
+
+  <p-panel header="Hours By Team (radar)" class="ui-g-12 ui-md-6">
+    <p-chart height="150" type="radar" [data]="hoursByTeamChartData"></p-chart>
+  </p-panel>
+
+  <p-panel header="Hours By Team (mixed)" class="ui-g-12 ui-md-6">
+    <p-chart #mixedChart type="bar" [data]="hoursByTeamChartDataMixed"
+        (onDataSelect)="onDataSelect($event)"
+    ></p-chart>
   </p-panel>
 
 </div>
