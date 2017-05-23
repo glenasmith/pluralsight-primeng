@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { Observable } from "rxjs";
-import { UIChart } from 'primeng/primeng';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { UIChart } from "primeng/primeng";
+import { Observable } from "rxjs/Observable";
 
 const DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
- '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E',
- '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC',
- '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
+  '#3B3EAC', '#0099C6', '#DD4477', '#66AA00', '#B82E2E',
+  '#316395', '#994499', '#22AA99', '#AAAA11', '#6633CC',
+  '#E67300', '#8B0707', '#329262', '#5574A6', '#3B3EAC']
 
 
 @Component({
@@ -15,71 +15,13 @@ const DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
 })
 export class DashboardComponent implements AfterViewInit {
 
-  @ViewChild("mixedChart") mixedChart : UIChart;
+  @ViewChild("mixedChart") mixedChart: UIChart;
 
   hoursByProject = [
     { id: 1, name: 'Payroll App', hoursSpent: 8 },
     { id: 2, name: 'Agile Times App', hoursSpent: 16 },
     { id: 3, name: 'Point of Sale App', hoursSpent: 24 },
   ]
-
-  hoursByProjectChartData = {
-    labels: ['Payroll App', 'Agile Times App', 'Point of Sale App'],
-    datasets: [
-      {
-        data: [8, 16, 24],
-        backgroundColor: ['#3366CC', '#DC3912', '#FF9900']
-      }
-    ]
-  }
-
-  hoursByTeamChartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    datasets: [
-      {
-        label: 'Dev Team',
-        backgroundColor: DEFAULT_COLORS[0],
-        data: [65, 59, 80, 55, 67, 73],
-      },
-      { 
-        label: 'Ops Team',
-        backgroundColor: DEFAULT_COLORS[1],
-        data: [44, 63, 57, 90, 77, 70]
-      }
-    ]
-  }
-
-  hoursByTeamChartDataMixed = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    datasets: [
-      {
-        type: 'bar',
-        label: 'Dev Team',
-        backgroundColor: DEFAULT_COLORS[0],
-        data: [65, 59, 80, 55, 67, 73],
-      },
-      { 
-        type: 'line',
-        label: 'Ops Team',
-        backgroundColor: DEFAULT_COLORS[1],
-        data: [44, 63, 57, 90, 77, 70]
-      }
-    ]
-  }
-
-
-
-  pieData = this.hoursByProject.map((proj) => proj.hoursSpent);
-  pieLabels = this.hoursByProject.map((proj) => proj.name);
-
-  // hoursByProjectChartData = {
-  //   labels: this.pieLabels,
-  //   datasets: [
-  //     {
-  //       data: this.pieData,
-  //     }
-  //   ]
-  // };
 
   chartOptions = {
     title: {
@@ -89,38 +31,104 @@ export class DashboardComponent implements AfterViewInit {
     legend: {
       position: 'bottom'
     },
+  };
+
+  pieLabels = this.hoursByProject.map((proj) => proj.name);
+
+  pieData = this.hoursByProject.map((proj) => proj.hoursSpent);
+
+  pieColors = this.configureDefaultColours(this.pieData);
+
+
+  private configureDefaultColours(data: number[]): string[] {
+    let customColours = []
+    if (data.length) {
+
+      customColours = data.map((element, idx) => {
+        return DEFAULT_COLORS[idx % DEFAULT_COLORS.length];
+      });
+    }
+
+    return customColours;
+  }
+
+
+
+  hoursByProjectChartData = {
+    labels: this.pieLabels,
+    datasets: [
+      {
+        data: this.pieData,
+        backgroundColor: this.pieColors
+      }
+    ]
+  }
+
+
+  hoursByTeamChartData = {
+
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Dev Team',
+        backgroundColor: DEFAULT_COLORS[0],
+        data: [65, 59, 80, 55, 67, 73]
+      },
+      {
+        label: 'Ops Team',
+        backgroundColor: DEFAULT_COLORS[1],
+        data: [44, 63, 57, 90, 77, 70]
+      }
+    ]
+
+  }
+
+  hoursByTeamChartDataMixed = {
+
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Dev Team',
+        type: 'bar',
+        backgroundColor: DEFAULT_COLORS[0],
+        data: [65, 59, 80, 55, 67, 73]
+      },
+      {
+        label: 'Ops Team',
+        type: 'line',
+        backgroundColor: DEFAULT_COLORS[1],
+        data: [44, 63, 57, 90, 77, 70]
+      }
+    ]
+
   }
 
   onDataSelect(event) {
-   
-    let dataItemIndex = event.element._index
+
     let dataSetIndex = event.element._datasetIndex;
+    let dataItemIndex = event.element._index;
 
     let labelClicked = this.hoursByTeamChartDataMixed.datasets[dataSetIndex].label;
     let valueClicked = this.hoursByTeamChartDataMixed.datasets[dataSetIndex].data[dataItemIndex];
 
     alert(`Looks like ${labelClicked} worked ${valueClicked} hours`);
-    
-    //event.dataset = Selected dataset
-    //event.element = Selected element
-    //event.element._datasetIndex = Which dataset series was clicked on - ie. which array was clicked (0 indexed)
-    //event.element_index = Which element within that array was clicked (0 indexed)
   }
+
 
   ngAfterViewInit() {
+    Observable.interval(3000).timeInterval().subscribe(() => {
 
-      Observable.interval(3000).timeInterval().subscribe(() => {
+      var hoursByTeam = this.hoursByTeamChartDataMixed.datasets;
+      var randomised = hoursByTeam.map((dataset) => {
 
-          var hoursByTeam = this.hoursByTeamChartDataMixed.datasets;
-          var randomised = hoursByTeam.map( (dataset) => {
+        dataset.data = dataset.data.map((hours) => hours * (Math.random() * 2));
 
-            dataset.data = dataset.data.map( (hours) => hours * (Math.random() * 2) );
-
-          });
-          this.mixedChart.refresh();
       });
-
+      this.mixedChart.refresh();
+    });
 
   }
+
+
 
 }
