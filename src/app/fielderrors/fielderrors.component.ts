@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'at-fielderrors',
@@ -8,18 +8,17 @@ import {FormGroup} from "@angular/forms";
 })
 export class FielderrorsComponent implements OnInit {
 
-  @Input("form") form : FormGroup;
+  @Input("form") form: FormGroup;
   @Input("field") fieldName: string;
-  @Input("nicename") niceName : string;
+  @Input("nicename") niceName: string;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  fieldErrors(field : string) {
+  fieldErrors(field: string) {
     let controlState = this.form.controls[field];
-    return  (controlState.errors && controlState.dirty) ? controlState.errors : null;
+    return (controlState.dirty && controlState.errors) ? controlState.errors : null;
   }
 
 
