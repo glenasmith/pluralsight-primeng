@@ -25,22 +25,18 @@
         "../node_modules/primeng/resources/themes/bootstrap/theme.css",
         "../node_modules/quill/dist/quill.core.css",
         "../node_modules/quill/dist/quill.snow.css",
-        "../node_modules/fullcalendar/dist/fullcalendar.css",
         "styles.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.js",
-        "../node_modules/quill/dist/quill.js",
-        "../node_modules/moment/min/moment.min.js",
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/fullcalendar/dist/fullcalendar.js"
+        "../node_modules/quill/dist/quill.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
-
     }
   ],
   "e2e": {

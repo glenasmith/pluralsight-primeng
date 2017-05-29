@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
+
 @Component({
   selector: 'at-projects',
   templateUrl: './projects.component.html',
@@ -22,10 +23,9 @@ export class ProjectsComponent implements OnInit {
     { label: 'Karen', value: 'Karen Phillips' },
     { label: 'Chris', value: 'Chris Hampton' },
     { label: 'Si', value: 'Si Chew' },
-    { label: 'Terri', value: 'Terri Brown' }
+    { label: 'Terri', value: 'Terri Smith' }
 
   ]
-
 
 
   constructor(private fb: FormBuilder) { }
@@ -39,20 +39,21 @@ export class ProjectsComponent implements OnInit {
       selectedDevs: [[]],
       rating: [3]
     })
+
   }
 
   hasFormErrors() {
     return !this.projectForm.valid;
   }
 
-  fieldErrors(field: string) {
-    let controlState = this.projectForm.controls[field];
-    return (controlState.dirty && controlState.errors) ? controlState.errors : null;
-  }
-
   onSubmit() {
     alert(JSON.stringify(this.projectForm.value));
   }
+
+
+
+
+
 
 
 

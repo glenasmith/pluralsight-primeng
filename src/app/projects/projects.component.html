@@ -1,20 +1,18 @@
-<form [formGroup]="projectForm" class="ui-g" (ngSubmit)="onSubmit()">
-
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="ui-g">
     <p-panel header="Add Project" class="ui-g-12">
 
         <div class="ui-g">
 
             <label for="projectId" class="ui-g-12 ui-md-2">Project Id*</label>
 
-            <p-inputMask mask="aaa-999" id="projectId" formControlName="projectId" placeholder="ABC-123" slotChar="?" class="ui-g-12
-            ui-md-5"></p-inputMask>
+            <p-inputMask mask="aaa-999" id="projectId" formControlName="projectId" placeholder="ABC-123" slotChar="?" class="ui-g-12 ui-md-5"></p-inputMask>
 
             <div class="ui-g-12 ui-md-5">
 
                 <at-fielderrors [form]="projectForm" field="projectId" nicename="Project ID"> </at-fielderrors>
 
-            </div>
 
+            </div>
         </div>
 
         <div class="ui-g">
@@ -28,8 +26,7 @@
 
         <div class="ui-g">
             <label for="startDate" class="ui-g-12 ui-md-2">Start Date</label>
-            <p-calendar [showIcon]="true" id="startDate" [minDate]="minProjectDate" formControlName="startDate" dateFormat="dd/mm/yy"
-                class="ui-g-12 ui-md-5"></p-calendar>
+            <p-calendar [showIcon]="true" id="startDate" formControlName="startDate" dateFormat="dd/mm/yy" class="ui-g-12 ui-md-5" [minDate]="minProjectDate"></p-calendar>
             <div class="ui-g-12 ui-md-5">
 
                 <at-fielderrors [form]="projectForm" field="startDate" nicename="Start Date"> </at-fielderrors>
@@ -39,33 +36,38 @@
 
         <div class="ui-g">
             <p-fieldset legend="Project Type" class="ui-g-12" [toggleable]="true" [collapsed]="false">
+
                 <p-radioButton name="projGroup" label="Front End" value="F" formControlName="projectType"></p-radioButton>
                 <p-radioButton name="projGroup" label="Backend End" value="B" formControlName="projectType"></p-radioButton>
                 <p-radioButton name="projGroup" label="Operations" value="O" formControlName="projectType"></p-radioButton>
+
             </p-fieldset>
         </div>
 
         <div class="ui-g">
             <label for="devs" class="ui-g-12 ui-md-2">Assigned Devs</label>
-            <p-listbox id="devs" [options]="allDevs" [multiple]="true" [filter]="true"
-            formControlName="selectedDevs" class="ui-g-12 ui-md-10">
+            <p-listbox id="devs" [options]="allDevs" [multiple]="true" [filter]="true" formControlName="selectedDevs" class="ui-g-12 ui-md-10">
                 <ng-template let-dev pTemplate="item">
                     <img src="http://i.pravatar.cc/100?u={{dev.label}}" class="avatar" />
                     <span class="devName">{{dev.value}}</span>
                 </ng-template>
             </p-listbox>
+
+
         </div>
 
         <div class="ui-g">
-            <label for="rating" id="ratingLabel" class="ui-g-12 ui-md-2">Project Coolness</label>
-
+            <label id="ratingLabel" for="rating" class="ui-g-12 ui-md-2">Project Coolness</label>
             <p-rating id="rating" formControlName="rating" class="ui-g-12 ui-md-5" [cancel]="false"></p-rating>
             <pre class="ui-g-12 ui-md-5">{{ projectForm.getRawValue() | json }}</pre>
+
         </div>
 
-        <button type="submit" [disabled]="hasFormErrors()" pButton icon="fa-floppy-o" label="Save"></button>
+
+
+
+
+        <button pButton type="submit" [disabled]="hasFormErrors()" label="Save" icon="fa-floppy-o"></button>
+
     </p-panel>
-
-
-
 </form>

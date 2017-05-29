@@ -12,14 +12,16 @@ export class FielderrorsComponent implements OnInit {
   @Input("field") fieldName: string;
   @Input("nicename") niceName: string;
 
+
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   fieldErrors(field: string) {
     let controlState = this.form.controls[field];
     return (controlState.dirty && controlState.errors) ? controlState.errors : null;
   }
-
 
 }

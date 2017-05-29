@@ -1,6 +1,8 @@
-<div class="ui-message ui-messages-error ui-corner-all" *ngIf="fieldErrors(fieldName)">
+<div class="ui-message ui-messages-error" *ngIf="fieldErrors(fieldName)">
+
   <i class="fa fa-close"></i>
   <span *ngIf="fieldErrors(fieldName).required">{{ niceName}} is required</span>
   <span *ngIf="fieldErrors(fieldName).minlength">{{ niceName}} must be {{ fieldErrors(fieldName).minlength.requiredLength }} characters</span>
   <span *ngIf="fieldErrors(fieldName).maxlength">{{ niceName}} must not exceed {{ fieldErrors(fieldName).maxlength.requiredLength }} characters</span>
+
 </div>
