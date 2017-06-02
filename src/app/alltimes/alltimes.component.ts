@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {LazyLoadEvent, MenuItem} from "primeng/primeng";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MenuItem, DataTable, LazyLoadEvent } from "primeng/primeng";
 import Dexie from 'dexie';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
+
+const MAX_EXAMPLE_RECORDS = 1000;
 
 @Component({
   selector: 'at-alltimes',
@@ -10,33 +12,43 @@ import {Observable} from "rxjs";
 })
 export class AlltimesComponent implements OnInit {
 
-  allTimesheetData = [
-
-    // {user: 'Glen', project: 'Payroll App', category: 'Backend', startTime: 1000, endTime: 1700, date: 1434243},
-    // {user: 'Karen', project: 'Agile Times', category: 'Frontend', startTime: 1100, endTime: 1700, date: 1434243},
-    // {user: 'Si', project: 'Mobile App', category: 'Operations', startTime: 1000, endTime: 1700, date: 1434243},
-    // {user: 'Rohit', project: 'Agile Times', category: 'Backend', startTime: 800, endTime: 1700, date: 1434243},
-
-  ];
-
-  //allProjects = this.allTimesheetData.map( (ts) => { return { label: ts.project, value: ts.project }});
-  allProjectNames = ['', 'Payroll App', 'Mobile App', 'Agile Times'];
-  allProjects = this.allProjectNames.map((proj) => {
-    return {label: proj, value: proj}
-  });
-
-  // selectedTime : any;
-
-  selectedTimes: Array<any>;
-
-  contextMenu: MenuItem[];
+  @ViewChild("dt") dt : DataTable;
 
   db: Dexie;
 
-  recordCount: number = 5;
+  allTimesheetData = [
 
+    { user: 'Glen', project: 'Payroll App', category: 'Backend', startTime: 1000, endTime: 1700, date: 1434243 },
+    { user: 'Karen', project: 'Agile Times', category: 'Frontend', startTime: 900, endTime: 1700, date: 1434243 },
+    { user: 'Si', project: 'Mobile App', category: 'Operations', startTime: 1100, endTime: 1700, date: 1434243 },
+    { user: 'Rohit', project: 'Agile Times', category: 'Backend', startTime: 800, endTime: 1700, date: 1434243 },
+
+  ];
+
+  allProjectNames = ['', 'Payroll App', 'Mobile App', 'Agile Times'];
+
+  allProjects = this.allProjectNames.map((proj) => {
+    return { label: proj, value: proj }
+  });
+
+  selectedRows: Array<any>;
+
+  contextMenu: MenuItem[];
+
+  recordCount : number;
 
   constructor() {
+    // for (let x = 0; x < 5; x++) {
+    //   this.allTimesheetData = this.allTimesheetData.concat(this.allTimesheetData);
+    // }
+    this.recordCount = this.allTimesheetData.length;
+
+    this.configureDatabase();
+    this.populateDatabase();
+
+  }
+
+  private configureDatabase() {
 
     this.db = new Dexie('AgileTimes');
 
@@ -45,46 +57,18 @@ export class AlltimesComponent implements OnInit {
       timesheet: 'id,user,project,category,startTime,endTime,date'
     });
 
-    this.getRecordCount().then( (count) => { this.recordCount = count });
   }
 
-  ngOnInit() {
+   private populateDatabase() {
 
-    this.contextMenu = [
-      {label: 'Debug', icon: 'fa-bug', command: (event) => this.onDebug(this.selectedTimes)},
-      {label: 'Delete', icon: 'fa-close', command: (event) => this.onDelete(this.selectedTimes)}
-    ];
-  }
-
-  onDebug(selectedTimes: any) {
-    console.log(JSON.stringify(selectedTimes));
-  }
-
-  onDelete(selectedTimes: any) {
-    this.allTimesheetData = this.allTimesheetData.filter((row) => {
-      return !selectedTimes.includes(row);
+    this.getRecordCount().then((count) => {
+      this.recordCount = count;
+      if (!count) {
+        this.resetDatabase();
+      }
     });
 
-    let that = this;
-
-    selectedTimes.forEach((rowToDelete) => {
-      that.db.table("timesheet").delete(rowToDelete.id).then(() => {
-        that.getRecordCount();
-      })
-    })
   }
-
-  onEditComplete(editInfo) {
-    console.log("I fired the edit: %s", JSON.stringify(editInfo));
-    //alert(`You edited the ${editInfo.column.field} field. The new value is ${editInfo.data[editInfo.column.field]}`);
-    this.db.table("timesheet").update(editInfo.data["id"], editInfo.data);
-  }
-
-  onRowSelect(rowInfo) {
-    //console.log(JSON.stringify(rowInfo.data));
-    //console.log(JSON.stringify(this.selectedTimes));
-  }
-
 
   generateRandomUser(id: number) {
 
@@ -111,17 +95,19 @@ export class AlltimesComponent implements OnInit {
     return this.db.table("timesheet").count();
   }
 
-  resetDatabase() {
+   resetDatabase() {
 
     let that = this;
 
+    this.dt.loading = true;
+
     this.db.table("timesheet").clear().then(() => {
       console.log("Database Cleared");
-      Observable.range(0, 1000).do(
+      Observable.range(0, MAX_EXAMPLE_RECORDS).do(
         function (id) {
           let randomUser = that.generateRandomUser(id);
           that.db.table("timesheet").add(randomUser);
-          if (id % 10 == 0) {
+          if (id % 100 == 0) {
             that.getRecordCount().then((count) => {
               that.recordCount = count;
             })
@@ -133,12 +119,14 @@ export class AlltimesComponent implements OnInit {
         },
         function () {
           console.log("Do complete");
+          that.dt.loading = false;
+          that.dt.reset();
         }).subscribe(() => {
-        console.log("Finished Reset database");
-        that.getRecordCount().then((count) => {
-          that.recordCount = count;
-        })
-      });
+          console.log("Finished Reset database");
+          that.getRecordCount().then((count) => {
+            that.recordCount = count;
+          })
+        });
     })
   }
 
@@ -148,7 +136,7 @@ export class AlltimesComponent implements OnInit {
 
     let table = this.db.table("timesheet");
 
-    var query : any;
+    var query: any;
 
     // Dexie doesn't support ordering AND filtering, so we branch here
     // Alternative strategies here: https://github.com/dfahlander/Dexie.js/issues/297
@@ -156,25 +144,58 @@ export class AlltimesComponent implements OnInit {
       query = table.where("project").equals(event.filters["project"]["value"]);
     } else if (event.globalFilter) {
       query = table.where("project").startsWithIgnoreCase(event.globalFilter)
-                      .or("user").startsWithIgnoreCase(event.globalFilter)
-                      .or("category").startsWithIgnoreCase(event.globalFilter);
+        .or("user").startsWithIgnoreCase(event.globalFilter)
+        .or("category").startsWithIgnoreCase(event.globalFilter);
     } else {
       query = table.orderBy(event.sortField);
     }
 
     query = query
-              .offset(event.first)
-              .limit(event.rows);
+      .offset(event.first)
+      .limit(event.rows);
 
     if (event.sortOrder == -1) {
       query = query.reverse();
     };
 
-    query.toArray( (nextBlockOfTimes) => {
+    query.toArray((nextBlockOfTimes) => {
       // console.log("Loaded times: %s", JSON.stringify(nextBlockOfTimes));
       this.allTimesheetData = nextBlockOfTimes;
     });
   }
+
+
+  ngOnInit() {
+    this.contextMenu = [
+      { label: 'Debug', icon: 'fa-bug', command: (event) => this.onDebug(this.selectedRows) },
+      { label: 'Delete', icon: 'fa-close', command: (event) => this.onDelete(this.selectedRows) }
+    ];
+
+  }
+
+  onDebug(selectedRows: any) {
+    console.log(JSON.stringify(selectedRows));
+  }
+
+  onDelete(selectedRows: any) {
+    this.allTimesheetData = this.allTimesheetData.filter((row) => {
+      return !selectedRows.includes(row);
+    });
+  }
+
+
+
+  onEditComplete(editInfo) {
+    let fieldChanged = editInfo.column.field;
+    let newRowValues = editInfo.data;
+    alert(`You edited ${fieldChanged} to ${newRowValues[fieldChanged]}`);
+  }
+
+  onRowSelect(rowInfo) {
+    //console.log(JSON.stringify(rowInfo.data)); // or this.selectedRow
+  }
+
+
 
 
 }

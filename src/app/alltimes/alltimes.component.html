@@ -1,0 +1,48 @@
+<div class="alltimesheets ui-g">
+
+
+  <div class="header ui-g-12">
+
+    <h2>
+      All Timesheets
+    </h2>
+    <h3>
+      Click to edit Users and Projects
+    </h3>
+
+  </div>
+
+
+  <p-dataTable #dt [value]="allTimesheetData" class="ui-g-12" sortField="startTime" sortOrder="1" emptyMessage="No time entries found"
+    [reorderableColumns]="true" columnResizeMode="fit" [resizableColumns]="true" [globalFilter]="tableSearch" exportFilename="users"
+    [editable]="true" (onEditComplete)="onEditComplete($event)" [(selection)]="selectedRows" (onRowSelect)="onRowSelect($event)"
+    [contextMenu]="tableContextMenu" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]" [totalRecords]="recordCount"
+    [pageLinks]="8" [lazy]="true" (onLazyLoad)="loadTimes($event)">
+
+    <p-column selectionMode="multiple" styleClass="selectBoxColumn"></p-column>
+
+    <p-column field="user" header="User" [editable]="true"></p-column>
+    <p-column field="project" header="Project" [filter]="true" filterPlaceholder="Type a Project" filterMatchMode="equals" [style]="{'overflow':'visible'}"
+      [editable]="true">
+      <ng-template pTemplate="filter" let-col>
+        <p-dropdown [options]="allProjects" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)"
+          styleClass="ui-column-filter"></p-dropdown>
+      </ng-template>
+      <ng-template let-col let-project="rowData" pTemplate="editor">
+        <p-dropdown [(ngModel)]="project[col.field]" [options]="allProjects" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
+      </ng-template>
+
+    </p-column>
+    <p-column field="category" header="Category" [sortable]="true"></p-column>
+    <p-column field="startTime" header="Start Time" [sortable]="true"></p-column>
+    <p-column field="endTime" header="End Time"></p-column>
+    <p-footer>
+      <label for="tableSearch">Search: </label>
+      <input id="tableSearch" #tableSearch type="text" placeholder="Search All The Things">
+      <button type="button" pButton icon="fa-table" label="Export" (click)="dt.exportCSV()" style="float:right;"></button>
+    </p-footer>
+  </p-dataTable>
+
+  <p-contextMenu #tableContextMenu [model]="contextMenu"></p-contextMenu>
+
+</div>
