@@ -1,13 +1,11 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {ConfirmationService, ConfirmDialog, MenuItem, Message, TabView, TreeNode} from "primeng/primeng";
-import {SamplePeopleData} from "./sample.people.data";
-import {SampleProjectsData} from "./sample.projects.data";
+import { Component } from '@angular/core';
+import { MenuItem, TreeNode, ConfirmationService, Message } from "primeng/primeng";
+import { SampleProjectsData } from "app/timesheet/sample.projects.data";
+import { SamplePeopleData } from "app/timesheet/sample.people.data";
 
 declare var moment: any;
 
 declare var google: any;
-
-declare var jQuery: any;
 
 export enum PageNames {
   TimePage,
@@ -16,40 +14,15 @@ export enum PageNames {
   PeoplePage
 }
 
+
 @Component({
   selector: 'at-timesheet',
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css']
 })
-export class TimesheetComponent  {
+export class TimesheetComponent {
 
-
-  now = moment();
-
-  day = this.now.format("dddd");
-
-  dateAndMonth = this.now.format("MMMM Do, YYYY");
-
-  @ViewChild('tabView') tabView : TabView;
-
-  daysForTabs = [
-
-  ]
-
-  daysOfWeek = [
-    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
-  ]
-
-  projectNames = [
-    "Agile Times", "Payroll App", "Point of Sale App", "Mobile App"
-  ]
-
-  taskCategory = [
-    "Frontend", "Backend", "Operations", "Planning", "Requirements"
-  ]
-
-
-  userTimeData = [
+  private userTimeData = [
 
     { day: "Monday", startTime: '9:00', endTime: '17:00', project: 'Agile Times', category: "Frontend" },
     { day: "Tuesday", startTime: '9:00', endTime: '17:00', project: 'Payroll App', category: "Backend" },
@@ -59,121 +32,114 @@ export class TimesheetComponent  {
 
   ]
 
+  daysOfWeek = [
+    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+  ]
+
   displayEditDialog = false;
 
-  // Need to import the enum to reference in the view
   PageNames = PageNames;
 
-  dialogPageIndex : PageNames = PageNames.TimePage;
+  dialogPageIndex = PageNames.TimePage;
 
   dialogPages: MenuItem[] = [
-    {label: "Time"},
-    {label: "Project"},
-    {label: "Place"},
-    {label: "People"}
+    { label: "Time" },
+    { label: "Project" },
+    { label: "Place" },
+    { label: "People" }
   ];
 
-  projectsTree : TreeNode[] = SampleProjectsData.projects;
-
-  selectedProject : TreeNode;
-
-  mapOptions = {
-
-    center: {lat: -33.8688, lng: 151.2093},
-    zoom: 5
-  };
-
-  mapOverlays = [
-    new google.maps.Marker({position: {lat: -35.3075, lng: 149.124417}, title: "Canberra Office"}),
-    new google.maps.Marker({position: {lat: -33.8688, lng: 151.2093}, title: "Sydney Office"}),
-    new google.maps.Marker({position: {lat: -37.813611, lng: 144.963056}, title: "Melbourne Office"}),
-    new google.maps.Marker({position: {lat: -28.016667, lng: 153.4}, title: "Gold Coast Office"})
-  ];
-
-  people = SamplePeopleData.people;
-
-  events = [
-    {
-      title: 'Recent Work',
-      start: this.now.format(), // eg '2017-04-06 07:00:00',
-      end: this.now.add(2, 'hours').format()  // eg '2017-04-06 09:00:00'
-    }
-
-  ];
-
-  headerConfig = {
+  private headerConfig = {
     left: 'prev,next today',
     center: 'title',
     right: 'month,agendaWeek,agendaDay'
   };
 
+  private events = [
+    {
+      title: 'Recent Work',
+      start: moment().format(), // '2017-06-02 07:00:00'
+      end: moment().add(1, "hour").format()
+    }
+  ]
+
+  projectsTree: TreeNode[] = SampleProjectsData.projects;
+
+  selectedProject: TreeNode;
+
+  private mapOptions = {
+
+    center: { lat: -33.8688, lng: 151.2093 },
+    zoom: 5
+  };
+
+  private mapOverlays = [
+    new google.maps.Marker({ position: { lat: -35.3075, lng: 149.124417 }, title: "Canberra Office" }),
+    new google.maps.Marker({ position: { lat: -33.8688, lng: 151.2093 }, title: "Sydney Office" }),
+    new google.maps.Marker({ position: { lat: -37.813611, lng: 144.963056 }, title: "Melbourne Office" }),
+    new google.maps.Marker({ position: { lat: -28.016667, lng: 153.4 }, title: "Gold Coast Office" })
+  ];
+
+  people = SamplePeopleData.people;
+
+
   messages: Message[] = [];
 
-  getTimesForDay(dayIndex) {
-    //console.log(`Filtering for ${dayIndex}`);
-    return this.userTimeData.filter( entry => {
-      //console.log(`Comparing ${entry.day} with ${this.daysOfWeek[dayIndex]}`);
-       return entry.day == this.daysOfWeek[dayIndex];
+  constructor(private confirmationService: ConfirmationService) {
+
+  }
+
+  getTimesForDay(tabName: string) {
+    return this.userTimeData.filter((row) => {
+      return row.day == tabName;
     })
   }
 
+  day = "Monday";
+  dateAndMonth = moment().day(this.day).format("MMMM Do, YYYY");
 
-  constructor(private confirmationService: ConfirmationService) {
-    let now = moment();
-    this.daysOfWeek.forEach( day => {
-        this.daysForTabs.push(now.day(day).format("ddd Do"));
-    });
-  }
-
-  isSelected(tab) {
-    return ( moment().format("ddd Do") == tab);
-  }
-
-  changeTabs(event) {
-    //console.log(event);
+  onChangeTabs(event) {
     let index = event.index;
-    let dayOfWeek = this.daysOfWeek[index];
-    let selectedDay = moment().day(dayOfWeek);
-    this.day = selectedDay.format("dddd");
-    this.dateAndMonth = selectedDay.format("MMMM Do, YYYY");
+    this.day = this.daysOfWeek[index];
+    this.dateAndMonth = moment().day(this.day).format("MMMM Do, YYYY");
   }
 
-  goToToday() {
-    // in the newer versions of PrimeNG there is an activeIndex property. I might be able to bind to it from markup?
-    this.tabView.activeIndex = moment().day() - 1;
-    this.messages.push({severity:'success', summary:'Switched to Today'});
+  cancelDialog() {
+
+    this.confirmationService.confirm({
+      header: 'Cancel Time Creation',
+      message: 'Cancel all changes. Are you sure?',
+      accept: () => {
+        this.displayEditDialog = false;
+        this.messages.push({ severity: 'info', summary: 'Edits Cancelled', detail: 'No changes were saved' });
+      },
+      reject: () => {
+        this.messages.push({ severity: 'warn', summary: 'Cancelled the Cancel', detail: 'Please continue your editing' });
+        console.log("False cancel. Just keep editing.");
+      }
+    });
+
+
   }
 
   onMarkerClick(markerEvent) {
-    console.log(markerEvent);
-    console.log(`You clicked on ${markerEvent.overlay.title} at ${markerEvent.overlay.position}`);
 
-    markerEvent.map.panTo(markerEvent.overlay.position);
+    let markerTitle = markerEvent.overlay.title;
+    let markerPosition = markerEvent.overlay.position;
+
+    alert(`You clicked on ${markerTitle} at ${markerPosition}`);
+
+    markerEvent.map.panTo(markerPosition);
     markerEvent.map.setZoom(12);
-  }
 
-  addNewEntry() {
-    this.displayEditDialog = true;
   }
 
   saveNewEntry() {
     this.displayEditDialog = false;
-    this.messages.push({severity:'success', summary:'Entry Created', detail:'Your entry has been created'});
+    this.messages.push({ severity: 'success', summary: 'Entry Created', detail: 'Your entry has been created' });
   }
 
-  cancelDialog() {
-    this.confirmationService.confirm({
-      message: 'Cancel all changes. Are you sure?',
-      accept: () => {
-        this.displayEditDialog = false;
-        this.messages.push({severity:'info', summary:'Edits Cancelled', detail:'No changes were saved'});
-      },
-      reject: () => {
-        this.messages.push({severity:'warn', summary:'Cancelled the Cancel', detail:'Please continue your editing'});
-        console.log("False cancel. Just keep editing.");
-      }
-    });
-  }
+
 
 
 }

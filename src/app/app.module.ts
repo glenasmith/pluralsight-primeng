@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { MenuModule, PanelModule, ChartModule, InputTextModule, ButtonModule, InputMaskModule, InputTextareaModule, EditorModule, CalendarModule, RadioButtonModule, FieldsetModule, DropdownModule, MultiSelectModule, ListboxModule, SpinnerModule, SliderModule, RatingModule } from 'primeng/primeng';
+import { MenuModule, PanelModule, ChartModule, InputTextModule, ButtonModule, InputMaskModule, InputTextareaModule, EditorModule, CalendarModule, RadioButtonModule, FieldsetModule, DropdownModule, MultiSelectModule, ListboxModule, SpinnerModule, SliderModule, RatingModule, DataTableModule, ContextMenuModule, TabViewModule, DialogModule, StepsModule, ScheduleModule, TreeModule, GMapModule, DataGridModule, TooltipModule, ConfirmationService, ConfirmDialogModule, GrowlModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
@@ -16,7 +16,6 @@ import { SettingsComponent } from './settings/settings.component';
 
 import { AlltimesComponent } from './alltimes/alltimes.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { DelmeComponent } from './delme/delme.component';
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 
 
@@ -65,9 +64,21 @@ const appRoutes: Routes = [
     ListboxModule,
     SpinnerModule,
     SliderModule,
-    RatingModule
+    RatingModule,
+    DataTableModule,
+    ContextMenuModule,
+    TabViewModule,
+    DialogModule,
+    StepsModule,
+    ScheduleModule,
+    TreeModule,
+    GMapModule,
+    DataGridModule,
+    TooltipModule,
+    ConfirmDialogModule,
+    GrowlModule
   ],
-  providers: [  ],
+  providers: [ ConfirmationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
