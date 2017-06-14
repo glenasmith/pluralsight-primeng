@@ -17,7 +17,7 @@ describe('ProfileComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ProfileComponent ],
       imports: [ GrowlModule, GalleriaModule, DragDropModule,
-                  PanelModule, FieldsetModule, NoopAnimationsModule ]
+                  PanelModule, NoopAnimationsModule ]
     })
     .compileComponents();
   }));

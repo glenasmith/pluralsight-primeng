@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Message} from "primeng/primeng";
+import { Message, Galleria } from "primeng/primeng";
 
 @Component({
   selector: 'at-profile',
@@ -33,7 +33,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onDragStart(galleria) {
-    console.log(galleria);
     this.selectedProfile = this.images[galleria.activeIndex];
     galleria.stopSlideshow();
   }
