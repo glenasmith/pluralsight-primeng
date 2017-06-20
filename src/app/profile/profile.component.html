@@ -1,32 +1,26 @@
-<div class="ui-g">
-
-  <p-panel header="My Profile Pic" styleClass="profilePic" class="ui-g-12 ui-md-8" pDroppable="pic" (onDrop)="onPicDrop()">
-
-    <img id="profilePic" *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12 ui-md-6"/>
-
-    <ng-template #showDropDiv>
-      <span id="drop-message" class="ui-g-12 ui-md-6">Drop Your Image Here</span>
-    </ng-template>
-
-    <p-fieldset legend="Profile Info" class="ui-g-12 ui-md-6">
-      <label for="profileName">Name:</label>
-      <input id="profileName" pInputText placeholder="Your Name Here"/>
-
-      <label for="profileInfo">Details:</label>
-      <textarea id="profileInfo" pInputTextarea placeholder="Your Profile Info here"></textarea>
-    </p-fieldset>
-
-
-  </p-panel>
-
-  <p-galleria  #galleria [images]="images" panelWidth="300" panelHeight="298" class="ui-g-12 ui-md-4" [showCaption]="true"
-              (onDragStart)="onDragStart(galleria)"
-              pDraggable="pic" dragHandle=".ui-panel-images" ></p-galleria>
-
-
+<div class="profile header ui-g-12">
+    <h2>
+        Profile Info
+    </h2>
+    <h3>
+        Galleria Drag and Drop
+    </h3>
 </div>
 
-<p-growl [value]="messages" life="3000"></p-growl>
+<p-panel header="My Profile Picture" styleClass="profilePic" class="ui-g-12 ui-md-4" pDroppable="profilePic" (onDrop)="onPicDrop()">
 
+    <img id="profilePic" *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12" />
 
+    <ng-template #showDropDiv>
+        <span id="drop-message" class="ui-g-12">Drop Your Image Here</span>
+    </ng-template>
 
+</p-panel>
+
+<div class="spacer ui-g-12 ui-md-1"></div>
+
+<p-galleria #galleria [images]="images" class="ui-g-12 ui-md-7" panelWidth="300" panelHeight="298" [showCaption]="true" pDraggable="profilePic" dragHandle=".ui-panel-images" (onImageClicked)="onImageSelected($event)"
+(onDragStart)="onDragStart(galleria)">
+</p-galleria>
+
+<p-growl [value]="messages"></p-growl>

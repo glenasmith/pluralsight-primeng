@@ -2,29 +2,42 @@
   background-color: red !important;
 }
 
-p-radioButton {
-  display:block;
-  margin: .7em;
-}
-
-p-listbox >>> .ui-listbox {
-  width: 100%;
-  height: 300px;
-}
-
-.avatar {
-  float: left;
-  margin: 5px;
-  height: 50px;
-}
-
-.devName {
-  font-size: large;
-  display:inline-block;
-  margin:15px 10px 0 10px;
-  min-height: 50px;
+label {
+  margin-top: 5px;
 }
 
 button {
   margin-top: 1em;
 }
+
+p-radioButton {
+ display:block;
+ margin: .7em;
+}
+
+p-listbox >>> .ui-listbox {
+ width: 100%;
+height: 300px;
+}
+
+.avatar {
+ float: left;
+ margin: 5px;
+}
+ 
+.devName {
+ font-size: xx-large;
+ display:inline-block;
+ margin:15px 10px 0 10px;
+ min-height: 100px;
+}
+
+p-rating {
+ font-size: xx-large;
+}
+
+#ratingLabel {
+ margin-top: 20px;
+}
+
+

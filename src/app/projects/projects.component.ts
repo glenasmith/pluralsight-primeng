@@ -1,5 +1,6 @@
-import {Component, OnInit, ElementRef} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
 
 @Component({
   selector: 'at-projects',
@@ -8,51 +9,52 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class ProjectsComponent implements OnInit {
 
-  projectForm : FormGroup;
+  projectForm: FormGroup;
 
   minProjectDate = new Date();
 
-  allDevs =[
+  allDevs = [
 
-    { label: 'Jill', value: 'Jill Cool'},
-    { label: 'Joe', value: 'Joe Cool'},
-    { label: 'Mary', value: 'Mary Cool'},
-    { label: 'Susan', value: 'Susan Jones'},
-    { label: 'Phil', value: 'Phil Stephens'},
-    { label: 'Karen', value: 'Karen Phillips'},
-    { label: 'Chris', value: 'Chris Hampton'},
-    { label: 'Si', value: 'Si Chew'},
-    { label: 'Terri', value: 'Terri Brown'}
+    { label: 'Jill', value: 'Jill Cool' },
+    { label: 'Joe', value: 'Joe Cool' },
+    { label: 'Mary', value: 'Mary Cool' },
+    { label: 'Susan', value: 'Susan Jones' },
+    { label: 'Phil', value: 'Phil Stephens' },
+    { label: 'Karen', value: 'Karen Phillips' },
+    { label: 'Chris', value: 'Chris Hampton' },
+    { label: 'Si', value: 'Si Chew' },
+    { label: 'Terri', value: 'Terri Smith' }
 
   ]
 
 
-
-
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.projectForm = this.fb.group({
       projectId: ['', [Validators.required, Validators.minLength(5)]],
-      description: ['', [Validators.required, Validators.maxLength(100)]],
+      description: ['My cool project', [Validators.required, Validators.maxLength(140)]],
       startDate: [new Date(), Validators.required],
       projectType: ['B'],
-      rating: [3],
-      selectedDevs: [['Jill Cool'], Validators.required]
+      selectedDevs: [[]],
+      rating: [3]
     })
+
   }
 
   hasFormErrors() {
     return !this.projectForm.valid;
   }
 
-  fieldErrors(field : string) {
-    let controlState = this.projectForm.controls[field];
-    return  (controlState.errors && controlState.dirty) ? controlState.errors : null;
+  onSubmit() {
+    alert(JSON.stringify(this.projectForm.value));
   }
 
-  onSubmit() {
-    console.log(this.projectForm.value);
-  }
+
+
+
+
+
+
 
 }

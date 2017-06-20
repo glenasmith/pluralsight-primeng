@@ -4,13 +4,13 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
+    "404": "copy dist\\index.html dist\\404.html",
     "ng": "ng",
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dist": "ng build --prod --base-href https://glenasmith.github.io/pluralsight-primeng/",
-    "404": "copy dist\\index.html dist\\404.html",
     "deploy": "angular-cli-ghpages --repo=git@github.com:glenasmith/pluralsight-primeng.git"
   },
   "private": true,
@@ -32,7 +32,7 @@
     "jquery": "^3.2.1",
     "moment": "2.18.1",
     "primeng": "4.0.0",
-    "quill": "1.2.4",
+    "quill": "^1.2.4",
     "roboto-fontface": "^0.7.0",
     "rxjs": "5.4.0",
     "ts-helpers": "^1.1.1",

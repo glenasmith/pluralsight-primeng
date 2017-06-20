@@ -1,16 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import {
-  ChartModule, SplitButtonModule, MenuModule, PanelModule, DataTableModule,
-  RadioButtonModule, FieldsetModule, SliderModule, ListboxModule, SpinnerModule, InputTextModule,
-  InputMaskModule, ButtonModule, EditorModule, CalendarModule, RatingModule, MultiSelectModule,
-  ChipsModule, TabViewModule, DropdownModule, ContextMenuModule, DialogModule, StepsModule, GMapModule, DataGridModule,
-  ScheduleModule, TreeModule, TooltipModule, ConfirmDialogModule, ConfirmationService, GrowlModule, GalleriaModule,
-  DragDropModule, InputSwitchModule
-} from 'primeng/primeng';
+import { MenuModule, PanelModule, ChartModule, InputTextModule, ButtonModule, InputMaskModule, InputTextareaModule, EditorModule, CalendarModule, RadioButtonModule, FieldsetModule, DropdownModule, MultiSelectModule, ListboxModule, SpinnerModule, SliderModule, RatingModule, DataTableModule, ContextMenuModule, TabViewModule, DialogModule, StepsModule, ScheduleModule, TreeModule, GMapModule, DataGridModule, TooltipModule, ConfirmationService, ConfirmDialogModule, GrowlModule, DragDropModule, GalleriaModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
@@ -21,9 +14,9 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 
-import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { AlltimesComponent } from './alltimes/alltimes.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 
 
 const appRoutes: Routes = [
@@ -43,10 +36,10 @@ const appRoutes: Routes = [
     StatisticComponent,
     TimesheetComponent,
     ProjectsComponent,
-    FielderrorsComponent,
     AlltimesComponent,
     ProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    FielderrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,39 +48,37 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    ButtonModule,
-    EditorModule,
-    InputMaskModule,
-    InputTextModule,
-    SplitButtonModule,
     MenuModule,
     PanelModule,
     ChartModule,
+    InputTextModule,
+    ButtonModule,
+    InputMaskModule,
+    InputTextareaModule,
+    EditorModule,
     CalendarModule,
-    RatingModule,
-    MultiSelectModule,
-    ChipsModule,
-    DataTableModule,
-    TabViewModule,
     RadioButtonModule,
     FieldsetModule,
-    SliderModule,
+    DropdownModule,
+    MultiSelectModule,
     ListboxModule,
     SpinnerModule,
-    DropdownModule,
+    SliderModule,
+    RatingModule,
+    DataTableModule,
     ContextMenuModule,
+    TabViewModule,
     DialogModule,
     StepsModule,
-    GMapModule,
-    DataGridModule,
     ScheduleModule,
     TreeModule,
+    GMapModule,
+    DataGridModule,
     TooltipModule,
     ConfirmDialogModule,
     GrowlModule,
-    GalleriaModule,
     DragDropModule,
-    InputSwitchModule
+    GalleriaModule
   ],
   providers: [ ConfirmationService ],
   bootstrap: [AppComponent]

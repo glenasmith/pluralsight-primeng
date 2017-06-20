@@ -22,10 +22,6 @@ h3 {
   display: inline;
 }
 
-p-dataTable {
-  margin: 5px;
-}
-
 p-dataTable >>> .ui-datatable-footer {
   min-height: 60px;
 }
@@ -36,10 +32,13 @@ p-dataTable >>> .ui-datatable-footer input {
   padding: 3px;
 }
 
+p-dataTable >>> .ui-datatable-footer {
+  min-height: 60px;
+}
+
 p-dataTable >>> .selectBoxColumn {
   width: 43px;
 }
-
 
 p-contextMenu >>> .ui-menuitem-active a {
   background-color: #F15B2A !important;

@@ -30,9 +30,9 @@
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.js",
+        "../node_modules/jquery/dist/jquery.js",
         "../node_modules/quill/dist/quill.js",
         "../node_modules/moment/min/moment.min.js",
-        "../node_modules/jquery/dist/jquery.js",
         "../node_modules/fullcalendar/dist/fullcalendar.js"
       ],
       "environmentSource": "environments/environment.ts",
@@ -40,7 +40,6 @@
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
-
     }
   ],
   "e2e": {

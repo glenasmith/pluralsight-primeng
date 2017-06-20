@@ -3,10 +3,6 @@
   font-family: "Roboto";
 }
 
-.timesheet-grid >>> .ui-datatable {
-  margin: 1em;
-}
-
 .header {
   padding: 1em;
   color: white;
@@ -30,13 +26,14 @@ h3 {
   width: 19%;
 }
 
-.goToToday {
+.timesheet-grid >>> .ui-datatable {
   margin: 1em;
 }
 
-p-steps >>> .ui-steps-item {
-  width: 25%;
+p-schedule >>> .calendar {
+  height: 250px;
 }
+
 
 p-footer button {
   float: right;
@@ -48,10 +45,14 @@ p-gmap >>> .gmap {
   height: 300px;
 }
 
+p-steps >>> .ui-steps-item {
+  width: 25%;
+}
 
 p-dataGrid >>> .ui-panel {
   border: 0px;
 }
+
 p-dataGrid >>> .ui-panel-titlebar {
   font-size: smaller;
   background-color: #F15B2A !important;
@@ -71,6 +72,7 @@ p-dataGrid >>> .ui-panel-content img {
   width: 150px;
 }
 
-p-schedule >>> .calendar {
-  height: 250px;
-}
+
+
+
+
