@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message, Galleria } from "primeng/primeng";
+import { Galleria, Message } from "primeng/primeng";
 
 @Component({
   selector: 'at-profile',
@@ -8,28 +8,27 @@ import { Message, Galleria } from "primeng/primeng";
 })
 export class ProfileComponent implements OnInit {
 
+  profileImage: string;
+
   images = [
-    {source: "http://i.pravatar.cc/300?u=Anne", title: "Anne"},
-    {source: "http://i.pravatar.cc/300?u=Kerri", title: "Kerri"},
-    {source: "http://i.pravatar.cc/300?u=Mary", title: "Mary"},
-    {source: "http://i.pravatar.cc/300?u=Nancy", title: "Nancy"},
-    {source: "http://i.pravatar.cc/300?u=Peta", title: "Peta"},
+    { source: "http://i.pravatar.cc/300?u=Anne", title: "Anne" },
+    { source: "http://i.pravatar.cc/300?u=Kerri", title: "Kerri" },
+    { source: "http://i.pravatar.cc/300?u=Mary", title: "Mary" },
+    { source: "http://i.pravatar.cc/300?u=Nancy", title: "Nancy" },
+    { source: "http://i.pravatar.cc/300?u=Peta", title: "Peta" },
   ]
 
-  profileImage : string;
+  selectedProfile: any;
 
-  selectedProfile : any;
-
-  messages: Message[] = [];
+  messages : Message[] = [];
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onPicDrop() {
-    this.profileImage = this.selectedProfile.source;
-    this.messages.push({ severity: "info", summary: "New Profile", detail: `Changed picture to ${this.selectedProfile.title }` });
+  onImageSelected(event) {
+    console.log(JSON.stringify(event));
   }
 
   onDragStart(galleria) {
@@ -37,10 +36,11 @@ export class ProfileComponent implements OnInit {
     galleria.stopSlideshow();
   }
 
-
-  onImageSelected(evt) {
-    console.log(JSON.stringify(evt));
-    console.log(evt.image);
+  onPicDrop() {
+    this.profileImage = this.selectedProfile.source;
+    this.messages.push({ severity: "info", summary: "New Profile", detail: `Changed pic to ${this.selectedProfile.title}` });
   }
+
+
 
 }
