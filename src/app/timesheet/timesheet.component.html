@@ -24,48 +24,54 @@
 <button pButton label="Add Time Entry" (click)="displayEditDialog = true"></button>
 
 
-<p-dialog header="Create Time" [modal]="true" [(visible)]="displayEditDialog" [ngSwitch]="dialogPageIndex" width="700" height="550">
+<p-dialog header="Create Time" [modal]="true" [(visible)]="displayEditDialog" [ngSwitch]="dialogPageIndex" width="700"
+          height="550">
 
-  <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false">
+  <div class="dialogBody">
+    <p-steps [model]="dialogPages" [(activeIndex)]="dialogPageIndex" [readonly]="false">
 
-  </p-steps>
+    </p-steps>
 
-  <div *ngSwitchCase="PageNames.TimePage">
+    <div *ngSwitchCase="PageNames.TimePage">
 
-    <p-schedule [events]="events" [header]="headerConfig" styleClass="calendar" defaultView="agendaWeek" [editable]="true" [nowIndicator]="true"
-      [allDaySlot]="false">
+      <p-schedule [events]="events" [header]="headerConfig" styleClass="calendar" defaultView="agendaWeek"
+                  [editable]="true" [nowIndicator]="true"
+                  [allDaySlot]="false">
 
-    </p-schedule>
+      </p-schedule>
 
-  </div>
-  <div *ngSwitchCase="PageNames.ProjectPage">
+    </div>
+    <div *ngSwitchCase="PageNames.ProjectPage">
 
-    <p-tree [value]="projectsTree" layout="horizontal" selectionMode="single" [(selection)]="selectedProject"></p-tree>
+      <p-tree [value]="projectsTree" layout="horizontal" selectionMode="single"
+              [(selection)]="selectedProject"></p-tree>
 
-  </div>
-  <div *ngSwitchCase="PageNames.PlacePage">
+    </div>
+    <div *ngSwitchCase="PageNames.PlacePage">
 
-    <p-gmap [options]="mapOptions" [overlays]="mapOverlays" styleClass="gmap" (onOverlayClick)="onMarkerClick($event)"></p-gmap>
+      <p-gmap [options]="mapOptions" [overlays]="mapOverlays" styleClass="gmap"
+              (onOverlayClick)="onMarkerClick($event)"></p-gmap>
 
-  </div>
-  <div *ngSwitchCase="PageNames.PeoplePage">
+    </div>
+    <div *ngSwitchCase="PageNames.PeoplePage">
 
-    <p-dataGrid [value]="people" [paginator]="true" [rows]="4">
-      <ng-template let-person pTemplate="item">
-        <p-panel header="{{person.firstName}} {{person.lastName}}" class="ui-g-12 ui-md-3">
-          <img [src]="person.avatar" [pTooltip]="person.email" tooltipPosition="bottom" />
-        </p-panel>
-      </ng-template>
-    </p-dataGrid>
+      <p-dataGrid [value]="people" [paginator]="true" [rows]="4">
+        <ng-template let-person pTemplate="item">
+          <p-panel header="{{person.firstName}} {{person.lastName}}" class="ui-g-12 ui-md-3">
+            <img [src]="person.avatar" [pTooltip]="person.email" tooltipPosition="bottom"/>
+          </p-panel>
+        </ng-template>
+      </p-dataGrid>
 
+    </div>
   </div>
 
 
   <p-footer>
-    <button pButton label="Cancel" icon="fa-times" (click)="cancelDialog()" class="ui-button-secondary"></button>
     <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()"></button>
-
+    <button pButton label="Cancel" icon="fa-times" (click)="cancelDialog()" class="ui-button-secondary"></button>
   </p-footer>
+  
 </p-dialog>
 
 
@@ -73,7 +79,8 @@
 
   <p-footer>
     <button type="button" pButton icon="fa-close" label="No, go back" (click)="confirmDialog.reject()"></button>
-    <button type="button" pButton icon="fa-check" label="Yes, lose changes" (click)="confirmDialog.accept() && confirmDialog.hide()"></button>
+    <button type="button" pButton icon="fa-check" label="Yes, lose changes"
+            (click)="confirmDialog.accept() && confirmDialog.hide()"></button>
   </p-footer>
 
 

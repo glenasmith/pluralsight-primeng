@@ -10,6 +10,10 @@
   margin-bottom: 1em;
 }
 
+.dialogBody {
+  height: 400px;
+}
+
 h2 {
   font-weight: bolder;
   font-size: xx-large;
@@ -34,11 +38,6 @@ p-schedule >>> .calendar {
   height: 250px;
 }
 
-
-p-footer button {
-  float: right;
-  margin: 0.5em;
-}
 
 p-gmap >>> .gmap {
   width:100%;
@@ -71,6 +70,8 @@ p-dataGrid >>> .ui-panel-content img {
   margin-right: auto;
   width: 150px;
 }
+
+
 
 
 
