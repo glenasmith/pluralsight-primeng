@@ -14,8 +14,9 @@ I deploy the latest version of the application directly to github pages.
  
  
 ## Errata & Updates
- 
+
+- 2017-09-17 - Introduced "starter-kit" branch for initial project template
+- 2017-08-28 - Fixed some CSS Dialog footer layout issues (my old 2.x CSS causing 4.x issues) 
 - 2017-08-24 - Course officially released [here](https://app.pluralsight.com/courses/angular-apps-prime-ng)
 - 2017-08-24 - Bumped Deps to latest version (PrimeNG 4.1.3, Angular 4.3.6)
-- 2017-08-28 - Fixed some CSS Dialog footer layout issues (my old 2.x CSS causing 4.x issues)
 
