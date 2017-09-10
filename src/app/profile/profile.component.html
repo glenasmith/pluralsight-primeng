@@ -1,26 +1,3 @@
-<div class="profile header ui-g-12">
-    <h2>
-        Profile Info
-    </h2>
-    <h3>
-        Galleria Drag and Drop
-    </h3>
+<div class="ui-g">
+
 </div>
-
-<p-panel header="My Profile Picture" styleClass="profilePic" class="ui-g-12 ui-md-4" pDroppable="profilePic" (onDrop)="onPicDrop()">
-
-    <img id="profilePic" *ngIf="profileImage; else showDropDiv" [src]="profileImage" class="ui-g-12" />
-
-    <ng-template #showDropDiv>
-        <span id="drop-message" class="ui-g-12">Drop Your Image Here</span>
-    </ng-template>
-
-</p-panel>
-
-<div class="spacer ui-g-12 ui-md-1"></div>
-
-<p-galleria #galleria [images]="images" class="ui-g-12 ui-md-7" panelWidth="300" panelHeight="298" [showCaption]="true" pDraggable="profilePic" dragHandle=".ui-panel-images" (onImageClicked)="onImageSelected($event)"
-(onDragStart)="onDragStart(galleria)">
-</p-galleria>
-
-<p-growl [value]="messages"></p-growl>

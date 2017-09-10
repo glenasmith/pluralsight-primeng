@@ -27,33 +27,5 @@ describe('ProfileComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should stop the slideshow on starting drag', () => {
-
-    let mockGalleria = {
-      activeIndex: 2,
-      stopSlideshow: createSpy('stopSlideshow')
-    };
-
-    component.onDragStart(mockGalleria);
-    expect(mockGalleria.stopSlideshow).toHaveBeenCalled();
-  });
-
-  it('should update the image on drop', () => {
-
-    let mockGalleria = {
-      activeIndex: 2,
-      stopSlideshow: createSpy('stopSlideshow')
-    };
-
-    component.onDragStart(mockGalleria);
-    component.onPicDrop();
-
-    fixture.detectChanges();
-
-    expect(component.profileImage).toEqual("http://i.pravatar.cc/300?u=Mary");
-    let imgElement = fixture.debugElement.query(By.css('#profilePic')).nativeElement;
-    expect(imgElement).toBeTruthy();
-
-  });
 
 });
