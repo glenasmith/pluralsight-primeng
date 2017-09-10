@@ -13,6 +13,18 @@ I deploy the latest version of the application directly to github pages.
 [Try it out now](https://glenasmith.github.io/pluralsight-primeng/)
  
  
+## Starter Kit
+
+Keen to start from scratch? You can (well, almost). There's a [starter-kit](https://github.com/glenasmith/pluralsight-primeng/tree/starter-kit) branch which you can clone/download which contains:
+* A basic menu template routing to blank components
+* Styling for the shell, but none of the component CSS - which you insert as you go
+* Blank component code shells for you to insert code as you follow along 
+
+Remember: we don't cover every bit of CSS styling you need but I do refer when you need to copy and paste. So you might need to switch branches every now and again to grab some CSS styling. 
+
+Go for it!
+ 
+ 
 ## Errata & Updates
 
 - 2017-09-17 - Introduced "starter-kit" branch for initial project template
