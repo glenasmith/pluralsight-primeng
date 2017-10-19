@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem, DataTable, LazyLoadEvent } from "primeng/primeng";
 import Dexie from 'dexie';
-import { Observable } from "rxjs";
+import {Observable} from 'rxjs/Observable';
 
 const MAX_EXAMPLE_RECORDS = 1000;
 
