@@ -27,6 +27,8 @@ Go for it!
  
 ## Errata & Updates
 
+- 2017-12-05 - Updated to PrimeNG 5.0.2 and Angular 5.0.5. And some layout fixes for new version.
+- 2017-10-26 - Changed base layout to absolute positioning for better resize screen experience.
 - 2017-09-17 - Introduced "starter-kit" branch for initial project template
 - 2017-08-28 - Fixed some CSS Dialog footer layout issues (my old 2.x CSS causing 4.x issues) 
 - 2017-08-24 - Course officially released [here](https://app.pluralsight.com/courses/angular-apps-prime-ng)
