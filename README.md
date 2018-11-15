@@ -27,6 +27,7 @@ Go for it!
  
 ## Errata & Updates
 
+- 2018-11-15 - Major Update! Updated to PrimeNG and Angular 7.0 using [update.angular.io](https://update.angular.io)  
 - 2017-12-05 - Updated to PrimeNG 5.0.2 and Angular 5.0.5. And some layout fixes for new version.
 - 2017-10-26 - Changed base layout to absolute positioning for better resize screen experience.
 - 2017-09-17 - Introduced "starter-kit" branch for initial project template
