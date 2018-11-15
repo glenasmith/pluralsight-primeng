@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem, DataTable, LazyLoadEvent } from "primeng/primeng";
+import { range } from 'rxjs';
 import Dexie from 'dexie';
-import {Observable} from 'rxjs/Observable';
 
 const MAX_EXAMPLE_RECORDS = 1000;
 
@@ -103,7 +103,7 @@ export class AlltimesComponent implements OnInit {
 
     this.db.table("timesheet").clear().then(() => {
       console.log("Database Cleared");
-      Observable.range(0, MAX_EXAMPLE_RECORDS).do(
+      range(0, MAX_EXAMPLE_RECORDS).subscribe(
         function (id) {
           let randomUser = that.generateRandomUser(id);
           that.db.table("timesheet").add(randomUser);
@@ -121,7 +121,6 @@ export class AlltimesComponent implements OnInit {
           console.log("Do complete");
           that.dt.loading = false;
           that.dt.reset();
-        }).subscribe(() => {
           console.log("Finished Reset database");
           that.getRecordCount().then((count) => {
             that.recordCount = count;
