@@ -166,8 +166,8 @@ export class AlltimesComponent implements OnInit {
 
   ngOnInit() {
     this.contextMenu = [
-      { label: 'Debug', icon: 'fa-bug', command: (event) => this.onDebug(this.selectedRows) },
-      { label: 'Delete', icon: 'fa-close', command: (event) => this.onDelete(this.selectedRows) }
+      { label: 'Debug', icon: 'fa fa-bug', command: (event) => this.onDebug(this.selectedRows) },
+      { label: 'Delete', icon: 'fa fa-close', command: (event) => this.onDelete(this.selectedRows) }
     ];
 
   }

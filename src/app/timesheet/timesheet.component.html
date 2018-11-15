@@ -68,8 +68,8 @@
 
 
   <p-footer>
-    <button pButton label="Save" icon="fa-check" (click)="saveNewEntry()"></button>
-    <button pButton label="Cancel" icon="fa-times" (click)="cancelDialog()" class="ui-button-secondary"></button>
+    <button pButton label="Save" icon="fa fa-check" (click)="saveNewEntry()"></button>
+    <button pButton label="Cancel" icon="fa fa-times" (click)="cancelDialog()" class="ui-button-secondary"></button>
   </p-footer>
 
 </p-dialog>
@@ -78,8 +78,8 @@
 <p-confirmDialog icon="fa fa-question-circle" width="425" [visible]="false" #confirmDialog>
 
   <p-footer>
-    <button type="button" pButton icon="fa-close" label="No, go back" (click)="confirmDialog.reject()"></button>
-    <button type="button" pButton icon="fa-check" label="Yes, lose changes"
+    <button type="button" pButton icon="fa fa-close" label="No, go back" (click)="confirmDialog.reject()"></button>
+    <button type="button" pButton icon="fa fa-check" label="Yes, lose changes"
             (click)="confirmDialog.accept() && confirmDialog.hide()"></button>
   </p-footer>
 
