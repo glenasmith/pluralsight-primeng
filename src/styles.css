@@ -1,3 +1,5 @@
+@import '~primeicons/primeicons.css';
+
 /* You can add global styles to this file, and also import other style files */
 body {
   background-color: #D9E0E7 !important;
@@ -17,6 +19,10 @@ body {
   background-color: #2D353C !important;
 }
 
+.ui-menu-list {
+  background-color: black;
+}
+
 .ui-menuitem-text {
   color: white !important;
 }
@@ -25,6 +31,10 @@ body {
   color: white !important;
   font-size: large !important;
   margin-right: 1em;
+}
+
+body .ui-menu .ui-menuitem :hover {
+  background-color: #2F8EE5 !important;
 }
 
 .menu-selected {
