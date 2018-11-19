@@ -29,6 +29,10 @@ body {
   margin-right: 1em;
 }
 
+body .ui-menu .ui-menuitem :hover {
+  background-color: #2F8EE5 !important;
+}
+
 .menu-selected {
   background-color: #F15B2A !important;
   color: #ffffff;

@@ -53,10 +53,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   selectInitialMenuItemBasedOnUrl() {
     let path = document.location.pathname;
     let menuItem = this.menuItems.find( (item) => { return item.routerLink[0] == path });
-    // if (menuItem) {
-    //   let selectedIcon = this.bigMenu.container.querySelector(`.${menuItem.icon}`);
-    //   jQuery(selectedIcon).closest('li').addClass('menu-selected');
-    // }
+    if (menuItem) {
+      let iconToFind = '.' + menuItem.icon.replace('fa ', ''); // make fa fa-home into .fa-home
+      let selectedIcon = document.querySelector(`${iconToFind}`);
+      jQuery(selectedIcon).closest('li').addClass('menu-selected');
+    }
   }
 
   ngAfterViewInit() {
